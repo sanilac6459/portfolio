@@ -18,7 +18,7 @@
         }
 
         h3{
-            color: #985D75;
+            color: #000000;
             font-family: 'Playfair Display', serif;
             font-weight: bold;
         }
@@ -30,7 +30,7 @@
 
         .container{
             padding: 10px;
-            color: #985D75;
+            color: #000000;
         }
 
         li{
@@ -51,27 +51,15 @@
         .card-title {
             font-weight: 700;
         }
-#home {
-    padding-top: 60px;
-}
+        #logo, .project-img {
+            max-height: 300px;
+        }
 
-h3 {
-    text-align: center;
-    padding-top: 100px;
-}
+        #home {
+            padding-top: 60px;
+        }
 
-/* #hi {
-    padding-right: 800px;
-} */
-
-.row {
-    padding-top: 20px;
-}
-
-#hi {
-    text-align: center;
-}
-
-#git {
-    padding-left: 50px;
-}
+        h3 {
+            text-align: center;
+            padding-top: 100px;
+        }
