@@ -1,5 +1,5 @@
 
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+        /* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap'); */
 
 
         body{
@@ -14,7 +14,7 @@
         }
 
         a {
-            padding-top: 60px;
+            padding-top: 10px;
         }
 
         h3{
@@ -63,3 +63,30 @@
             text-align: center;
             padding-top: 100px;
         }
+
+        .container2 {
+            display: grid;
+            align-items: center; 
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 5px;
+           }
+           
+           .bg-4 {
+            background-color: #000000;
+            color: #ffffff;
+        }
+          
+          .text {
+            font-size: 20px;
+          }
+
+          .active {
+            line-height: 2em;
+            padding-left:3px;
+        }
+ 
+        .image {
+            position: absolute;
+        }
+
+        
