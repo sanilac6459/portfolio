@@ -19,12 +19,12 @@ const Footer = () => {
 
       <div className="container relative">
         <div className="flex flex-col items-center text-center gap-6">
-          <Link
+          {/* <Link
             to="/"
             className="font-serif-display italic text-3xl text-white"
           >
             Sanila Chowdhury
-          </Link>
+          </Link> */}
 
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-2">
             {navLinks.map((item) => (
@@ -62,7 +62,7 @@ const Footer = () => {
           <div className="w-24 h-px bg-white/20"></div>
 
           <p className="text-white/50 text-xs tracking-wide">
-            © {currentYear} Sanila Chowdhury. Crafted with care.
+            © {currentYear} Sanila Chowdhury. All rights reserved.
           </p>
         </div>
       </div>
