@@ -1,8 +1,12 @@
-import AboutSection from '@/components/AboutSection';
+import PageLoader from "@/components/PageLoader";
+import AboutSection from "@/components/AboutSection";
 
 const About = () => (
-  <div className="pt-20">
-    <AboutSection />
-  </div>
+  <PageLoader>
+    <div className="pt-20">
+      <AboutSection />
+    </div>
+  </PageLoader>
 );
+
 export default About;

@@ -1,8 +1,12 @@
-import SkillsSection from '@/components/SkillsSection';
+import PageLoader from "@/components/PageLoader";
+import SkillsSection from "@/components/SkillsSection";
 
 const Skills = () => (
-  <div className="pt-20">
-    <SkillsSection />
-  </div>
+  <PageLoader>
+    <div className="pt-20" style={{ background: "var(--gradient-soft)" }}>
+      <SkillsSection />
+    </div>
+  </PageLoader>
 );
+
 export default Skills;

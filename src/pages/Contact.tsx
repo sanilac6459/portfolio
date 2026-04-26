@@ -1,8 +1,12 @@
-import ContactSection from '@/components/ContactSection';
+import PageLoader from "@/components/PageLoader";
+import ContactSection from "@/components/ContactSection";
 
 const Contact = () => (
-  <div className="pt-20">
-    <ContactSection />
-  </div>
+  <PageLoader>
+    <div className="pt-20">
+      <ContactSection />
+    </div>
+  </PageLoader>
 );
+
 export default Contact;

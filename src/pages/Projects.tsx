@@ -1,8 +1,12 @@
-import ProjectsSection from '@/components/ProjectsSection';
+import PageLoader from "@/components/PageLoader";
+import ProjectsSection from "@/components/ProjectsSection";
 
 const Projects = () => (
-  <div className="pt-20">
-    <ProjectsSection />
-  </div>
+  <PageLoader>
+    <div className="pt-20">
+      <ProjectsSection />
+    </div>
+  </PageLoader>
 );
+
 export default Projects;

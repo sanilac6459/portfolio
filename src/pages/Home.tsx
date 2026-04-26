@@ -1,4 +1,10 @@
-import HeroSection from '@/components/HeroSection';
+import PageLoader from "@/components/PageLoader";
+import HomeSection from "@/components/HomeSection";
 
-const Home = () => <HeroSection />;
+const Home = () => (
+  <PageLoader>
+    <HomeSection />
+  </PageLoader>
+);
+
 export default Home;

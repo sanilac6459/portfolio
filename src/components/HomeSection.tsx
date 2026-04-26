@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-const roles = ["Software Engineer", "Full Stack Developer", "Women in Tech"];
+const roles = [
+  "Software Engineer",
+  "Full Stack Developer",
+  "Tech Enthusiast",
+  "Women in Tech",
+];
 
-const HeroSection = () => {
+const HomeSection = () => {
   const [displayed, setDisplayed] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -36,16 +41,13 @@ const HeroSection = () => {
 
   return (
     <section
-      className="min-h-screen flex flex-col justify-center relative overflow-hidden grain-overlay"
+      className="min-h-screen flex items-center relative overflow-hidden grain-overlay"
       style={{ background: "var(--gradient-soft)" }}
     >
-      <div className="container mx-auto px-4 z-10">
-        <div className="max-w-3xl animate-fade-in">
-          <h4 className="text-portfolio-purple font-serif-display italic text-2xl mb-3">
-            Hello, my name is
-          </h4>
+      <div className="container mx-auto px-4 z-10 w-full">
+        <div className="animate-fade-in max-w-3xl">
           <h1 className="font-serif-display text-6xl md:text-8xl font-semibold mb-6 text-portfolio-navy leading-[0.95]">
-            <span className="block">Sanila</span>
+            <span className="block">Hi! I'm Sanila</span>
             <span className="block mt-2 italic text-portfolio-purple">
               {displayed}
               <span className="animate-pulse">|</span>
@@ -78,4 +80,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default HomeSection;

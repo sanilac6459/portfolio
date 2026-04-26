@@ -1,33 +1,84 @@
-import React from 'react';
-import { Code2, Wrench, Layers } from 'lucide-react';
+import React from "react";
+import { Code2, Wrench, Layers, Bot, Database } from "lucide-react";
 
 interface SkillCategoryProps {
   title: string;
   icon: React.ReactNode;
-  skills: string[];
+  skills: { name: string; icon: string }[];
 }
 
 const skillCategories: SkillCategoryProps[] = [
   {
-    title: "Programming Languages",
+    title: "Languages",
     icon: <Code2 size={20} />,
-    skills: ["JavaScript", "Java", "Python", "C++"]
+    skills: [
+      { name: "HTML/CSS", icon: "/images/html5.png" },
+      { name: "JavaScript", icon: "/images/js.png" },
+      { name: "TypeScript", icon: "/images/typescript.png" },
+      { name: "Python", icon: "/images/python.png" },
+      { name: "Java", icon: "/images/java.png" },
+      { name: "SQL", icon: "/images/mysql.png" },
+      { name: "C++", icon: "/images/c++.png" },
+      { name: "Swift", icon: "/images/swift.png" },
+    ],
   },
   {
-    title: "Development Tools",
+    title: "Developer Tools",
     icon: <Wrench size={20} />,
-    skills: ["HTML/CSS", "Git/GitHub", "VS Code", "Docker", "Replit", "Figma"]
+    skills: [
+      { name: "Git", icon: "/images/git.png" },
+      { name: "GitHub", icon: "/images/github.png" },
+      { name: "Docker", icon: "/images/docker.png" },
+      { name: "VS Code", icon: "/images/vscode.png" },
+      { name: "Postman", icon: "/images/postman.png" },
+      { name: "Figma", icon: "/images/figma.png" },
+      { name: "Jupyter", icon: "/images/jupyter.png" },
+      { name: "Google Collab", icon: "/images/collab.png" },
+      { name: "Xcode", icon: "/images/xcode.png" },
+      { name: "Vercel", icon: "/images/vercel.png" },
+    ],
   },
   {
     title: "Frameworks & Libraries",
     icon: <Layers size={20} />,
-    skills: ["React.js", "p5.js", "Flask", "Bootstrap", "Discord.py", "Unity", "Ncurses", "OpenAI API"]
-  }
+    skills: [
+      { name: "React", icon: "/images/react.png" },
+      { name: "Node.js", icon: "/images/nodejs.png" },
+      { name: "Express.js", icon: "/images/express.png" },
+      { name: "Angular", icon: "/images/angular.png" },
+      { name: "Flask", icon: "/images/flask.png" },
+      { name: "Tailwind CSS", icon: "/images/tailwind-css.png" },
+    ],
+  },
+  {
+    title: "AI / LLM Tools",
+    icon: <Bot size={20} />,
+    skills: [
+      { name: "OpenAI API", icon: "/images/openai.png" },
+      { name: "Google Gemini API", icon: "/images/gemini.png" },
+      { name: "LangChain", icon: "/images/langchain.png" },
+      { name: "OpenRouter", icon: "/images/openrouter.webp" },
+    ],
+  },
+  {
+    title: "Databases & Backend",
+    icon: <Database size={20} />,
+    skills: [
+      { name: "MySQL", icon: "/images/mysql.png" },
+      { name: "Firebase", icon: "/images/firebase.png" },
+      { name: "Supabase", icon: "/images/supabase.png" },
+      { name: "ChromaDB", icon: "/images/chromadb.png" },
+    ],
+  },
 ];
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-24 bg-white relative overflow-hidden">
+    <section
+      id="skills"
+      className="py-24 relative overflow-hidden"
+      style={{ background: "var(--gradient-soft)" }}
+    >
       <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-portfolio-mauve/10 blur-3xl -translate-y-1/2"></div>
       <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-portfolio-pink/10 blur-3xl"></div>
 
@@ -41,24 +92,34 @@ const SkillsSection = () => {
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="group relative bg-gradient-to-br from-portfolio-cream/70 to-white rounded-2xl p-8 border border-portfolio-mauve/20 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              className="group relative bg-gradient-to-br from-portfolio-cream to-portfolio-mauve/30 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-8 border border-portfolio-mauve/20 dark:border-gray-600 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             >
-              {/* Decorative corner */}
-              <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-portfolio-pink/20 group-hover:bg-portfolio-pink/40 transition-colors flex items-center justify-center text-portfolio-navy">
+              <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-portfolio-pink/20 group-hover:bg-portfolio-pink/40 transition-colors flex items-center justify-center text-portfolio-navy dark:text-white">
                 {category.icon}
               </div>
 
               <div className="mb-6">
-                <p className="text-xs uppercase tracking-[0.25em] text-portfolio-purple mb-2">Category {String(index + 1).padStart(2, '0')}</p>
-                <h3 className="font-serif-display italic text-2xl text-portfolio-navy">{category.title}</h3>
-                <div className="w-12 h-px bg-portfolio-navy/40 mt-3"></div>
+                <h3 className="font-serif-display italic text-2xl text-portfolio-navy dark:text-white">
+                  {category.title}
+                </h3>
+                <div className="w-12 h-px bg-portfolio-navy/40 dark:bg-white/40 mt-3"></div>
               </div>
 
               <ul className="space-y-3">
                 {category.skills.map((skill, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-portfolio-navy/80">
-                    <span className="w-1.5 h-1.5 rounded-full bg-portfolio-purple"></span>
-                    <span className="font-light">{skill}</span>
+                  <li
+                    key={idx}
+                    className="flex items-center gap-3 text-portfolio-navy/80 dark:text-white/80"
+                  >
+                    <img
+                      src={skill.icon}
+                      alt={skill.name}
+                      className="w-5 h-5 object-contain"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = "none";
+                      }}
+                    />
+                    <span className="font-light">{skill.name}</span>
                   </li>
                 ))}
               </ul>

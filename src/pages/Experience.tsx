@@ -1,8 +1,12 @@
-import ExperienceSection from '@/components/ExperienceSection';
+import PageLoader from "@/components/PageLoader";
+import ExperienceSection from "@/components/ExperienceSection";
 
 const Experience = () => (
-  <div className="pt-20">
-    <ExperienceSection />
-  </div>
+  <PageLoader>
+    <div className="pt-20">
+      <ExperienceSection />
+    </div>
+  </PageLoader>
 );
+
 export default Experience;

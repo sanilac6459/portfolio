@@ -37,7 +37,6 @@ const ExperienceSection = () => {
     <section
       id="experience"
       className="py-24 relative overflow-hidden"
-      style={{ background: "var(--gradient-warm)" }}
     >
       <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-portfolio-cream/40 blur-3xl"></div>
 
