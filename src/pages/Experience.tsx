@@ -3,7 +3,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 
 const Experience = () => (
   <PageLoader>
-    <div className="pt-20">
+    <div className="pt-20 min-h-screen bg-portfolio-mauve/15">
       <ExperienceSection />
     </div>
   </PageLoader>

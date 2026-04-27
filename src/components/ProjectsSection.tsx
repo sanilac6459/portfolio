@@ -110,7 +110,10 @@ const ProjectCard = ({
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-24 relative overflow-hidden">
+    <section
+      id="projects"
+      className="py-24 relative overflow-hidden bg-portfolio-mauve/30"
+    >
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-portfolio-cream/40 blur-3xl"></div>
 
       <div className="container relative">

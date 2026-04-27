@@ -15,7 +15,7 @@ const PageLoader = ({ children }: { children: React.ReactNode }) => {
           <img
             src="/logo.png"
             alt="Loading"
-            className="w-20 h-20 object-contain animate-pulse"
+            className="w-40 h-40 object-contain animate-pulse"
           />
           <p className="text-portfolio-navy/50 dark:text-white/50 text-sm tracking-widest uppercase">
             Loading...
