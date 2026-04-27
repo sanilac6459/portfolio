@@ -3,10 +3,7 @@ import { Card } from "@/components/ui/card";
 
 const AboutSection = () => {
   return (
-    <section
-      id="about"
-      className="py-24 bg-portfolio-mauve/15 relative overflow-hidden"
-    >
+    <section id="about" className="py-24 relative overflow-hidden">
       <div className="absolute top-20 right-0 w-96 h-96 rounded-full bg-portfolio-pink/10 blur-3xl"></div>
 
       <div className="container relative">
@@ -17,9 +14,9 @@ const AboutSection = () => {
 
         <div className="max-w-5xl mx-auto">
           <Card className="bg-gradient-to-br from-portfolio-cream to-portfolio-mauve/30 rounded-2xl p-5 md:p-6 border border-portfolio-mauve/20 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-            <h3 className="font-serif-display italic text-3xl mb-6 text-portfolio-navy">
+            {/* <h3 className="font-serif-display italic text-3xl mb-6 text-portfolio-navy">
               Who I Am
-            </h3>
+            </h3> */}
             <div className="space-y-4 text-portfolio-navy/80 leading-relaxed">
               <p>
                 I'm an aspiring software engineer passionate about creating

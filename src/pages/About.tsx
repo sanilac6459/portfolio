@@ -3,7 +3,10 @@ import AboutSection from "@/components/AboutSection";
 
 const About = () => (
   <PageLoader>
-    <div className="pt-20 min-h-screen bg-portfolio-mauve/15">
+    <div
+      className="pt-20 min-h-screen"
+      style={{ background: "var(--gradient-soft)" }}
+    >
       <AboutSection />
     </div>
   </PageLoader>
