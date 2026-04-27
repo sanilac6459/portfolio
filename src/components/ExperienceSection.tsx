@@ -29,7 +29,7 @@ const experiences: ExperienceProps[] = [
     duration: "July 2025 — Present",
     logo: "/images/ctp.jpeg",
     bullets: [
-      "Developed scalable web applications with <strong>React</strong>and TypeScript, boosting maintainability, optimizing performance, and enhancing user experience in collaborative, agile team projects.",
+      "Developed scalable web applications with React and TypeScript, boosting maintainability, optimizing performance, and enhancing user experience in collaborative, agile team projects.",
       "Integrated Node.js, Express.js, and PostgreSQL into full-stack applications while applying best practices in software architecture, version control, testing, and CI/CD to ensure reliable and production-ready deployments.",
       "Built a full-stack CUNY Hunter Marketplace utilizing Supabase and Prisma, implementing user authentication and an item listing dashboard for students to buy and sell college essentials.",
     ],

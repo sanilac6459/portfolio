@@ -74,11 +74,7 @@ const skillCategories: SkillCategoryProps[] = [
 
 const SkillsSection = () => {
   return (
-    <section
-      id="skills"
-      className="py-24 relative overflow-hidden"
-      style={{ background: "var(--gradient-soft)" }}
-    >
+    <section id="skills" className="py-24 relative overflow-hidden">
       <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-portfolio-mauve/10 blur-3xl -translate-y-1/2"></div>
       <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-portfolio-pink/10 blur-3xl"></div>
 

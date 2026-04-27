@@ -78,7 +78,7 @@ const ProjectCard = ({
         ))}
       </div>
 
-      <div className="flex gap-3 pt-4 border-t border-portfolio-mauve/20">
+      <div className="flex gap-3 pt-4 border-t">
         {demoUrl && (
           <Button
             variant="ghost"
@@ -110,10 +110,7 @@ const ProjectCard = ({
 
 const ProjectsSection = () => {
   return (
-    <section
-      id="projects"
-      className="py-24 relative overflow-hidden bg-portfolio-mauve/30"
-    >
+    <section id="projects" className="py-24 relative overflow-hidden">
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-portfolio-cream/40 blur-3xl"></div>
 
       <div className="container relative">

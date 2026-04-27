@@ -31,7 +31,7 @@ const Navbar = () => {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4",
+          "fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6",
           isScrolled || location.pathname !== "/"
             ? "bg-portfolio-cream/90 backdrop-blur-sm shadow-sm"
             : "bg-transparent",

@@ -3,7 +3,7 @@ import SkillsSection from "@/components/SkillsSection";
 
 const Skills = () => (
   <PageLoader>
-    <div className="pt-20" style={{ background: "var(--gradient-soft)" }}>
+    <div className="pt-20 min-h-screen bg-portfolio-mauve/15">
       <SkillsSection />
     </div>
   </PageLoader>
