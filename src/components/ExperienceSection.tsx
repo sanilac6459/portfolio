@@ -63,7 +63,7 @@ const ExperienceSection = () => {
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-portfolio-cream to-portfolio-mauve/30 rounded-2xl p-5 md:p-6 border border-portfolio-mauve/20 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              className="bg-gradient-to-br from-portfolio-cream to-portfolio-mauve/30 rounded-2xl p-6 border border-portfolio-mauve/20 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             >
               <div className="flex items-start gap-4 mb-4">
                 <img
@@ -78,7 +78,7 @@ const ExperienceSection = () => {
                   <p className="text-portfolio-purple font-semibold mt-1">
                     {exp.company}
                   </p>
-                  <p className="text-portfolio-navy/60 text-sm mt-1">
+                  <p className="text-portfolio-navy text-sm mt-1">
                     {exp.duration}
                   </p>
                 </div>
@@ -87,7 +87,7 @@ const ExperienceSection = () => {
                 {exp.bullets.map((bullet, idx) => (
                   <li
                     key={idx}
-                    className="flex items-start gap-2 text-portfolio-navy/70 text-sm leading-relaxed"
+                    className="flex items-start gap-2 text-portfolio-navy text-sm leading-relaxed"
                   >
                     <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-portfolio-purple flex-shrink-0"></span>
                     {bullet}

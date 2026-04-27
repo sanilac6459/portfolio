@@ -20,7 +20,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white relative overflow-hidden">
+    <section id="contact" className="py-24 relative overflow-hidden">
       <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-portfolio-pink/10 blur-3xl"></div>
       <div className="container relative">
         <div className="flex flex-col items-center text-center mb-16">
@@ -31,7 +31,7 @@ const ContactSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <Card className="p-8 border-portfolio-mauve/20 rounded-2xl shadow-lg bg-gradient-to-br from-white to-portfolio-cream/30">
-              <h3 className="font-serif-display italic text-2xl mb-6 text-portfolio-navy">
+              <h3 className="font-serif-display text-2xl mb-6 text-portfolio-navy">
                 Send Me a Message
               </h3>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -97,10 +97,10 @@ const ContactSection = () => {
 
           <div className="flex flex-col gap-6">
             <div>
-              <h3 className="font-serif-display italic text-2xl mb-4 text-portfolio-navy">
+              <h3 className="font-serif-display text-2xl mb-4 text-portfolio-navy">
                 Let's Connect
               </h3>
-              <p className="text-portfolio-navy/70 mb-8 font-light leading-relaxed">
+              <p className="text-portfolio-navy mb-8 font-light leading-relaxed">
                 Feel free to reach out through any of the following channels.
                 I'm always open to discussing new projects, creative ideas, or
                 opportunities to be part of your vision.

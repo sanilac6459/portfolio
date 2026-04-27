@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 interface ProjectProps {
   title: string;
@@ -9,32 +9,87 @@ interface ProjectProps {
   image?: string;
   demoUrl?: string;
   repoUrl?: string;
+  presentationUrl?: string;
 }
 
 const projects: ProjectProps[] = [
   {
-    title: "Project Name 1",
+    title: "AuraTracks",
     description:
-      "A brief description of the project, what it does, and your role in developing it.",
-    technologies: ["React", "Node.js", "TypeScript", "MongoDB"],
-    demoUrl: "https://example.com",
-    repoUrl: "https://github.com/yourusername/project1",
+      "A new way to soundtrack memories, discover music, and bring your photos to life with sound!",
+    technologies: ["React", "Gemini API", "Sportify API", "FastAPI"],
+    image: "/images/project-aura.png",
+    demoUrl:
+      "https://devpost.com/software/project-aura-y49k2j?_gl=1*6l35lf*_gcl_au*MjAyMjU4Mzk1OC4xNzU1OTY3ODQ1*_ga*MjE0MjA2MDkwNS4xNzU1OTY3ODQ1*_ga_0YHJK3Y10M*czE3NTYwNjY4NDckbzYkZzEkdDE3NTYwNjY5MjQkajQ4JGwwJGgw",
+    repoUrl: "https://github.com/maida5/ctp-hacks-2025",
   },
   {
-    title: "Project Name 2",
+    title: "StyleMe",
     description:
-      "Another project description highlighting the key features and your contributions.",
-    technologies: ["Python", "Django", "PostgreSQL", "Docker"],
-    demoUrl: "https://example.com",
-    repoUrl: "https://github.com/yourusername/project2",
+      "A virtual wardrobe where users can store, organize, and generate personalized outfit combinations from their clothing inventory.",
+    technologies: ["Angular", "Node.js", "Express.js", "REST APIs", "Firebase"],
+    image: "/images/styleme.png",
+    demoUrl:
+      "https://drive.google.com/file/d/1Hox0GU5vjn6Zmxep-Tz5oX5rOxcfNtbc/view?usp=sharing",
+    repoUrl: "https://github.com/weijiej2964/Fashion-Project",
   },
   {
-    title: "Project Name 3",
+    title: "Python Code Evaluator",
     description:
-      "A description of a third project, mentioning the problem it solves and the approach you took.",
-    technologies: ["Vue.js", "Express", "Firebase", "Tailwind CSS"],
+      "An evaluator that takes in user's Python code to determine whether it's Pythonic or not and generates Pythonic examples and output comparisons. This enhances code quality and optimizes Python codebases.",
+    technologies: ["Python", "OpenAI API"],
+    image: "/images/python-computer.png",
+    repoUrl: "https://github.com/sanilac6459/pythonic-code-evaluator",
+  },
+  {
+    title: "Winter Wordleland",
+    description:
+      "A winter-themed of The NY Times’ Wordle Game designed to help users get into the holiday spirit!",
+    technologies: ["Ncurses Library", "Hunspell Dictionary", "Docker"],
+    image: "/images/wordle.png",
+    demoUrl:
+      "https://drive.google.com/file/d/1nA2Tjaf9ZgVG9kCAeBXm-5qcnNyu-R-J/view?usp=sharing",
+    repoUrl: "https://github.com/TheSimmer101/wordle",
+  },
+  {
+    title: "GIMMIE CANDY!!!",
+    description:
+      "A unique trick-or-treating game where enemies steal trick or treater’s candies. A great way to get into the Halloween spirit!",
+    technologies: ["C#", "Unity"],
+    image: "/images/gimme-candy.png",
     demoUrl: "https://example.com",
-    repoUrl: "https://github.com/yourusername/project3",
+    repoUrl: "https://github.com/sanilac6459",
+  },
+  {
+    title: "FinTech Focus Weather App",
+    description:
+      "A weather app that delivers real-time forecasts worldwide, showing current conditions and a three-day outlook based on the user's location.",
+    technologies: ["Python", "Flask", "Geocode API", "OpenWeather API"],
+    image: "/images/weather.png",
+    demoUrl:
+      "https://drive.google.com/file/d/1WdWFLjX1RC3wM0LR9Jp2YswwVAwo5boe/view?usp=sharing",
+    repoUrl: "https://replit.com/@MashrafiAlam/FTF-Weather-App-2",
+  },
+  {
+    title: "Discord Music Bot",
+    description:
+      "A Discord music bot that lets users play and control music in voice channels, while also sending automated messages based on user activity within the server.",
+    technologies: ["Python", "Discord.py"],
+    image: "/images/discord.png",
+    demoUrl:
+      "https://drive.google.com/file/d/17X4uWqc8Sk0jsoS9bcPMiy_kUGpsuZfY/view?usp=sharing",
+    presentationUrl:
+      "https://photos.google.com/share/AF1QipM98JBT3MIDm-JN2YyQVtM2agU3yMzoaU3lzIvR0l8Ls-mK65OYZDh51NeiH8sjJw/photo/AF1QipOEoqB5UZ7_-FzkikLJk4MvfqfPsYh6LGTN9ijG?key=aWtId3V5Z1JIZUdVMnloMzFXREhnWmZBVmJLeFNn",
+    repoUrl: "https://github.com/vickyc5/ditto-discord-bot",
+  },
+  {
+    title: "Keysanity Typing Game",
+    description:
+      "A game for users to enhance their typing skills by generating random words and tracking their score, word per minute (WPM), typed input, and a timer. Offers a fun way to engage in friendly competition to beat the world record in WPM!",
+    technologies: ["JavaScript", "p5.js"],
+    image: "/images/sep11-fp.png",
+    demoUrl: "https://sanilac6459.github.io/sep11-freedom-project/intro/",
+    repoUrl: "https://github.com/sanilac6459/sep11-freedom-project",
   },
 ];
 
@@ -42,28 +97,30 @@ const ProjectCard = ({
   title,
   description,
   technologies,
+  image,
   demoUrl,
   repoUrl,
+  presentationUrl,
   index,
 }: ProjectProps & { index: number }) => (
   <div className="group relative bg-white rounded-2xl overflow-hidden border border-portfolio-mauve/20 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-    {/* Image area */}
-    <div className="relative h-48 overflow-hidden bg-gradient-to-br from-portfolio-pink/40 via-portfolio-mauve/40 to-portfolio-purple/40">
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span className="font-serif-display italic text-7xl text-white/40">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-      </div>
-      <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:rotate-12">
-        <ArrowUpRight size={18} className="text-portfolio-navy" />
-      </div>
+    <div className="relative h-48 overflow-hidden">
+      {image ? (
+        <img src={image} alt={title} className="w-full h-full object-cover" />
+      ) : (
+        <div className="w-full h-full bg-gradient-to-br from-portfolio-pink/40 via-portfolio-mauve/40 to-portfolio-purple/40 flex items-center justify-center">
+          <span className="font-serif-display italic text-7xl text-white/40">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
+      )}
     </div>
 
     <div className="p-6">
-      <h3 className="font-serif-display italic text-2xl mb-2 text-portfolio-navy">
+      <h3 className="font-serif-display text-2xl mb-2 text-portfolio-navy">
         {title}
       </h3>
-      <p className="text-portfolio-navy/70 mb-4 text-sm leading-relaxed font-light">
+      <p className="text-portfolio-navy mb-4 text-sm leading-relaxed font-light">
         {description}
       </p>
 
@@ -71,14 +128,14 @@ const ProjectCard = ({
         {technologies.map((tech, i) => (
           <span
             key={i}
-            className="px-2.5 py-1 bg-portfolio-cream text-portfolio-navy/80 text-xs rounded-full border border-portfolio-mauve/30"
+            className="px-2.5 py-1 bg-portfolio-cream text-portfolio-navy text-xs rounded-full border border-portfolio-mauve/30"
           >
             {tech}
           </span>
         ))}
       </div>
 
-      <div className="flex gap-3 pt-4 border-t">
+      <div className="flex gap-3 pt-4 border-t flex-wrap">
         {demoUrl && (
           <Button
             variant="ghost"
@@ -88,6 +145,18 @@ const ProjectCard = ({
           >
             <a href={demoUrl} target="_blank" rel="noopener noreferrer">
               <ExternalLink size={14} className="mr-1.5" /> Demo
+            </a>
+          </Button>
+        )}
+        {presentationUrl && (
+          <Button
+            variant="ghost"
+            size="sm"
+            asChild
+            className="text-portfolio-navy hover:bg-portfolio-pink/20"
+          >
+            <a href={presentationUrl} target="_blank" rel="noopener noreferrer">
+              <ExternalLink size={14} className="mr-1.5" /> Presentation
             </a>
           </Button>
         )}
@@ -109,6 +178,9 @@ const ProjectCard = ({
 );
 
 const ProjectsSection = () => {
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
     <section id="projects" className="py-24 relative overflow-hidden">
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-portfolio-cream/40 blur-3xl"></div>
@@ -123,24 +195,31 @@ const ProjectsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <ProjectCard key={index} index={index} {...project} />
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-12 text-center flex flex-col sm:flex-row gap-4 justify-center">
           <Button
+            variant="outline"
+            className="border-portfolio-navy/40 text-portfolio-navy hover:bg-portfolio-navy/5 px-8 py-6 rounded-full"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "Show Less" : "View More"}
+          </Button>
+          {/* <Button
             className="bg-portfolio-navy hover:bg-portfolio-navy/90 text-white px-8 py-6 rounded-full shadow-lg"
             asChild
           >
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/sanilac6459"
               target="_blank"
               rel="noopener noreferrer"
             >
               <Github size={18} className="mr-2" /> Visit My GitHub
             </a>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </section>

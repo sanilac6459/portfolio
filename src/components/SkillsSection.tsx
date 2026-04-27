@@ -12,12 +12,13 @@ const skillCategories: SkillCategoryProps[] = [
     title: "Languages",
     icon: <Code2 size={20} />,
     skills: [
-      { name: "HTML/CSS", icon: "/images/html5.png" },
+      { name: "HTML", icon: "/images/html5.png" },
+      { name: "CSS", icon: "/images/css3.png" },
       { name: "JavaScript", icon: "/images/js.png" },
       { name: "TypeScript", icon: "/images/typescript.png" },
       { name: "Python", icon: "/images/python.png" },
       { name: "Java", icon: "/images/java.png" },
-      { name: "SQL", icon: "/images/mysql.png" },
+      { name: "SQL", icon: "/images/sql.png" },
       { name: "C++", icon: "/images/c++.png" },
       { name: "Swift", icon: "/images/swift.png" },
     ],
@@ -35,7 +36,7 @@ const skillCategories: SkillCategoryProps[] = [
       { name: "Jupyter", icon: "/images/jupyter.png" },
       { name: "Google Collab", icon: "/images/collab.png" },
       { name: "Xcode", icon: "/images/xcode.png" },
-      { name: "Vercel", icon: "/images/vercel.png" },
+      { name: "Vercel", icon: "/images/vercel.svg" },
     ],
   },
   {
@@ -56,7 +57,7 @@ const skillCategories: SkillCategoryProps[] = [
     skills: [
       { name: "OpenAI API", icon: "/images/openai.png" },
       { name: "Google Gemini API", icon: "/images/gemini.png" },
-      { name: "LangChain", icon: "/images/langchain.png" },
+      { name: "LangChain/LangSmith", icon: "/images/langchain.png" },
       { name: "OpenRouter", icon: "/images/openrouter.webp" },
     ],
   },
@@ -88,34 +89,34 @@ const SkillsSection = () => {
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="group relative bg-gradient-to-br from-portfolio-cream to-portfolio-mauve/30 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-8 border border-portfolio-mauve/20 dark:border-gray-600 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              className="group relative bg-gradient-to-br from-portfolio-cream to-portfolio-mauve/30 rounded-2xl p-8 border border-portfolio-mauve/20 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             >
-              <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-portfolio-pink/20 group-hover:bg-portfolio-pink/40 transition-colors flex items-center justify-center text-portfolio-navy dark:text-white">
+              <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-portfolio-pink/20 group-hover:bg-portfolio-pink/40 transition-colors flex items-center justify-center text-portfolio-navy">
                 {category.icon}
               </div>
 
               <div className="mb-6">
-                <h3 className="font-serif-display italic text-2xl text-portfolio-navy dark:text-white">
+                <h3 className="font-serif-display text-2xl text-portfolio-navy">
                   {category.title}
                 </h3>
-                <div className="w-12 h-px bg-portfolio-navy/40 dark:bg-white/40 mt-3"></div>
+                <div className="w-12 h-px bg-portfolio-navy/40 mt-3"></div>
               </div>
 
               <ul className="space-y-3">
                 {category.skills.map((skill, idx) => (
                   <li
                     key={idx}
-                    className="flex items-center gap-3 text-portfolio-navy/80 dark:text-white/80"
+                    className="flex items-center gap-3 text-portfolio-navy"
                   >
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className="w-5 h-5 object-contain"
+                      className="w-7 h-7 object-contain"
                       onError={(e) => {
                         (e.target as HTMLImageElement).style.display = "none";
                       }}
                     />
-                    <span className="font-light">{skill.name}</span>
+                    <span className="font-medium">{skill.name}</span>
                   </li>
                 ))}
               </ul>

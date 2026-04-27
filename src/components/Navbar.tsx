@@ -40,9 +40,9 @@ const Navbar = () => {
         <div className="container flex items-center justify-between">
           <Link
             to="/"
-            className="text-xl md:text-2xl font-serif-display italic font-semibold text-portfolio-navy"
+            className="text-xl md:text-2xl font-serif-display font-semibold text-portfolio-navy"
           >
-            Sanila Chowdhury
+            Sanila Chowdhury 🌷
           </Link>
 
           <nav className="hidden md:flex space-x-8">
