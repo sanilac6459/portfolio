@@ -14,15 +14,31 @@ interface ProjectProps {
 
 const projects: ProjectProps[] = [
   {
-    title: "AuraTracks",
+    title: "Phil — Job Applier Agent",
     description:
-      "A new way to soundtrack memories, discover music, and bring your photos to life with sound!",
-    technologies: ["React", "Gemini API", "Sportify API", "FastAPI"],
-    image: "/images/project-aura.png",
+      "An AI agent that streamlines the job application process with human oversight.",
+    technologies: [
+      "Python",
+      "LangChain",
+      "Gemini API",
+      "OpenRouter",
+      "Jupyter Notebook",
+    ],
+    image: "/images/phil-agent.webp",
     demoUrl:
-      "https://devpost.com/software/project-aura-y49k2j?_gl=1*6l35lf*_gcl_au*MjAyMjU4Mzk1OC4xNzU1OTY3ODQ1*_ga*MjE0MjA2MDkwNS4xNzU1OTY3ODQ1*_ga_0YHJK3Y10M*czE3NTYwNjY4NDckbzYkZzEkdDE3NTYwNjY5MjQkajQ4JGwwJGgw",
-    repoUrl: "https://github.com/maida5/ctp-hacks-2025",
+      "https://drive.google.com/file/d/1ti952_qAvol3fgxYU6rQhv9KlCSTEa-C/view?usp=sharing",
+    repoUrl: "https://github.com/sanilac6459/job-agent",
   },
+  // {
+  //   title: "AuraTracks",
+  //   description:
+  //     "A new way to soundtrack memories, discover music, and bring your photos to life with sound!",
+  //   technologies: ["React", "Gemini API", "Sportify API", "FastAPI"],
+  //   image: "/images/project-aura.png",
+  //   demoUrl:
+  //     "https://devpost.com/software/project-aura-y49k2j?_gl=1*6l35lf*_gcl_au*MjAyMjU4Mzk1OC4xNzU1OTY3ODQ1*_ga*MjE0MjA2MDkwNS4xNzU1OTY3ODQ1*_ga_0YHJK3Y10M*czE3NTYwNjY4NDckbzYkZzEkdDE3NTYwNjY5MjQkajQ4JGwwJGgw",
+  //   repoUrl: "https://github.com/maida5/ctp-hacks-2025",
+  // },
   {
     title: "StyleMe",
     description:
@@ -45,7 +61,7 @@ const projects: ProjectProps[] = [
     title: "Winter Wordleland",
     description:
       "A winter-themed of The NY Times’ Wordle Game designed to help users get into the holiday spirit!",
-    technologies: ["Ncurses Library", "Hunspell Dictionary", "Docker"],
+    technologies: ["C++", "Ncurses Library", "Hunspell Dictionary", "Docker"],
     image: "/images/wordle.png",
     demoUrl:
       "https://drive.google.com/file/d/1nA2Tjaf9ZgVG9kCAeBXm-5qcnNyu-R-J/view?usp=sharing",
@@ -156,7 +172,7 @@ const ProjectCard = ({
             className="text-portfolio-navy hover:bg-portfolio-pink/20"
           >
             <a href={presentationUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={14} className="mr-1.5" /> Presentation
+              <ExternalLink size={14} className="mr-1.5" /> Live Presentation
             </a>
           </Button>
         )}
