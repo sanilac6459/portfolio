@@ -90,7 +90,7 @@
 
 @layer utilities {
   .section-title {
-    @apply text-4xl md:text-5xl font-serif-display font-semibold mb-2 text-portfolio-navy relative inline-block italic;
+    @apply text-4xl md:text-5xl font-serif-display font-semibold mb-2 text-portfolio-navy relative inline-block;
   }
 
   .section-eyebrow {

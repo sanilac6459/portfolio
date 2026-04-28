@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
+  { name: "Home", to: "/" },
   { name: "About", to: "/about" },
   { name: "Experience", to: "/experience" },
   { name: "Skills", to: "/skills" },
@@ -42,7 +43,7 @@ const Navbar = () => {
             to="/"
             className="text-xl md:text-2xl font-serif-display font-semibold text-portfolio-navy"
           >
-            Sanila Chowdhury 🌷
+            Sanila Chowdhury
           </Link>
 
           <nav className="hidden md:flex space-x-8">
@@ -52,7 +53,7 @@ const Navbar = () => {
                 to={item.to}
                 className={({ isActive }) =>
                   cn(
-                    "text-portfolio-navy hover:text-portfolio-purple font-medium transition-colors relative",
+                    "text-portfolio-navy hover:text-portfolio-purple font-medium font-serif-display transition-colors relative",
                     isActive &&
                       "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-portfolio-purple",
                   )
@@ -94,7 +95,7 @@ const Navbar = () => {
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "text-xl font-medium text-portfolio-navy hover:text-portfolio-purple transition-colors relative",
+                  "text-xl font-medium text-portfolio-navy hover:text-portfolio-purple font-serif-display transition-colors relative",
                   isActive &&
                     "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-portfolio-purple",
                 )

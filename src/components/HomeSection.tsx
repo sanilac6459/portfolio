@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const roles = [
   "Software Engineer",
-  "Full Stack Developer",
+  "Full-Stack Developer",
   "Tech Enthusiast",
   "Women in Tech",
 ];
@@ -54,9 +54,11 @@ const HomeSection = () => {
             </span>
           </h1>
           <div className="mb-8">
-            <p className="text-base md:text-lg text-portfolio-navy/70 max-w-xl font-light">
-              Crafting intuitive, efficient, and scalable digital experiences
-              with care and curiosity.
+            <p className="text-base md:text-lg text-portfolio-navy max-w-xl  font-light">
+              Every project I've built has taught me something about code and
+              something about myself. That curiosity to keep building, learning,
+              and growing is what drives me to become a better engineer every
+              day. ♡
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
@@ -68,7 +70,7 @@ const HomeSection = () => {
             </Button>
             <Button
               variant="outline"
-              className="border-portfolio-navy/40 text-portfolio-navy hover:bg-portfolio-navy/5 px-8 py-6 rounded-full backdrop-blur-sm bg-white/30"
+              className="border-portfolio-navy/40 text-portfolio-navy  hover:bg-portfolio-navy/5 px-8 py-6 rounded-full backdrop-blur-sm bg-white/30"
               asChild
             >
               <Link to="/projects">View My Work</Link>

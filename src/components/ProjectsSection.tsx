@@ -187,11 +187,8 @@ const ProjectsSection = () => {
 
       <div className="container relative">
         <div className="flex flex-col items-center text-center mb-16">
-          <p className="section-eyebrow">— Selected Works —</p>
+          <p className="section-eyebrow">— My Work —</p>
           <h2 className="section-title">Projects</h2>
-          <p className="text-portfolio-navy/70 mt-6 max-w-2xl font-light">
-            A curated selection of work where each challenge shaped my craft.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
