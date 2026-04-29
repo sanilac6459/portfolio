@@ -29,12 +29,13 @@ const skillCategories: SkillCategoryProps[] = [
     skills: [
       { name: "Git", icon: "/images/git.png" },
       { name: "GitHub", icon: "/images/github.png" },
+      { name: "npm", icon: "/images/npm.png" },
       { name: "Docker", icon: "/images/docker.png" },
       { name: "VS Code", icon: "/images/vscode.png" },
       { name: "Postman", icon: "/images/postman.png" },
       { name: "Figma", icon: "/images/figma.png" },
       { name: "Jupyter", icon: "/images/jupyter.png" },
-      { name: "Google Collab", icon: "/images/collab.png" },
+      { name: "Google Colab", icon: "/images/colab.png" },
       { name: "Xcode", icon: "/images/xcode.png" },
       { name: "Vercel", icon: "/images/vercel.svg" },
     ],
@@ -43,11 +44,11 @@ const skillCategories: SkillCategoryProps[] = [
     title: "Frameworks & Libraries",
     icon: <Layers size={20} />,
     skills: [
+      { name: "Flask", icon: "/images/flask.png" },
       { name: "React", icon: "/images/react.png" },
       { name: "Node.js", icon: "/images/nodejs.png" },
       { name: "Express.js", icon: "/images/express.png" },
       { name: "Angular", icon: "/images/angular.png" },
-      { name: "Flask", icon: "/images/flask.png" },
       { name: "Tailwind CSS", icon: "/images/tailwind-css.png" },
     ],
   },
@@ -62,7 +63,7 @@ const skillCategories: SkillCategoryProps[] = [
     ],
   },
   {
-    title: "Databases & Backend",
+    title: "Databases & Backend Services",
     icon: <Database size={20} />,
     skills: [
       { name: "MySQL", icon: "/images/mysql.png" },

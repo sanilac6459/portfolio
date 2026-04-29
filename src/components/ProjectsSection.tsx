@@ -17,13 +17,7 @@ const projects: ProjectProps[] = [
     title: "Phil — Job Applier Agent",
     description:
       "An AI agent that streamlines the job application process with human oversight.",
-    technologies: [
-      "Python",
-      "LangChain",
-      "Gemini API",
-      "OpenRouter",
-      "Jupyter Notebook",
-    ],
+    technologies: ["LangChain", "Gemini API", "OpenRouter", "Jupyter"],
     image: "/images/phil-agent.webp",
     demoUrl:
       "https://drive.google.com/file/d/1ti952_qAvol3fgxYU6rQhv9KlCSTEa-C/view?usp=sharing",
