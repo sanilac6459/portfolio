@@ -58,7 +58,7 @@ const HomeSection = () => {
               Every project I've built has taught me something about code and
               something about myself. The curiosity to keep building, learning,
               and growing is what drives me to become a better engineer every
-              day. ♡ lololo
+              day. ♡
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
