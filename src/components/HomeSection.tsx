@@ -56,7 +56,7 @@ const HomeSection = () => {
           <div className="mb-8">
             <p className="text-base md:text-lg text-portfolio-navy max-w-xl  font-light">
               Every project I've built has taught me something about code and
-              something about myself. That curiosity to keep building, learning,
+              something about myself. The curiosity to keep building, learning,
               and growing is what drives me to become a better engineer every
               day. ♡
             </p>
