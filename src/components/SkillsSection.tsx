@@ -58,7 +58,7 @@ const skillCategories: SkillCategoryProps[] = [
     skills: [
       { name: "OpenAI API", icon: "/images/openai.png" },
       { name: "Google Gemini API", icon: "/images/gemini.png" },
-      { name: "LangChain/LangSmith", icon: "/images/langchain.png" },
+      { name: "LangChain", icon: "/images/langchain.png" },
       { name: "OpenRouter", icon: "/images/openrouter.webp" },
     ],
   },
