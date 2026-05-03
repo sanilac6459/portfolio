@@ -55,10 +55,8 @@ const HomeSection = () => {
           </h1>
           <div className="mb-8">
             <p className="text-base md:text-lg text-portfolio-navy max-w-xl  font-light">
-              Every project I've built has taught me something about code and
-              something about myself. The curiosity to keep building, learning,
-              and growing is what drives me to become a better engineer every
-              day. ♡
+              The best part of every project isn't the finished product. It's
+              who I become in the process. ♡
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
