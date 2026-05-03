@@ -20,7 +20,7 @@ const experiences: ExperienceProps[] = [
     bullets: [
       "Analyzed the MTA Power Cable Enterprise Asset Management database with 11,000+ manhole inspection records, using Python, Pandas, and NumPy to detect duplicate entries and drive a ∼15% increase in maintenance activity.",
       "Built and deployed an interactive Power BI dashboard with optimized DAX measures sourced from SharePoint to visualize personnel data across 1,200+ employees in electrical and third rail divisions, providing senior management with actionable operational insights.",
-      " Developed an automated data pipeline using Excel Power Query and Power Automate to consolidate and sync 600+ employee records across SharePoint, reducing manual data entry and ensuring up-to-date workforce records.",
+      "Developed an automated data pipeline using Excel Power Query and Power Automate to consolidate and sync 600+ employee records across SharePoint, reducing manual data entry and ensuring up-to-date workforce records.",
     ],
   },
   {
@@ -32,7 +32,7 @@ const experiences: ExperienceProps[] = [
     bullets: [
       "Developed scalable web applications with React and TypeScript, boosting maintainability, optimizing performance, and enhancing user experience in collaborative, agile team projects.",
       "Integrated Node.js, Express.js, and PostgreSQL into full-stack applications while applying best practices in software architecture, version control, testing, and CI/CD to ensure reliable and production-ready deployments.",
-      "Built a full-stack CUNY Hunter Marketplace utilizing Supabase and Prisma, implementing JWT-based user authentication and a dynamic item listing dashboard with CRUD functionality.",
+      "Built a full-stack CUNY Hunter Marketplace utilizing Supabase and Prisma, implementing JWT-based user authentication and a dynamic item listing dashboard with CRUD functionality to enable student-to-student transactions.",
     ],
   },
   {

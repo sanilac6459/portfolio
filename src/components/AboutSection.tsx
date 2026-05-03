@@ -27,16 +27,18 @@ const AboutSection = () => {
               <p>
                 I'm a rising senior at CUNY Hunter College studying Computer
                 Science with a minor in Mathematics. I'm an aspiring software
-                engineer with a focus on full-stack development. My journey
-                began in high school with a four-year software engineering
-                course, where I discovered my passion in programming and turning
-                my ideas into software that can shape people's lives.
+                engineer with a focus on full-stack development. My journey in
+                tech began in high school with a four-year software engineering
+                course where I discovered my passion for programming and turning
+                my ideas into products that can shape people's lives.
               </p>
               <p>
-                Although I'm committed to software engineering, but my
-                experiences across cybersecurity, IT, and data analytics have
-                taught me that every field offers a different lens for solving
-                problems — and I'm open to wherever that takes me.
+                I'm someone who embraces new challenges and isn't afraid to take
+                risks. Although I'm committed to pursuing a career in software
+                engineering, my experiences across cybersecurity, IT, and data
+                analytics have taught me that every field offers a different
+                lens in shaping the future of tech, and I'm open to any path
+                that lets me keep building and growing.
               </p>
             </div>
           </div>
@@ -53,16 +55,17 @@ const AboutSection = () => {
             </div>
             <div className="space-y-3 text-portfolio-navy leading-relaxed text-base">
               <p>
-                What drives me the most is impact and purpose. I want to build
-                technology that makes our lives easier, more connected, and more
-                equitable — software that meets people where they are and
-                removes barriers rather than creating them.
+                What drives me is impact and purpose. I want to build technology
+                that is more accessible, connected, and equitable for all of us
+                — technology that removes barriers instead of creating new ones.
               </p>
               <p>
-                I also believe the best technology is built by the most diverse
-                minds, and I'm passionate about creating spaces where people
-                from underrepresented backgrounds have a voice and can
-                contribute to the future milestones of the tech industry.
+                I also want to create an environment that supports people from
+                underrepresented groups who are passionate about tech in finding
+                their voice and realizing their potential. I know firsthand how
+                it feels to be invisible in a field you’re passionate about, and
+                it's what pushes me to uplift those around me and make tech more
+                inclusive.
               </p>
             </div>
           </div>
