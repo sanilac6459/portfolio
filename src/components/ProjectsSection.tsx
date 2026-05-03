@@ -78,7 +78,7 @@ const projects: ProjectProps[] = [
     image: "/images/weather.png",
     demoUrl:
       "https://drive.google.com/file/d/1WdWFLjX1RC3wM0LR9Jp2YswwVAwo5boe/view?usp=sharing",
-    repoUrl: "https://replit.com/@MashrafiAlam/FTF-Weather-App-2",
+    // repoUrl: "https://replit.com/@MashrafiAlam/FTF-Weather-App-2",
   },
   {
     title: "Discord Music Bot",

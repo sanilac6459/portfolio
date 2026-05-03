@@ -101,9 +101,8 @@ const ContactSection = () => {
                 Let's Connect
               </h3>
               <p className="text-portfolio-navy mb-8 font-light leading-relaxed">
-                Feel free to reach out through any of the following channels.
-                I'm always open to discussing new projects, creative ideas, or
-                opportunities to be part of your vision.
+                I'm always open to meet new people, explore collaborations, and
+                hear about new opportunities. Feel free to reach out!
               </p>
             </div>
 
