@@ -254,7 +254,7 @@ const ProjectsSection = () => {
 
       <div className="container relative">
         <div className="flex flex-col items-center text-center mb-16">
-          <p className="section-eyebrow">— My Work —</p>
+          <p className="section-eyebrow">— What I've Built —</p>
           <h2 className="section-title">Projects</h2>
         </div>
 
