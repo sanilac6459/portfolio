@@ -82,45 +82,41 @@ const SkillsSection = () => {
 
       <div className="container relative">
         <div className="flex flex-col items-center text-center mb-16">
-          <p className="section-eyebrow">— What I Use —</p>
+          <p className="section-eyebrow">— What I Work With —</p>
           <h2 className="section-title">Skills</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-col gap-12">
           {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className="group relative bg-gradient-to-br from-portfolio-cream to-portfolio-mauve/30 rounded-2xl p-8 border border-portfolio-mauve/20 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-            >
-              <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-portfolio-pink/20 group-hover:bg-portfolio-pink/40 transition-colors flex items-center justify-center text-portfolio-navy">
-                {category.icon}
-              </div>
-
-              <div className="mb-6">
+            <div key={index}>
+              {/* Category heading with icon and divider */}
+              <div className="flex items-center gap-2 mb-5">
+                <span className="text-portfolio-navy">{category.icon}</span>
                 <h3 className="font-serif-display text-2xl text-portfolio-navy">
                   {category.title}
                 </h3>
-                <div className="w-12 h-px bg-portfolio-navy/40 mt-3"></div>
+                {/* <div className="flex-1 h-px bg-portfolio-navy/20 ml-2"></div> */}
               </div>
 
-              <ul className="space-y-3">
+              {/* Pill row */}
+              <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill, idx) => (
-                  <li
+                  <div
                     key={idx}
-                    className="flex items-center gap-3 text-portfolio-navy"
+                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-portfolio-mauve/20 bg-gradient-to-br from-portfolio-cream to-portfolio-mauve/30 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 text-portfolio-navy"
                   >
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className="w-7 h-7 object-contain"
+                      className="w-5 h-5 object-contain"
                       onError={(e) => {
                         (e.target as HTMLImageElement).style.display = "none";
                       }}
                     />
-                    <span className="font-medium">{skill.name}</span>
-                  </li>
+                    <span className="font-medium text-sm">{skill.name}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
