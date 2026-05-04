@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
@@ -12,7 +12,6 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would normally handle the form submission with a backend
     toast({
       title: "Message sent!",
       description: "Thank you for your message. I'll get back to you soon.",
@@ -106,57 +105,61 @@ const ContactSection = () => {
               </p>
             </div>
 
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-full bg-portfolio-pink/20">
-                  <Mail size={20} className="text-portfolio-navy" />
+            <div className="space-y-3">
+              <a
+                href="mailto:sanilachowdhury@gmail.com"
+                className="flex items-center gap-4 p-4 rounded-2xl border border-portfolio-mauve/20 bg-gradient-to-br from-white to-portfolio-cream/30 hover:bg-portfolio-cream/40 transition-colors shadow-sm"
+              >
+                <div className="p-2.5 rounded-xl bg-portfolio-mauve/10">
+                  <Mail size={22} className="text-portfolio-navy" />
                 </div>
                 <div>
-                  <p className="text-sm text-portfolio-navy/60">Email</p>
-                  <a
-                    href="mailto:sanilachowdhury@gmail.com"
-                    className="text-portfolio-navy hover:text-portfolio-purple"
-                  >
+                  <p className="text-xs uppercase tracking-widest text-portfolio-navy/50 font-medium mb-0.5">
+                    Email
+                  </p>
+                  <p className="text-portfolio-navy font-medium">
                     sanilachowdhury@gmail.com
-                  </a>
+                  </p>
                 </div>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-full bg-portfolio-pink/20">
-                  <MapPin size={20} className="text-portfolio-navy" />
+              <a
+                href="https://github.com/sanilac6459"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-2xl border border-portfolio-mauve/20 bg-gradient-to-br from-white to-portfolio-cream/30 hover:bg-portfolio-cream/40 transition-colors shadow-sm"
+              >
+                <div className="p-2.5 rounded-xl bg-portfolio-mauve/10">
+                  <Github size={22} className="text-portfolio-navy" />
                 </div>
                 <div>
-                  <p className="text-sm text-portfolio-navy/60">Location</p>
-                  <span className="text-portfolio-navy">New York, NY</span>
+                  <p className="text-xs uppercase tracking-widest text-portfolio-navy/50 font-medium mb-0.5">
+                    GitHub
+                  </p>
+                  <p className="text-portfolio-navy font-medium">
+                    github.com/sanilac6459
+                  </p>
                 </div>
-              </div>
-            </div>
+              </a>
 
-            <div className="mt-4">
-              <h4 className="text-lg font-medium mb-3 text-portfolio-navy">
-                Connect With Me
-              </h4>
-              <div className="flex gap-4">
-                <a
-                  href="https://www.linkedin.com/in/sanilachowdhury/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-portfolio-pink/20 hover:bg-portfolio-pink/40 transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={20} className="text-portfolio-navy" />
-                </a>
-                <a
-                  href="https://github.com/sanilac6459"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-portfolio-pink/20 hover:bg-portfolio-pink/40 transition-colors"
-                  aria-label="GitHub"
-                >
-                  <Github size={20} className="text-portfolio-navy" />
-                </a>
-              </div>
+              <a
+                href="https://www.linkedin.com/in/sanilachowdhury/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-2xl border border-portfolio-mauve/20 bg-gradient-to-br from-white to-portfolio-cream/30 hover:bg-portfolio-cream/40 transition-colors shadow-sm"
+              >
+                <div className="p-2.5 rounded-xl bg-portfolio-mauve/10">
+                  <Linkedin size={22} className="text-portfolio-navy" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-portfolio-navy/50 font-medium mb-0.5">
+                    LinkedIn
+                  </p>
+                  <p className="text-portfolio-navy font-medium">
+                    linkedin.com/in/sanilachowdhury
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
