@@ -12,12 +12,74 @@ interface ProjectProps {
   presentationUrl?: string;
 }
 
+const techIcons: Record<string, string> = {
+  HTML: "/images/html5.png",
+  CSS: "/images/css3.png",
+  JavaScript: "/images/js.png",
+  TypeScript: "/images/typescript.png",
+  Python: "/images/python.png",
+  Java: "/images/java.png",
+  SQL: "/images/sql.png",
+  "C++": "/images/c++.png",
+  Swift: "/images/swift.png",
+  "C#": "/images/csharp.png",
+  Git: "/images/git.png",
+  GitHub: "/images/github.png",
+  npm: "/images/npm.png",
+  Docker: "/images/docker.png",
+  "VS Code": "/images/vscode.png",
+  Postman: "/images/postman.png",
+  Figma: "/images/figma.png",
+  Jupyter: "/images/jupyter.png",
+  "Google Colab": "/images/colab.png",
+  Xcode: "/images/xcode.png",
+  Vercel: "/images/vercel.svg",
+  Flask: "/images/flask.png",
+  React: "/images/react.png",
+  "Node.js": "/images/nodejs.png",
+  "Express.js": "/images/express.png",
+  Angular: "/images/angular.png",
+  "Tailwind CSS": "/images/tailwind-css.png",
+  "OpenAI API": "/images/openai.png",
+  "Gemini API": "/images/gemini.png",
+  LangChain: "/images/langchain.png",
+  OpenRouter: "/images/openrouter.webp",
+  MySQL: "/images/mysql.png",
+  Firebase: "/images/firebase.png",
+  Supabase: "/images/supabase.png",
+  ChromaDB: "/images/chromadb.png",
+  "REST APIs": "/images/restAPI.png",
+  "Discord.py": "/images/discord-py.png",
+  Unity: "/images/unity.png",
+  "p5.js": "/images/p5js.png",
+  "OpenWeather API": "/images/openweather.png",
+};
+
+const TechTag = ({ tech }: { tech: string }) => {
+  const [imgFailed, setImgFailed] = React.useState(false);
+  const iconSrc = techIcons[tech];
+
+  return (
+    <span className="flex items-center gap-1.5 px-2.5 py-1 bg-portfolio-cream text-portfolio-navy text-xs rounded-full border border-portfolio-mauve/30">
+      {iconSrc && !imgFailed && (
+        <img
+          src={iconSrc}
+          alt={tech}
+          className="w-3.5 h-3.5 object-contain flex-shrink-0"
+          onError={() => setImgFailed(true)}
+        />
+      )}
+      {tech}
+    </span>
+  );
+};
+
 const projects: ProjectProps[] = [
   {
     title: "Phil — Job Applier Agent",
     description:
       "An AI agent that streamlines the job application process with human oversight.",
-    technologies: ["LangChain", "Gemini API", "OpenRouter", "Jupyter"],
+    technologies: ["LangChain", "Gemini API", "ChromaDB", "Jupyter"],
     image: "/images/phil-agent.webp",
     demoUrl:
       "https://drive.google.com/file/d/1ti952_qAvol3fgxYU6rQhv9KlCSTEa-C/view?usp=sharing",
@@ -54,7 +116,7 @@ const projects: ProjectProps[] = [
   {
     title: "Winter Wordleland",
     description:
-      "A winter-themed of The NY Times’ Wordle Game designed to help users get into the holiday spirit!",
+      "A winter-themed of The NY Times' Wordle Game designed to help users get into the holiday spirit!",
     technologies: ["C++", "Ncurses Library", "Hunspell Dictionary", "Docker"],
     image: "/images/wordle.png",
     demoUrl:
@@ -64,7 +126,7 @@ const projects: ProjectProps[] = [
   {
     title: "GIMMIE CANDY!!!",
     description:
-      "A unique trick-or-treating game where enemies steal trick or treater’s candies. A great way to get into the Halloween spirit!",
+      "A unique trick-or-treating game where enemies steal trick or treater's candies. A great way to get into the Halloween spirit!",
     technologies: ["C#", "Unity"],
     image: "/images/gimme-candy.png",
     demoUrl: "https://example.com",
@@ -74,7 +136,7 @@ const projects: ProjectProps[] = [
     title: "FinTech Focus Weather App",
     description:
       "A weather app that delivers real-time forecasts worldwide, showing current conditions and a three-day outlook based on the user's location.",
-    technologies: ["Python", "Flask", "Geocode API", "OpenWeather API"],
+    technologies: ["Python", "Flask", "OpenWeather API"],
     image: "/images/weather.png",
     demoUrl:
       "https://drive.google.com/file/d/1WdWFLjX1RC3wM0LR9Jp2YswwVAwo5boe/view?usp=sharing",
@@ -136,12 +198,7 @@ const ProjectCard = ({
 
       <div className="flex flex-wrap gap-2 mb-5">
         {technologies.map((tech, i) => (
-          <span
-            key={i}
-            className="px-2.5 py-1 bg-portfolio-cream text-portfolio-navy text-xs rounded-full border border-portfolio-mauve/30"
-          >
-            {tech}
-          </span>
+          <TechTag key={i} tech={tech} />
         ))}
       </div>
 
