@@ -76,13 +76,22 @@ const TechTag = ({ tech }: { tech: string }) => {
 
 const projects: ProjectProps[] = [
   {
+    title: "HunterConnect",
+    description:
+      "An app for Hunter College students to discover and join campus clubs, share announcements, and stay connected with their college community.",
+    technologies: ["React", "Node.js", "Express.js", "Supabase"],
+    // image: "/",
+    demoUrl: "https://hunter-connect-psi.vercel.app/",
+    repoUrl: "https://github.com/sanilac6459/hunter-connect",
+  },
+  {
     title: "Phil — Job Applier Agent",
     description:
       "An AI agent that streamlines the job application process with human oversight.",
     technologies: ["LangChain", "Gemini API", "ChromaDB", "Jupyter"],
     image: "/images/phil-agent.webp",
     demoUrl:
-      "https://drive.google.com/file/d/1ti952_qAvol3fgxYU6rQhv9KlCSTEa-C/view?usp=sharing",
+      "https://drive.google.com/file/d/1NNQAlaI6GqRZ3moRA5YVlMKBbLKKBzz-/view?usp=sharing",
     repoUrl: "https://github.com/sanilac6459/job-agent",
   },
   // {
@@ -132,16 +141,16 @@ const projects: ProjectProps[] = [
     demoUrl: "https://example.com",
     repoUrl: "https://github.com/sanilac6459",
   },
-  {
-    title: "FinTech Focus Weather App",
-    description:
-      "A weather app that delivers real-time forecasts worldwide, showing current conditions and a three-day outlook based on the user's location.",
-    technologies: ["Python", "Flask", "OpenWeather API"],
-    image: "/images/weather.png",
-    demoUrl:
-      "https://drive.google.com/file/d/1WdWFLjX1RC3wM0LR9Jp2YswwVAwo5boe/view?usp=sharing",
-    // repoUrl: "https://replit.com/@MashrafiAlam/FTF-Weather-App-2",
-  },
+  // {
+  //   title: "FinTech Focus Weather App",
+  //   description:
+  //     "A weather app that delivers real-time forecasts worldwide, showing current conditions and a three-day outlook based on the user's location.",
+  //   technologies: ["Python", "Flask", "OpenWeather API"],
+  //   image: "/images/weather.png",
+  //   demoUrl:
+  //     "https://drive.google.com/file/d/1WdWFLjX1RC3wM0LR9Jp2YswwVAwo5boe/view?usp=sharing",
+  //   // repoUrl: "https://replit.com/@MashrafiAlam/FTF-Weather-App-2",
+  // },
   {
     title: "Discord Music Bot",
     description:
@@ -211,7 +220,7 @@ const ProjectCard = ({
             className="text-portfolio-navy hover:bg-portfolio-pink/20"
           >
             <a href={demoUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={14} className="mr-1.5" /> Demo
+              <ExternalLink size={14} className="mr-1.5" /> Preview
             </a>
           </Button>
         )}
