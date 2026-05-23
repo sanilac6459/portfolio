@@ -37,6 +37,7 @@ const skillCategories: SkillCategoryProps[] = [
       { name: "Jupyter", icon: "/images/jupyter.png" },
       { name: "Google Colab", icon: "/images/colab.png" },
       { name: "Xcode", icon: "/images/xcode.png" },
+      { name: "Prisma", icon: "/images/prisma.svg" },
       { name: "Vercel", icon: "/images/vercel.svg" },
     ],
   },

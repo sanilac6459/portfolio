@@ -53,6 +53,7 @@ const techIcons: Record<string, string> = {
   Unity: "/images/unity.png",
   "p5.js": "/images/p5js.png",
   "OpenWeather API": "/images/openweather.png",
+  Prisma: "/images/prisma.svg",
 };
 
 const TechTag = ({ tech }: { tech: string }) => {
@@ -79,7 +80,7 @@ const projects: ProjectProps[] = [
     title: "HunterConnect",
     description:
       "An app for Hunter College students to discover and join campus clubs, share announcements, and stay connected with their college community.",
-    technologies: ["React", "Node.js", "Express.js", "Supabase"],
+    technologies: ["React", "Node.js", "Express.js", "Prisma", "Supabase"],
     // image: "/",
     demoUrl: "https://hunter-connect-psi.vercel.app/",
     repoUrl: "https://github.com/sanilac6459/hunter-connect",
