@@ -81,7 +81,7 @@ const projects: ProjectProps[] = [
     description:
       "An app for Hunter College students to discover and join campus clubs, share announcements, and stay connected with their college community.",
     technologies: ["React", "Node.js", "Express.js", "Prisma", "Supabase"],
-    // image: "/",
+    image: "/images/hunter-connect.png",
     demoUrl: "https://hunter-connect-psi.vercel.app/",
     repoUrl: "https://github.com/sanilac6459/hunter-connect",
   },
