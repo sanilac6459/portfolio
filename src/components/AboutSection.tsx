@@ -8,7 +8,7 @@ const AboutSection = () => {
 
       <div className="container relative">
         <div className="flex flex-col items-center text-center mb-16">
-          <p className="section-eyebrow">— Introduction —</p>
+          <p className="section-eyebrow">— Hello —</p>
           <h2 className="section-title">About Me</h2>
         </div>
 
@@ -25,7 +25,7 @@ const AboutSection = () => {
             </div>
             <div className="space-y-3 text-portfolio-navy leading-relaxed text-base">
               <p>
-                I'm a rising senior at CUNY Hunter College studying Computer
+                I'm an undergrad at CUNY Hunter College studying Computer
                 Science with a minor in Mathematics. I'm an aspiring software
                 engineer with a focus on full-stack development. My journey in
                 tech began in high school with a four-year software engineering
