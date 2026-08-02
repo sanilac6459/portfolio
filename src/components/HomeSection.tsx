@@ -46,9 +46,16 @@ const HomeSection = () => {
     >
       <div className="container mx-auto px-4 z-10 w-full">
         <div className="animate-fade-in max-w-3xl">
+          <div className="flex items-center gap-4 mb-6">
+            <span className="h-px w-10 bg-portfolio-purple/50"></span>
+            <span className="text-portfolio-purple/80 text-sm font-semibold tracking-[0.3em] uppercase">
+              Welcome To My Portfolio
+            </span>
+            <span className="h-px w-10 bg-portfolio-purple/50"></span>
+          </div>
           <h1 className="font-serif-display text-6xl md:text-8xl font-semibold mb-6 text-portfolio-navy leading-[0.95]">
             <span className="block">Hi! I'm Sanila</span>
-            <span className="block mt-2 italic text-portfolio-purple">
+            <span className="block mt-2 italic text-portfolio-purple text-6xl md:text-8xl">
               {displayed}
               <span className="animate-pulse">|</span>
             </span>

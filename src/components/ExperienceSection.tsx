@@ -1,12 +1,19 @@
 import React from "react";
 
-interface ExperienceProps {
+interface Role {
   title: string;
-  company: string;
-  location: string;
   duration: string;
   bullets: string[];
+}
+
+interface ExperienceProps {
+  title?: string;
+  company: string;
+  location: string;
+  duration?: string;
+  bullets?: string[];
   logo: string;
+  roles?: Role[];
 }
 
 const experiences: ExperienceProps[] = [
@@ -32,6 +39,29 @@ const experiences: ExperienceProps[] = [
       "Developed scalable web applications with React and TypeScript, boosting maintainability, optimizing performance, and enhancing user experience in collaborative, agile team projects.",
       "Integrated Node.js, Express.js, and PostgreSQL into full-stack applications while applying best practices in software architecture, version control, testing, and CI/CD to ensure reliable and production-ready deployments.",
       "Built a full-stack CUNY Hunter Marketplace utilizing Supabase and Prisma, implementing JWT-based user authentication and a dynamic item listing dashboard with CRUD functionality to enable student-to-student transactions.",
+    ],
+  },
+  {
+    company: "Computer Science Club at Hunter College",
+    location: "New York, NY",
+    logo: "/images/cs-club.jpeg",
+    roles: [
+      {
+        title: "Tech Lead",
+        duration: "August 2025 — Present",
+        bullets: [
+          "Drove technical initiatives and club growth by proposing new programs, coordinating events, and supporting strategic planning, increasing engagement and learning opportunities for CS students.",
+          "Planned and hosted workshops for 20-30+ computer science students, providing guidance on technical skills, problem-solving strategies, and career development to enhance readiness for internships and software engineering roles.",
+          "Mentored project leads in the club's Project Development Program, supporting student teams through semester-long collaborative projects by reviewing proposals, refining technical scopes, and providing guidance to ensure successful and educational outcomes.",
+        ],
+      },
+      {
+        title: "Web Developer",
+        duration: "January 2025 — August 2025",
+        bullets: [
+          "Led the planning and design phases of the club website revamp by creating detailed prototypes and layouts using Figma, aiming to enhance the site's visual appeal and overall user experience.",
+        ],
+      },
     ],
   },
   {
@@ -90,40 +120,91 @@ const ExperienceSection = () => {
               key={index}
               className="bg-gradient-to-br from-portfolio-cream to-portfolio-mauve/30 rounded-2xl p-6 border border-portfolio-mauve/20 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             >
-              <div className="flex items-start gap-4 mb-4">
-                <img
-                  src={exp.logo}
-                  alt={exp.company}
-                  className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
-                />
-                <div className="flex-1">
-                  <h3 className="text-portfolio-navy text-xl font-bold">
-                    {exp.title}
-                  </h3>
-                  <p className="text-portfolio-purple font-semibold mt-1">
-                    {exp.company}
-                  </p>
+              {exp.roles ? (
+                <>
+                  <div className="flex items-start gap-4 mb-4">
+                    <img
+                      src={exp.logo}
+                      alt={exp.company}
+                      className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
+                    />
+                    <div className="flex-1">
+                      <h3 className="text-portfolio-navy text-xl font-bold">
+                        {exp.company}
+                      </h3>
+                      <p className="text-portfolio-navy/70 text-sm mt-1">
+                        {exp.location}
+                      </p>
+                    </div>
+                  </div>
 
-                  {/* Tighter spacing: changed mx-2 to mx-1.5 and lowered opacity */}
-                  <p className="text-portfolio-navy text-sm mt-1">
-                    {exp.duration}
-                    <span className="mx-1.5 opacity-100">·</span>
-                    {exp.location}
-                  </p>
-                </div>
-              </div>
+                  <div className="space-y-6 pl-4 border-l-2 border-portfolio-mauve/30 ml-6">
+                    {exp.roles.map((role, idx) => (
+                      <div key={idx} className="pl-4">
+                        <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
+                          <h4 className="text-portfolio-purple font-semibold">
+                            {role.title}
+                          </h4>
+                          <span className="flex-shrink-0 whitespace-nowrap rounded-full bg-portfolio-cream border border-portfolio-mauve/30 px-4 py-1.5 text-sm font-semibold text-portfolio-navy/70">
+                            {role.duration}
+                          </span>
+                        </div>
+                        <ul className="space-y-2">
+                          {role.bullets.map((bullet, bIdx) => (
+                            <li
+                              key={bIdx}
+                              className="flex items-start gap-2 text-portfolio-navy text-sm leading-relaxed"
+                            >
+                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-portfolio-purple flex-shrink-0"></span>
+                              {bullet}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <div className="flex items-start gap-4">
+                      <img
+                        src={exp.logo}
+                        alt={exp.company}
+                        className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
+                      />
+                      <div className="flex-1">
+                        <h3 className="text-portfolio-navy text-xl font-bold">
+                          {exp.title}
+                        </h3>
+                        <p className="text-portfolio-navy/70 text-sm mt-1">
+                          <span className="text-portfolio-purple font-semibold">
+                            {exp.company}
+                          </span>
+                          <span className="mx-1.5 opacity-70">·</span>
+                          {exp.location}
+                        </p>
+                      </div>
+                    </div>
 
-              <ul className="space-y-2">
-                {exp.bullets.map((bullet, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-start gap-2 text-portfolio-navy text-sm leading-relaxed"
-                  >
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-portfolio-purple flex-shrink-0"></span>
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
+                    <span className="flex-shrink-0 whitespace-nowrap rounded-full bg-portfolio-cream border border-portfolio-mauve/30 px-4 py-1.5 text-sm font-semibold text-portfolio-navy/70">
+                      {exp.duration}
+                    </span>
+                  </div>
+
+                  <ul className="space-y-2">
+                    {exp.bullets!.map((bullet, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start gap-2 text-portfolio-navy text-sm leading-relaxed"
+                      >
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-portfolio-purple flex-shrink-0"></span>
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </div>
           ))}
         </div>
