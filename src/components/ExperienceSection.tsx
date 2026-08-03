@@ -166,14 +166,14 @@ const ExperienceSection = () => {
                 </>
               ) : (
                 <>
-                  <div className="flex items-start justify-between gap-4 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
                     <div className="flex items-start gap-4">
                       <img
                         src={exp.logo}
                         alt={exp.company}
                         className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
                       />
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <h3 className="text-portfolio-navy text-xl font-bold">
                           {exp.title}
                         </h3>
@@ -187,7 +187,7 @@ const ExperienceSection = () => {
                       </div>
                     </div>
 
-                    <span className="flex-shrink-0 whitespace-nowrap rounded-full bg-portfolio-cream border border-portfolio-mauve/30 px-4 py-1.5 text-sm font-semibold text-portfolio-navy/70">
+                    <span className="self-start flex-shrink-0 whitespace-nowrap rounded-full bg-portfolio-cream border border-portfolio-mauve/30 px-4 py-1.5 text-sm font-semibold text-portfolio-navy/70">
                       {exp.duration}
                     </span>
                   </div>
