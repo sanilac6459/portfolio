@@ -142,7 +142,7 @@ const ExperienceSection = () => {
                     {exp.roles.map((role, idx) => (
                       <div key={idx} className="pl-4">
                         <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
-                          <h4 className="text-portfolio-purple font-semibold">
+                          <h4 className="text-portfolio-navy font-bold text-lg">
                             {role.title}
                           </h4>
                           <span className="flex-shrink-0 whitespace-nowrap rounded-full bg-portfolio-cream border border-portfolio-mauve/30 px-4 py-1.5 text-sm font-semibold text-portfolio-navy/70">
