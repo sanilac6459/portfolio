@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const roles = [
   "Software Engineer",
+  "Data Analyst",
   "Full-Stack Developer",
   "Tech Enthusiast",
   "Women in Tech",
