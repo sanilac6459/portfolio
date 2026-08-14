@@ -59,7 +59,7 @@ const experiences: ExperienceProps[] = [
         duration: "August 2025 — August 2026",
         bullets: [
           "Drove technical initiatives and club growth by proposing new programs, coordinating events, and supporting strategic planning, increasing engagement and learning opportunities for CS students.",
-          "Planned and hosted workshops for 20-30+ computer science students, providing guidance on technical skills, problem-solving strategies, and career development to enhance readiness for internships and software engineering roles.",
+          "Planned and hosted workshops for 30+ computer science students, providing guidance on technical skills, problem-solving strategies, and career development to enhance readiness for internships and software engineering roles.",
           "Mentored project leads in the club's Project Development Program, supporting student teams through semester-long collaborative projects by reviewing proposals, refining technical scopes, and providing guidance to ensure successful and educational outcomes.",
         ],
       },
