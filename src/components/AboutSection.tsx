@@ -25,12 +25,12 @@ const AboutSection = () => {
             </div>
             <div className="space-y-3 text-portfolio-navy leading-relaxed text-base">
               <p>
-                I'm an undergrad at CUNY Hunter College studying Computer
-                Science. I'm an aspiring software engineer with a focus on
-                full-stack development. My journey in tech began in high school
-                with a four-year software engineering course where I discovered
-                my passion for programming and turning my ideas into products
-                that can shape people's lives.
+                I'm a Computer Science undergraduate at CUNY Hunter College and
+                an aspiring software engineer with a passion for full-stack
+                development. My journey in tech began in high school with a
+                four-year software engineering course where I discovered my
+                passion for programming and turning my ideas into products that
+                can shape people's lives.
               </p>
               <p>
                 I'm someone who embraces new challenges and isn't afraid to take

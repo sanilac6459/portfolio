@@ -18,6 +18,14 @@ interface ExperienceProps {
 
 const experiences: ExperienceProps[] = [
   {
+    title: "Software Engineer Intern",
+    company: "Trance4mation Games",
+    location: "New York, NY",
+    duration: "August 2026 — Present",
+    logo: "/images/trance4mation.jpeg",
+    bullets: ["Incoming Software Engineer Intern for Fall 2026."],
+  },
+  {
     title: "Data Analyst Intern",
     company: "Metropolitan Transportation Authority (MTA)",
     location: "New York, NY",
@@ -48,7 +56,7 @@ const experiences: ExperienceProps[] = [
     roles: [
       {
         title: "Tech Lead",
-        duration: "August 2025 — Present",
+        duration: "August 2025 — August 2026",
         bullets: [
           "Drove technical initiatives and club growth by proposing new programs, coordinating events, and supporting strategic planning, increasing engagement and learning opportunities for CS students.",
           "Planned and hosted workshops for 20-30+ computer science students, providing guidance on technical skills, problem-solving strategies, and career development to enhance readiness for internships and software engineering roles.",
@@ -71,8 +79,7 @@ const experiences: ExperienceProps[] = [
     duration: "January 2025",
     logo: "/images/permanence.jpeg",
     bullets: [
-      "Tested ChatGPT across multiple temperature and token limit configurations to identify optimal settings for prompt performance and output consistency.",
-      "Optimized prompt design to enhance the LLM’s ability to generate accurate and relevant outputs with OpenAI API, leading to reduced token usage by ∼15% and improved result quality to minimize additional queries.",
+      "Tested ChatGPT across temperature and token limit configurations and optimized prompt design to enhance the LLM’s output accuracy with OpenAI API, reducing token usage by ∼15% and improving result quality to minimize additional queries.",
       "Engineered a Pythonic Code Evaluator to detect style violations, non-idiomatic syntax, and poor code structure in LLM-generated code, improving code quality across multiple Python codebases using Python and OpenAI API.",
     ],
   },
