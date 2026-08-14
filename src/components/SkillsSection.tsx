@@ -1,5 +1,5 @@
 import React from "react";
-import { Code2, Wrench, Layers, Bot, Database } from "lucide-react";
+import { Code2, Wrench, Layers, Bot, Database, BarChart3 } from "lucide-react";
 
 interface SkillCategoryProps {
   title: string;
@@ -71,6 +71,17 @@ const skillCategories: SkillCategoryProps[] = [
       { name: "Firebase", icon: "/images/firebase.png" },
       { name: "Supabase", icon: "/images/supabase.png" },
       { name: "ChromaDB", icon: "/images/chromadb.png" },
+    ],
+  },
+  {
+    title: "Data Analytics & Visualization",
+    icon: <BarChart3 size={20} />,
+    skills: [
+      { name: "Microsoft Power BI", icon: "/images/powerbi.svg" },
+      // { name: "DAX", icon: "/images/dax.png" },
+      { name: "Power Query", icon: "/images/powerquery.png" },
+      // { name: "Excel", icon: "/images/excel.png" },
+      { name: "Microsoft Power Automate", icon: "/images/powerautomate.png" },
     ],
   },
 ];
