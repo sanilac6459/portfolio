@@ -34,7 +34,7 @@ const experiences: ExperienceProps[] = [
     bullets: [
       "Analyzed the MTA Power Cable Enterprise Asset Management database with 11,000+ manhole inspection records, using Python, Pandas, and NumPy to detect duplicate entries and drive a ∼15% increase in maintenance activity.",
       "Developed a Power BI compliance dashboard using DAX measures and Power Query M to evaluate 18,000+ ELM training records against a safety training matrix, supporting compliance reporting for VP-level review.",
-      "Built and deployed a personnel dashboard used by senior leadership, consolidating data from 4 SharePoint lists across 1,200+ employees, using optimized DAX measures to track accident trends and support staffing and performance analysis.",
+      "Built a personnel dashboard consolidating 4 SharePoint lists across 1,200+ employees, using optimized DAX measures to track accident trends and support staffing decisions.",
     ],
   },
   {
