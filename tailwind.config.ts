@@ -71,7 +71,7 @@ export default {
           pink: "#D4BCB7",
           mauve: "#C3ADAC",
           lavender: "#B7A4A6",
-          purple: "#A6959C",
+          purple: "#A4133C",
           navy: "#44475F",
           cream: "#EADCD6",
         },

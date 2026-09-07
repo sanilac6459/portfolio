@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
+
 import { Button } from "@/components/ui/button";
 
 const roles = [
@@ -43,36 +45,81 @@ const HomeSection = () => {
   return (
     <section
       className="min-h-screen flex items-center relative overflow-hidden grain-overlay"
-      style={{ background: "var(--gradient-soft)" }}
+      style={{
+        background:
+          "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+      }}
     >
       <div className="container mx-auto px-4 z-10 w-full">
         <div className="animate-fade-in max-w-3xl">
-          <p className="section-eyebrow text-xs sm:text-sm whitespace-nowrap">
+          {/* Welcome Text */}
+          <p
+            className="section-eyebrow text-xs sm:text-sm whitespace-nowrap"
+            style={{
+              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+            }}
+          >
             — Welcome To My Portfolio —
           </p>
-          <h1 className="font-serif-display text-6xl md:text-6xl font-semibold mb-6 text-portfolio-navy leading-[0.95]">
-            <span className="block">Hi! I'm Sanila</span>
-            <span className="block mt-2 italic text-portfolio-purple text-4xl md:text-6xl">
+
+          {/* Main Heading */}
+          <h1 className="font-serif-display text-6xl md:text-6xl font-semibold mb-6 leading-[0.95]">
+            {/* Name */}
+            <span
+              className="block text-4xl md:text-6xl"
+              style={{
+                color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+              }}
+            >
+              Hi! I'm Sanila
+            </span>
+
+            {/* Rotating Roles */}
+            <span
+              className="block mt-2 italic text-4xl md:text-6xl"
+              style={{
+                color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+              }}
+            >
               {displayed}
               <span className="animate-pulse">|</span>
             </span>
           </h1>
+
+          {/* Description */}
           <div className="mb-8">
-            <p className="text-base md:text-lg text-portfolio-navy max-w-xl  font-light">
+            <p
+              className="text-base md:text-lg max-w-xl font-light"
+              style={{
+                color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              }}
+            >
               The best part of every project isn't the finished product. It's
               who I become in the process. ♡
             </p>
           </div>
+
+          {/* Buttons */}
           <div className="flex flex-wrap gap-4">
+            {/* About Me */}
             <Button
-              className="bg-portfolio-navy hover:bg-portfolio-navy/90 text-white px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="text-white px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
+              style={{
+                backgroundColor: "rgb(164 19 60 / var(--tw-bg-opacity, 1))",
+              }}
               asChild
             >
               <Link to="/about">About Me</Link>
             </Button>
+
+            {/* View My Work */}
             <Button
               variant="outline"
-              className="border-portfolio-navy/40 text-portfolio-navy  hover:bg-portfolio-navy/5 px-8 py-6 rounded-full backdrop-blur-sm bg-white/30"
+              className="px-8 py-6 rounded-full backdrop-blur-sm bg-white/30 transition-all"
+              style={{
+                borderColor: "rgb(45 106 79 / var(--tw-border-opacity, 1))",
+                color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              }}
               asChild
             >
               <Link to="/projects">View My Work</Link>
