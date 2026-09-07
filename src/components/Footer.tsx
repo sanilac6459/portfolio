@@ -1,6 +1,8 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
-import { Linkedin, Github, Twitter, Mail } from "lucide-react";
+
+import { Linkedin, Github, Mail } from "lucide-react";
 
 const navLinks = [
   { name: "About", to: "/about" },
@@ -14,12 +16,24 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative py-12 bg-portfolio-navy text-white overflow-hidden">
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] rounded-full bg-portfolio-purple/10 blur-3xl"></div>
+    <footer
+      className="relative py-12 text-white overflow-hidden"
+      style={{
+        backgroundColor: "rgb(163 20 61 / var(--tw-bg-opacity, 1))",
+      }}
+    >
+      <div
+        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] rounded-full blur-3xl"
+        style={{
+          backgroundColor: "rgb(45 106 79 / 0.10)",
+        }}
+      ></div>
 
       <div className="container relative">
         <div className="flex flex-col items-center text-center gap-6">
-          {/* <nav className="flex flex-wrap justify-center gap-x-8 gap-y-2">
+          {/* Navigation Links */}
+          {/* 
+          <nav className="flex flex-wrap justify-center gap-x-8 gap-y-2">
             {navLinks.map((item) => (
               <Link
                 key={item.name}
@@ -29,9 +43,10 @@ const Footer = () => {
                 {item.name}
               </Link>
             ))}
-          </nav> */}
+          </nav>
+          */}
 
-          {/* Updated Social Links Section */}
+          {/* Social Links */}
           <div className="flex flex-wrap justify-center gap-6">
             {[
               {
@@ -63,9 +78,11 @@ const Footer = () => {
             ))}
           </div>
 
-          <div className="w-24 h-px bg-white/20"></div>
+          {/* Divider */}
+          <div className="w-24 h-px bg-white/30"></div>
 
-          <p className="text-white/50 text-xs tracking-wide">
+          {/* Copyright */}
+          <p className="text-white/60 text-xs tracking-wide">
             © {currentYear} Sanila Chowdhury. All rights reserved.
           </p>
         </div>

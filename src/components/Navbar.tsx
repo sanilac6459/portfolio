@@ -18,6 +18,7 @@ const navItems = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -57,7 +58,7 @@ const Navbar = () => {
             to="/"
             className="text-xl md:text-2xl font-serif-display font-semibold transition-colors"
             style={{
-              color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+              color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
             }}
           >
             Sanila Chowdhury
@@ -72,15 +73,15 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   cn(
                     "font-medium font-serif-display transition-colors relative",
-                    "hover:text-[#A4133C]",
+                    "hover:text-[#2D6A4F]",
                     isActive &&
-                      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#ED6E92]",
+                      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#2D6A4F]",
                   )
                 }
                 style={({ isActive }) => ({
                   color: isActive
-                    ? "rgb(164 19 60 / var(--tw-text-opacity, 1))"
-                    : "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                    ? "rgb(45 106 79 / var(--tw-text-opacity, 1))"
+                    : "rgb(163 20 61 / var(--tw-text-opacity, 1))",
                 })}
               >
                 {item.name}
@@ -92,7 +93,7 @@ const Navbar = () => {
           <button
             className="md:hidden transition-colors"
             style={{
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
             }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
@@ -117,7 +118,7 @@ const Navbar = () => {
         <button
           className="absolute top-4 right-4 transition-colors"
           style={{
-            color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+            color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
           }}
           onClick={() => setMobileMenuOpen(false)}
           aria-label="Close menu"
@@ -134,15 +135,15 @@ const Navbar = () => {
               className={({ isActive }) =>
                 cn(
                   "text-xl font-medium font-serif-display transition-colors relative",
-                  "hover:text-[#A4133C]",
+                  "hover:text-[#2D6A4F]",
                   isActive &&
-                    "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#ED6E92]",
+                    "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#2D6A4F]",
                 )
               }
               style={({ isActive }) => ({
                 color: isActive
-                  ? "rgb(164 19 60 / var(--tw-text-opacity, 1))"
-                  : "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                  ? "rgb(45 106 79 / var(--tw-text-opacity, 1))"
+                  : "rgb(163 20 61 / var(--tw-text-opacity, 1))",
               })}
             >
               {item.name}

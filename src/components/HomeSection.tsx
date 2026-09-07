@@ -91,7 +91,7 @@ const HomeSection = () => {
             <p
               className="text-base md:text-lg max-w-xl font-light"
               style={{
-                color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
               }}
             >
               The best part of every project isn't the finished product. It's
