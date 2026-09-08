@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-
 import { NavLink, Link, useLocation } from "react-router-dom";
-
 import { cn } from "@/lib/utils";
-
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -18,14 +15,11 @@ const navItems = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -40,7 +34,7 @@ const Navbar = () => {
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6",
           isScrolled || location.pathname !== "/"
-            ? "backdrop-blur-sm shadow-sm"
+            ? "backdrop-blur-sm"
             : "bg-transparent",
         )}
         style={
@@ -48,6 +42,7 @@ const Navbar = () => {
             ? {
                 background:
                   "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+                boxShadow: "0 2px 10px rgb(201 24 74 / 0.15)",
               }
             : undefined
         }
@@ -73,14 +68,14 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   cn(
                     "font-medium font-serif-display transition-colors relative",
-                    "hover:text-[#2D6A4F]",
+                    "hover:text-[#40916C]",
                     isActive &&
-                      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#2D6A4F]",
+                      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#40916C]",
                   )
                 }
                 style={({ isActive }) => ({
                   color: isActive
-                    ? "rgb(45 106 79 / var(--tw-text-opacity, 0.80))"
+                    ? "rgb(64 145 108 / var(--tw-text-opacity, 1))"
                     : "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 })}
               >
@@ -135,14 +130,14 @@ const Navbar = () => {
               className={({ isActive }) =>
                 cn(
                   "text-xl font-medium font-serif-display transition-colors relative",
-                  "hover:text-[#2D6A4F]",
+                  "hover:text-[#40916C]",
                   isActive &&
-                    "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#2D6A4F]",
+                    "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#40916C]",
                 )
               }
               style={({ isActive }) => ({
                 color: isActive
-                  ? "rgb(45 106 79 / var(--tw-text-opacity, 0.80))"
+                  ? "rgb(64 145 108 / var(--tw-text-opacity, 1))"
                   : "rgb(201 24 74 / var(--tw-text-opacity, 1))",
               })}
             >

@@ -131,7 +131,7 @@ const ExperienceSection = () => {
       <div
         className="absolute -top-20 -left-20 w-80 h-80 rounded-full blur-3xl"
         style={{
-          backgroundColor: "rgb(45 106 79 / 0.07)",
+          backgroundColor: "rgb(64 145 108 / 0.07)",
         }}
       ></div>
 
@@ -224,7 +224,8 @@ const ExperienceSection = () => {
                             style={{
                               backgroundColor: "rgb(237 110 146 / 0.06)",
                               border: "1px solid rgb(237 110 146 / 0.18)",
-                              color: "rgb(45 106 79 / 0.80)",
+                              color:
+                                "rgb(64 145 108 / var(--tw-text-opacity, 1))",
                             }}
                           >
                             {role.duration}
@@ -289,7 +290,7 @@ const ExperienceSection = () => {
                             className="font-semibold"
                             style={{
                               color:
-                                "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                                "rgb(64 145 108 / var(--tw-text-opacity, 1))",
                             }}
                           >
                             {exp.company}
@@ -307,7 +308,7 @@ const ExperienceSection = () => {
                       style={{
                         backgroundColor: "rgb(237 110 146 / 0.06)",
                         border: "1px solid rgb(237 110 146 / 0.18)",
-                        color: "rgb(45 106 79 / 0.75)",
+                        color: "rgb(64 145 108 / var(--tw-text-opacity, 1))",
                       }}
                     >
                       {exp.duration}

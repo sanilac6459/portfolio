@@ -65,7 +65,7 @@ const ContactSection = () => {
               onClick={() => setShowModal(false)}
               className="absolute top-4 right-4 transition-colors"
               style={{
-                color: "rgb(45 106 79 / 0.45)",
+                color: "rgb(64 145 108 / 0.45)",
               }}
             >
               <X size={20} />
@@ -99,7 +99,7 @@ const ContactSection = () => {
                 <p
                   className="text-sm"
                   style={{
-                    color: "rgb(45 106 79 / 0.65)",
+                    color: "rgb(64 145 108 / 0.65)",
                   }}
                 >
                   Please try again or email me directly.
@@ -110,13 +110,13 @@ const ContactSection = () => {
                 <div
                   className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
                   style={{
-                    backgroundColor: "rgb(45 106 79 / 0.10)",
+                    backgroundColor: "rgb(64 145 108 / 0.10)",
                   }}
                 >
                   <CheckCircle
                     size={32}
                     style={{
-                      color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                      color: "rgb(64 145 108 / var(--tw-text-opacity, 1))",
                     }}
                   />
                 </div>
@@ -227,7 +227,7 @@ const ContactSection = () => {
                   <p
                     className="text-xs uppercase tracking-widest font-medium mb-0.5"
                     style={{
-                      color: "rgb(45 106 79 / 0.80)",
+                      color: "rgb(64 145 108 / 1)",
                     }}
                   >
                     Email
@@ -274,7 +274,7 @@ const ContactSection = () => {
                   <p
                     className="text-xs uppercase tracking-widest font-medium mb-0.5"
                     style={{
-                      color: "rgb(45 106 79 / 0.80)",
+                      color: "rgb(64 145 108 / 1)",
                     }}
                   >
                     GitHub
@@ -321,7 +321,7 @@ const ContactSection = () => {
                   <p
                     className="text-xs uppercase tracking-widest font-medium mb-0.5"
                     style={{
-                      color: "rgb(45 106 79 / 0.80)",
+                      color: "rgb(64 145 108 / 0.80)",
                     }}
                   >
                     LinkedIn
@@ -370,7 +370,7 @@ const ContactSection = () => {
                       className="bg-white/40 placeholder:text-[rgb(45_106_79_/_0.60)]"
                       style={{
                         borderColor: "rgb(237 110 146 / 0.30)",
-                        color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
+                        color: "rgb(64 145 108 / var(--tw-text-opacity, 1))",
                       }}
                       required
                     />
@@ -394,7 +394,7 @@ const ContactSection = () => {
                       className="bg-white/40 placeholder:text-[rgb(45_106_79_/_0.60)]"
                       style={{
                         borderColor: "rgb(237 110 146 / 0.30)",
-                        color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
+                        color: "rgb(64 145 108 / var(--tw-text-opacity, 1))",
                       }}
                       required
                     />
@@ -419,7 +419,7 @@ const ContactSection = () => {
                     className="bg-white/40 placeholder:text-[rgb(45_106_79_/_0.60)]"
                     style={{
                       borderColor: "rgb(237 110 146 / 0.30)",
-                      color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
+                      color: "rgb(64 145 108 / var(--tw-text-opacity, 1))",
                     }}
                     required
                   />
@@ -443,7 +443,7 @@ const ContactSection = () => {
                     className="min-h-[120px] bg-white/40 placeholder:text-[rgb(45_106_79_/_0.60)]"
                     style={{
                       borderColor: "rgb(237 110 146 / 0.30)",
-                      color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
+                      color: "rgb(64 145 108 / var(--tw-text-opacity, 1))",
                     }}
                     required
                   />

@@ -68,7 +68,7 @@ const TechTag = ({ tech }: { tech: string }) => {
       className="flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-full"
       style={{
         backgroundColor: "rgb(237 110 146 / 0.08)",
-        color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
+        color: "rgb(64 145 108 / var(--tw-text-opacity, 1))",
         border: "1px solid rgb(237 110 146 / 0.20)",
       }}
     >
@@ -358,7 +358,7 @@ const ProjectsSection = () => {
       <div
         className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
         style={{
-          backgroundColor: "rgb(45 106 79 / 0.07)",
+          backgroundColor: "rgb(64 145 108 / 0.07)",
         }}
       ></div>
 
