@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-
 import { Link } from "react-router-dom";
-
 import { Button } from "@/components/ui/button";
 
 const roles = [
@@ -115,7 +113,7 @@ const HomeSection = () => {
             {/* View My Work */}
             <Button
               variant="outline"
-              className="px-8 py-6 rounded-full backdrop-blur-sm bg-white/30 transition-all"
+              className="px-8 py-6 rounded-full backdrop-blur-sm bg-white/30 hover:bg-white/30 hover:text-[rgb(201_24_74_/_var(--tw-text-opacity,1))] transition-all"
               style={{
                 borderColor: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",

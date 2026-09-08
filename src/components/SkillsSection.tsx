@@ -109,7 +109,7 @@ const SkillsSection = () => {
       <div
         className="absolute top-1/2 left-0 w-96 h-96 rounded-full blur-3xl -translate-y-1/2"
         style={{
-          backgroundColor: "rgb(45 106 79 / 0.07)",
+          backgroundColor: "rgb(64 145 108 / 0)",
         }}
       ></div>
 
@@ -149,7 +149,7 @@ const SkillsSection = () => {
               <div className="flex items-center gap-2 mb-5">
                 <span
                   style={{
-                    color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
+                    color: "rgb(64 145 108 / var(--tw-text-opacity, 0.80))",
                   }}
                 >
                   {category.icon}
