@@ -20,7 +20,7 @@ const PageLoader = ({ children }: { children: React.ReactNode }) => {
       >
         <div className="flex flex-col items-center gap-4">
           <img
-            src="/logo2.png"
+            src="/logo3.png"
             alt="Loading"
             className="w-50 h-50 object-contain"
           />
