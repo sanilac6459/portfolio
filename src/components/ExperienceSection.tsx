@@ -222,9 +222,9 @@ const ExperienceSection = () => {
                           <span
                             className="flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
                             style={{
-                              backgroundColor: "rgb(237 110 146 / 0.10)",
-                              border: "1px solid rgb(237 110 146 / 0.25)",
-                              color: "rgb(45 106 79 / 0.75)",
+                              backgroundColor: "rgb(237 110 146 / 0.06)",
+                              border: "1px solid rgb(237 110 146 / 0.18)",
+                              color: "rgb(45 106 79 / 0.80)",
                             }}
                           >
                             {role.duration}
@@ -305,8 +305,8 @@ const ExperienceSection = () => {
                     <span
                       className="self-start flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
                       style={{
-                        backgroundColor: "rgb(237 110 146 / 0.10)",
-                        border: "1px solid rgb(237 110 146 / 0.25)",
+                        backgroundColor: "rgb(237 110 146 / 0.06)",
+                        border: "1px solid rgb(237 110 146 / 0.18)",
                         color: "rgb(45 106 79 / 0.75)",
                       }}
                     >

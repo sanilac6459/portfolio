@@ -48,7 +48,7 @@ const AboutSection = () => {
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             style={{
               background:
-                "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #e8f1ec 100%)",
+                "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f3e9eb 100%)",
               border: "1px solid rgb(237 110 146 / 0.18)",
             }}
           >
@@ -56,7 +56,7 @@ const AboutSection = () => {
               <div
                 className="p-2 rounded-lg"
                 style={{
-                  backgroundColor: "rgb(237 110 146 / 0.15)",
+                  backgroundColor: "rgb(237 110 146 / 0.10)",
                   color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 }}
               >
@@ -104,7 +104,7 @@ const AboutSection = () => {
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             style={{
               background:
-                "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #e8f1ec 100%)",
+                "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f3e9eb 100%)",
               border: "1px solid rgb(237 110 146 / 0.18)",
             }}
           >
@@ -112,7 +112,7 @@ const AboutSection = () => {
               <div
                 className="p-2 rounded-lg"
                 style={{
-                  backgroundColor: "rgb(237 110 146 / 0.15)",
+                  backgroundColor: "rgb(237 110 146 / 0.10)",
                   color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 }}
               >
@@ -157,7 +157,7 @@ const AboutSection = () => {
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             style={{
               background:
-                "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #e8f1ec 100%)",
+                "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f3e9eb 100%)",
               border: "1px solid rgb(237 110 146 / 0.18)",
             }}
           >
@@ -165,7 +165,7 @@ const AboutSection = () => {
               <div
                 className="p-2 rounded-lg"
                 style={{
-                  backgroundColor: "rgb(237 110 146 / 0.15)",
+                  backgroundColor: "rgb(237 110 146 / 0.10)",
                   color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 }}
               >
