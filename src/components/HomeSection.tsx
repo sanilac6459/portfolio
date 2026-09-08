@@ -56,7 +56,7 @@ const HomeSection = () => {
           <p
             className="section-eyebrow text-xs sm:text-sm whitespace-nowrap"
             style={{
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
             }}
           >
             — Welcome To My Portfolio —
@@ -68,7 +68,7 @@ const HomeSection = () => {
             <span
               className="block text-4xl md:text-6xl"
               style={{
-                color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+                color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
               }}
             >
               Hi! I'm Sanila
@@ -105,7 +105,7 @@ const HomeSection = () => {
             <Button
               className="text-white px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
               style={{
-                backgroundColor: "rgb(164 19 60 / var(--tw-bg-opacity, 1))",
+                backgroundColor: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
               }}
               asChild
             >
@@ -117,8 +117,8 @@ const HomeSection = () => {
               variant="outline"
               className="px-8 py-6 rounded-full backdrop-blur-sm bg-white/30 transition-all"
               style={{
-                borderColor: "rgb(45 106 79 / var(--tw-border-opacity, 1))",
-                color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                borderColor: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
               }}
               asChild
             >

@@ -58,7 +58,7 @@ const Navbar = () => {
             to="/"
             className="text-xl md:text-2xl font-serif-display font-semibold transition-colors"
             style={{
-              color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
           >
             Sanila Chowdhury
@@ -80,8 +80,8 @@ const Navbar = () => {
                 }
                 style={({ isActive }) => ({
                   color: isActive
-                    ? "rgb(45 106 79 / var(--tw-text-opacity, 1))"
-                    : "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                    ? "rgb(45 106 79 / var(--tw-text-opacity, 0.80))"
+                    : "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 })}
               >
                 {item.name}
@@ -93,7 +93,7 @@ const Navbar = () => {
           <button
             className="md:hidden transition-colors"
             style={{
-              color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
@@ -118,7 +118,7 @@ const Navbar = () => {
         <button
           className="absolute top-4 right-4 transition-colors"
           style={{
-            color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+            color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
           }}
           onClick={() => setMobileMenuOpen(false)}
           aria-label="Close menu"
@@ -142,8 +142,8 @@ const Navbar = () => {
               }
               style={({ isActive }) => ({
                 color: isActive
-                  ? "rgb(45 106 79 / var(--tw-text-opacity, 1))"
-                  : "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                  ? "rgb(45 106 79 / var(--tw-text-opacity, 0.80))"
+                  : "rgb(201 24 74 / var(--tw-text-opacity, 1))",
               })}
             >
               {item.name}

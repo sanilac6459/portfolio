@@ -19,7 +19,7 @@ const Footer = () => {
     <footer
       className="relative py-12 text-white overflow-hidden"
       style={{
-        backgroundColor: "rgb(163 20 61 / var(--tw-bg-opacity, 1))",
+        backgroundColor: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
       }}
     >
       <div

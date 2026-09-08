@@ -126,7 +126,7 @@ const SkillsSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
             }}
           >
             — What I Work With —
@@ -135,7 +135,7 @@ const SkillsSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
           >
             Skills
@@ -149,7 +149,7 @@ const SkillsSection = () => {
               <div className="flex items-center gap-2 mb-5">
                 <span
                   style={{
-                    color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                    color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
                   }}
                 >
                   {category.icon}
@@ -158,7 +158,7 @@ const SkillsSection = () => {
                 <h3
                   className="font-serif-display text-2xl"
                   style={{
-                    color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+                    color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                   }}
                 >
                   {category.title}
@@ -175,7 +175,7 @@ const SkillsSection = () => {
                       background:
                         "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f1ebe9 100%)",
                       border: "1px solid rgb(237 110 146 / 0.20)",
-                      color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                      color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
                     }}
                   >
                     <img

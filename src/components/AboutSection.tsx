@@ -26,7 +26,7 @@ const AboutSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
             }}
           >
             — Hello —
@@ -35,7 +35,7 @@ const AboutSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
           >
             About Me
@@ -57,7 +57,7 @@ const AboutSection = () => {
                 className="p-2 rounded-lg"
                 style={{
                   backgroundColor: "rgb(237 110 146 / 0.15)",
-                  color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 }}
               >
                 <User size={20} />
@@ -66,7 +66,7 @@ const AboutSection = () => {
               <h3
                 className="font-serif-display text-2xl"
                 style={{
-                  color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 }}
               >
                 Who I Am
@@ -76,7 +76,7 @@ const AboutSection = () => {
             <div
               className="space-y-3 leading-relaxed text-base"
               style={{
-                color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
               }}
             >
               <p>
@@ -113,7 +113,7 @@ const AboutSection = () => {
                 className="p-2 rounded-lg"
                 style={{
                   backgroundColor: "rgb(237 110 146 / 0.15)",
-                  color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 }}
               >
                 <Target size={20} />
@@ -122,7 +122,7 @@ const AboutSection = () => {
               <h3
                 className="font-serif-display text-2xl"
                 style={{
-                  color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 }}
               >
                 Goals
@@ -132,7 +132,7 @@ const AboutSection = () => {
             <div
               className="space-y-3 leading-relaxed text-base"
               style={{
-                color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
               }}
             >
               <p>
@@ -166,7 +166,7 @@ const AboutSection = () => {
                 className="p-2 rounded-lg"
                 style={{
                   backgroundColor: "rgb(237 110 146 / 0.15)",
-                  color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 }}
               >
                 <Heart size={20} />
@@ -175,7 +175,7 @@ const AboutSection = () => {
               <h3
                 className="font-serif-display text-2xl"
                 style={{
-                  color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                 }}
               >
                 Interests
@@ -185,7 +185,7 @@ const AboutSection = () => {
             <div
               className="space-y-3 leading-relaxed text-base"
               style={{
-                color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
               }}
             >
               <p>

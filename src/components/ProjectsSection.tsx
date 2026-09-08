@@ -25,7 +25,6 @@ const techIcons: Record<string, string> = {
   "C++": "/images/c++.png",
   Swift: "/images/swift.png",
   "C#": "/images/csharp.png",
-
   Git: "/images/git.png",
   GitHub: "/images/github.png",
   npm: "/images/npm.png",
@@ -37,24 +36,20 @@ const techIcons: Record<string, string> = {
   "Google Colab": "/images/colab.png",
   Xcode: "/images/xcode.png",
   Vercel: "/images/vercel.svg",
-
   Flask: "/images/flask.png",
   React: "/images/react.png",
   "Node.js": "/images/nodejs.png",
   "Express.js": "/images/express.png",
   Angular: "/images/angular.png",
   "Tailwind CSS": "/images/tailwind-css.png",
-
   "OpenAI API": "/images/openai.png",
   "Gemini API": "/images/gemini.png",
   LangChain: "/images/langchain.png",
   OpenRouter: "/images/openrouter.webp",
-
   MySQL: "/images/mysql.png",
   Firebase: "/images/firebase.png",
   Supabase: "/images/supabase.png",
   ChromaDB: "/images/chromadb.png",
-
   "REST APIs": "/images/restAPI.png",
   "Discord.py": "/images/discord-py.png",
   Unity: "/images/unity.png",
@@ -73,7 +68,7 @@ const TechTag = ({ tech }: { tech: string }) => {
       className="flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-full"
       style={{
         backgroundColor: "rgb(237 110 146 / 0.08)",
-        color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+        color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
         border: "1px solid rgb(237 110 146 / 0.20)",
       }}
     >
@@ -85,7 +80,6 @@ const TechTag = ({ tech }: { tech: string }) => {
           onError={() => setImgFailed(true)}
         />
       )}
-
       {tech}
     </span>
   );
@@ -122,7 +116,8 @@ const projects: ProjectProps[] = [
     image: "/images/project-aura.png",
     demoUrl:
       "https://devpost.com/software/project-aura-y49k2j",
-    repoUrl: "https://github.com/maida5/ctp-hacks-2025",
+    repoUrl:
+      "https://github.com/maida5/ctp-hacks-2025",
   },
   */
 
@@ -176,7 +171,8 @@ const projects: ProjectProps[] = [
     image: "/images/weather.png",
     demoUrl:
       "https://drive.google.com/file/d/1WdWFLjX1RC3wM0LR9Jp2YswwVAwo5boe/view?usp=sharing",
-    // repoUrl: "https://replit.com/@MashrafiAlam/FTF-Weather-App-2",
+    // repoUrl:
+    //   "https://replit.com/@MashrafiAlam/FTF-Weather-App-2",
   },
   */
 
@@ -231,13 +227,13 @@ const ProjectCard = ({
           className="w-full h-full flex items-center justify-center"
           style={{
             background:
-              "linear-gradient(135deg, rgb(237 110 146 / 0.35), rgb(243 233 235 / 0.8), rgb(45 106 79 / 0.25))",
+              "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
           }}
         >
           <span
             className="font-serif-display italic text-7xl"
             style={{
-              color: "rgb(164 19 60 / 0.25)",
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
             }}
           >
             {String(index + 1).padStart(2, "0")}
@@ -251,7 +247,7 @@ const ProjectCard = ({
       <h3
         className="font-serif-display text-2xl mb-2"
         style={{
-          color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
         }}
       >
         {title}
@@ -260,7 +256,7 @@ const ProjectCard = ({
       <p
         className="mb-4 text-sm leading-relaxed font-light"
         style={{
-          color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
         }}
       >
         {description}
@@ -287,7 +283,7 @@ const ProjectCard = ({
             asChild
             className="transition-colors"
             style={{
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
           >
             <a href={demoUrl} target="_blank" rel="noopener noreferrer">
@@ -304,7 +300,7 @@ const ProjectCard = ({
             asChild
             className="transition-colors"
             style={{
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
           >
             <a href={presentationUrl} target="_blank" rel="noopener noreferrer">
@@ -321,7 +317,7 @@ const ProjectCard = ({
             asChild
             className="transition-colors"
             style={{
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
           >
             <a href={repoUrl} target="_blank" rel="noopener noreferrer">
@@ -363,7 +359,7 @@ const ProjectsSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
             }}
           >
             — What I've Built —
@@ -372,7 +368,7 @@ const ProjectsSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
           >
             Projects
@@ -392,8 +388,8 @@ const ProjectsSection = () => {
             variant="outline"
             className="px-8 py-6 rounded-full transition-all"
             style={{
-              borderColor: "rgb(45 106 79 / 0.4)",
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              borderColor: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
               backgroundColor: "rgb(255 255 255 / 0.25)",
             }}
             onClick={() => setShowAll(!showAll)}

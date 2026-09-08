@@ -34,9 +34,7 @@ const experiences: ExperienceProps[] = [
     logo: "/images/mta.jpeg",
     bullets: [
       "Analyzed the MTA Power Cable Enterprise Asset Management database with 11,000+ manhole inspection records, using Python, Pandas, and NumPy to detect duplicate entries and drive a ∼15% increase in maintenance activity.",
-
       "Developed a Power BI compliance dashboard using DAX measures and Power Query M to evaluate 18,000+ ELM training records against a safety training matrix, supporting compliance reporting for VP-level review.",
-
       "Built a personnel dashboard consolidating 4 SharePoint lists across 1,200+ employees, using optimized DAX measures to track accident trends and support staffing decisions.",
     ],
   },
@@ -49,9 +47,7 @@ const experiences: ExperienceProps[] = [
     logo: "/images/ctp.jpeg",
     bullets: [
       "Developed the frontend for CUNY Hunter Marketplace, a student-to-student platform, using React, Next.js, and Tailwind CSS to build a responsive, component-based interface within a collaborative, agile team.",
-
       "Built API endpoints with Next.js and Node.js, integrating an Azure-hosted PostgreSQL database via Prisma ORM, following Git branching workflows and peer code reviews through pull requests.",
-
       "Implemented JWT-based user authentication and an item listing dashboard with CRUD functionality using Supabase and Prisma to enable student-to-student transactions.",
     ],
   },
@@ -66,9 +62,7 @@ const experiences: ExperienceProps[] = [
         duration: "August 2025 — August 2026",
         bullets: [
           "Drove technical initiatives and club growth by proposing new programs, coordinating events, and supporting strategic planning, increasing engagement and learning opportunities for CS students.",
-
           "Planned and hosted workshops for 30+ computer science students, providing guidance on technical skills, problem-solving strategies, and career development to enhance readiness for internships and software engineering roles.",
-
           "Mentored project leads in the club's Project Development Program, supporting student teams through semester-long collaborative projects by reviewing proposals, refining technical scopes, and providing guidance to ensure successful and educational outcomes.",
         ],
       },
@@ -91,7 +85,6 @@ const experiences: ExperienceProps[] = [
     logo: "/images/permanence.jpeg",
     bullets: [
       "Tested ChatGPT across temperature and token limit configurations and optimized prompt design to enhance the LLM’s output accuracy with OpenAI API, reducing token usage by ∼15% and improving result quality to minimize additional queries.",
-
       "Engineered a Pythonic Code Evaluator to detect style violations, non-idiomatic syntax, and poor code structure in LLM-generated code, improving code quality across multiple Python codebases using Python and OpenAI API.",
     ],
   },
@@ -104,11 +97,8 @@ const experiences: ExperienceProps[] = [
     logo: "/images/nycha.png",
     bullets: [
       "Completed ServiceNow training in IT Service Management, with a focus on Knowledge Base and Incident Management to strengthen expertise in improving user experience and facilitating incident resolution.",
-
       "Reviewed 400+ Knowledge Base articles in ServiceNow, leading to actionable recommendations to keep, flag, review, or update its content.",
-
       "Conducted quality assurance by reviewing and validating 100+ Microsoft account requests from Movaris, ensuring accuracy on Microsoft Teams.",
-
       "Documented project charters and closing reports for key initiatives, recorded outcomes, and next steps with R-markdown to incorporate data visualization of our findings.",
     ],
   },
@@ -121,9 +111,7 @@ const experiences: ExperienceProps[] = [
     logo: "/images/nyc-olr.jpeg",
     bullets: [
       "Obtained a comprehensive understanding of cybersecurity by engaging in a panel led by the Center for Internet Security.",
-
       "Analyzed data from hardware and detected risk issues on PC through Linux commands.",
-
       "Handled IT Inventory Management by collecting 100+ PC and monitor tags, ensuring accurate asset tracking and organization.",
     ],
   },
@@ -153,7 +141,7 @@ const ExperienceSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
             }}
           >
             — My Journey —
@@ -162,7 +150,7 @@ const ExperienceSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
           >
             Experience
@@ -194,7 +182,7 @@ const ExperienceSection = () => {
                       <h3
                         className="text-xl font-bold"
                         style={{
-                          color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+                          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                         }}
                       >
                         {exp.company}
@@ -203,7 +191,7 @@ const ExperienceSection = () => {
                       <p
                         className="text-sm mt-1"
                         style={{
-                          color: "rgb(45 106 79 / 0.7)",
+                          color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
                         }}
                       >
                         {exp.location}
@@ -225,7 +213,7 @@ const ExperienceSection = () => {
                             className="font-bold text-lg"
                             style={{
                               color:
-                                "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+                                "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                             }}
                           >
                             {role.title}
@@ -250,14 +238,14 @@ const ExperienceSection = () => {
                               className="flex items-start gap-2 text-sm leading-relaxed"
                               style={{
                                 color:
-                                  "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                                  "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                               }}
                             >
                               <span
                                 className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
                                 style={{
                                   backgroundColor:
-                                    "rgb(237 110 146 / var(--tw-bg-opacity, 1))",
+                                    "rgb(237 110 146 / var(--tw-text-opacity, 1))",
                                 }}
                               ></span>
 
@@ -284,7 +272,7 @@ const ExperienceSection = () => {
                         <h3
                           className="text-xl font-bold"
                           style={{
-                            color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+                            color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                           }}
                         >
                           {exp.title}
@@ -293,14 +281,15 @@ const ExperienceSection = () => {
                         <p
                           className="text-sm mt-1"
                           style={{
-                            color: "rgb(45 106 79 / 0.7)",
+                            color:
+                              "rgb(237 110 146 / var(--tw-text-opacity, 1))",
                           }}
                         >
                           <span
                             className="font-semibold"
                             style={{
                               color:
-                                "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+                                "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                             }}
                           >
                             {exp.company}
@@ -331,14 +320,14 @@ const ExperienceSection = () => {
                         key={idx}
                         className="flex items-start gap-2 text-sm leading-relaxed"
                         style={{
-                          color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                         }}
                       >
                         <span
                           className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
                           style={{
                             backgroundColor:
-                              "rgb(237 110 146 / var(--tw-bg-opacity, 1))",
+                              "rgb(237 110 146 / var(--tw-text-opacity, 1))",
                           }}
                         ></span>
 

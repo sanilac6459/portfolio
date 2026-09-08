@@ -22,13 +22,13 @@ const PageLoader = ({ children }: { children: React.ReactNode }) => {
           <img
             src="/logo2.png"
             alt="Loading"
-            className="w-40 h-40 object-contain"
+            className="w-50 h-50 object-contain"
           />
 
           <p
             className="text-sm tracking-widest uppercase"
             style={{
-              color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
           >
             Loading...

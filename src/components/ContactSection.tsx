@@ -82,7 +82,7 @@ const ContactSection = () => {
                   <X
                     size={32}
                     style={{
-                      color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                      color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                     }}
                   />
                 </div>
@@ -90,7 +90,7 @@ const ContactSection = () => {
                 <h3
                   className="font-serif-display text-xl mb-2"
                   style={{
-                    color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                    color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                   }}
                 >
                   Something went wrong
@@ -124,7 +124,7 @@ const ContactSection = () => {
                 <h3
                   className="font-serif-display text-xl mb-2"
                   style={{
-                    color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                    color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                   }}
                 >
                   Message Sent!
@@ -133,7 +133,7 @@ const ContactSection = () => {
                 <p
                   className="text-sm"
                   style={{
-                    color: "rgb(45 106 79 / 0.65)",
+                    color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                   }}
                 >
                   Thank you for reaching out. I'll get back to you soon.
@@ -143,7 +143,8 @@ const ContactSection = () => {
                   onClick={() => setShowModal(false)}
                   className="mt-6 text-white rounded-full px-8"
                   style={{
-                    backgroundColor: "rgb(163 20 61 / var(--tw-bg-opacity, 1))",
+                    backgroundColor:
+                      "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                   }}
                 >
                   Close
@@ -168,7 +169,7 @@ const ContactSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
             }}
           >
             — Let's Connect —
@@ -177,7 +178,7 @@ const ContactSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
           >
             Get In Touch
@@ -186,7 +187,7 @@ const ContactSection = () => {
           <p
             className="font-light leading-relaxed max-w-3xl mx-auto mt-3"
             style={{
-              color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
             }}
           >
             I'm always open to new opportunities, collaborations, or just a
@@ -217,7 +218,7 @@ const ContactSection = () => {
                   <Mail
                     size={22}
                     style={{
-                      color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                      color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
                     }}
                   />
                 </div>
@@ -226,7 +227,7 @@ const ContactSection = () => {
                   <p
                     className="text-xs uppercase tracking-widest font-medium mb-0.5"
                     style={{
-                      color: "rgb(45 106 79 / 0.50)",
+                      color: "rgb(45 106 79 / 0.80)",
                     }}
                   >
                     Email
@@ -235,7 +236,7 @@ const ContactSection = () => {
                   <p
                     className="font-medium"
                     style={{
-                      color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                      color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
                     }}
                   >
                     sanilachowdhury@gmail.com
@@ -264,7 +265,7 @@ const ContactSection = () => {
                   <Github
                     size={22}
                     style={{
-                      color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                      color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
                     }}
                   />
                 </div>
@@ -273,7 +274,7 @@ const ContactSection = () => {
                   <p
                     className="text-xs uppercase tracking-widest font-medium mb-0.5"
                     style={{
-                      color: "rgb(45 106 79 / 0.50)",
+                      color: "rgb(45 106 79 / 0.80)",
                     }}
                   >
                     GitHub
@@ -282,7 +283,7 @@ const ContactSection = () => {
                   <p
                     className="font-medium"
                     style={{
-                      color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                      color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
                     }}
                   >
                     github.com/sanilac6459
@@ -311,7 +312,7 @@ const ContactSection = () => {
                   <Linkedin
                     size={22}
                     style={{
-                      color: "rgb(163 20 61 / var(--tw-text-opacity, 1))",
+                      color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
                     }}
                   />
                 </div>
@@ -320,7 +321,7 @@ const ContactSection = () => {
                   <p
                     className="text-xs uppercase tracking-widest font-medium mb-0.5"
                     style={{
-                      color: "rgb(45 106 79 / 0.50)",
+                      color: "rgb(45 106 79 / 0.80)",
                     }}
                   >
                     LinkedIn
@@ -329,7 +330,7 @@ const ContactSection = () => {
                   <p
                     className="font-medium"
                     style={{
-                      color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                      color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
                     }}
                   >
                     linkedin.com/in/sanilachowdhury
@@ -356,7 +357,7 @@ const ContactSection = () => {
                     <Label
                       htmlFor="name"
                       style={{
-                        color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                        color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                       }}
                     >
                       Name
@@ -366,10 +367,10 @@ const ContactSection = () => {
                       id="name"
                       name="name"
                       placeholder="Your name"
-                      className="bg-white/40 placeholder:text-[rgb(45_106_79_/_0.45)]"
+                      className="bg-white/40 placeholder:text-[rgb(45_106_79_/_0.60)]"
                       style={{
                         borderColor: "rgb(237 110 146 / 0.30)",
-                        color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                        color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
                       }}
                       required
                     />
@@ -379,7 +380,7 @@ const ContactSection = () => {
                     <Label
                       htmlFor="email"
                       style={{
-                        color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                        color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                       }}
                     >
                       Email
@@ -390,10 +391,10 @@ const ContactSection = () => {
                       name="email"
                       type="email"
                       placeholder="Your email"
-                      className="bg-white/40 placeholder:text-[rgb(45_106_79_/_0.45)]"
+                      className="bg-white/40 placeholder:text-[rgb(45_106_79_/_0.60)]"
                       style={{
                         borderColor: "rgb(237 110 146 / 0.30)",
-                        color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                        color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
                       }}
                       required
                     />
@@ -405,7 +406,7 @@ const ContactSection = () => {
                   <Label
                     htmlFor="subject"
                     style={{
-                      color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                      color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                     }}
                   >
                     Subject
@@ -415,10 +416,10 @@ const ContactSection = () => {
                     id="subject"
                     name="subject"
                     placeholder="Subject of your message"
-                    className="bg-white/40 placeholder:text-[rgb(45_106_79_/_0.45)]"
+                    className="bg-white/40 placeholder:text-[rgb(45_106_79_/_0.60)]"
                     style={{
                       borderColor: "rgb(237 110 146 / 0.30)",
-                      color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                      color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
                     }}
                     required
                   />
@@ -429,7 +430,7 @@ const ContactSection = () => {
                   <Label
                     htmlFor="message"
                     style={{
-                      color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                      color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                     }}
                   >
                     Message
@@ -439,10 +440,10 @@ const ContactSection = () => {
                     id="message"
                     name="message"
                     placeholder="Your message"
-                    className="min-h-[120px] bg-white/40 placeholder:text-[rgb(45_106_79_/_0.45)]"
+                    className="min-h-[120px] bg-white/40 placeholder:text-[rgb(45_106_79_/_0.60)]"
                     style={{
                       borderColor: "rgb(237 110 146 / 0.30)",
-                      color: "rgb(45 106 79 / var(--tw-text-opacity, 1))",
+                      color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
                     }}
                     required
                   />
@@ -453,7 +454,8 @@ const ContactSection = () => {
                   type="submit"
                   className="w-full text-white rounded-full py-6 shadow-lg"
                   style={{
-                    backgroundColor: "rgb(163 20 61 / var(--tw-bg-opacity, 1))",
+                    backgroundColor:
+                      "rgb(201 24 74 / var(--tw-text-opacity, 1))",
                   }}
                 >
                   Send Message
