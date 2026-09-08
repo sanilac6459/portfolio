@@ -41,6 +41,7 @@ const skillCategories: SkillCategoryProps[] = [
       { name: "Xcode", icon: "/images/xcode.png" },
       { name: "Prisma", icon: "/images/prisma.svg" },
       { name: "Vercel", icon: "/images/vercel.svg" },
+      { name: "Render", icon: "/images/render.jpeg" },
     ],
   },
 
