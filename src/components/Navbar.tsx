@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+
 import { NavLink, Link, useLocation } from "react-router-dom";
+
 import { cn } from "@/lib/utils";
+
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -15,11 +18,14 @@ const navItems = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -34,18 +40,31 @@ const Navbar = () => {
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6",
           isScrolled || location.pathname !== "/"
-            ? "bg-portfolio-cream/90 backdrop-blur-sm shadow-sm"
+            ? "backdrop-blur-sm shadow-sm"
             : "bg-transparent",
         )}
+        style={
+          isScrolled || location.pathname !== "/"
+            ? {
+                background:
+                  "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+              }
+            : undefined
+        }
       >
         <div className="container flex items-center justify-between">
+          {/* Logo */}
           <Link
             to="/"
-            className="text-xl md:text-2xl font-serif-display font-semibold text-portfolio-navy"
+            className="text-xl md:text-2xl font-serif-display font-semibold transition-colors"
+            style={{
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+            }}
           >
             Sanila Chowdhury
           </Link>
 
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <NavLink
@@ -53,19 +72,29 @@ const Navbar = () => {
                 to={item.to}
                 className={({ isActive }) =>
                   cn(
-                    "text-portfolio-navy hover:text-portfolio-purple font-medium font-serif-display transition-colors relative",
+                    "font-medium font-serif-display transition-colors relative",
+                    "hover:text-[#2D6A4F]",
                     isActive &&
-                      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-portfolio-purple",
+                      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#2D6A4F]",
                   )
                 }
+                style={({ isActive }) => ({
+                  color: isActive
+                    ? "rgb(45 106 79 / var(--tw-text-opacity, 0.80))"
+                    : "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                })}
               >
                 {item.name}
               </NavLink>
             ))}
           </nav>
 
+          {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-portfolio-navy"
+            className="md:hidden transition-colors"
+            style={{
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+            }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -74,20 +103,30 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Mobile menu rendered outside header */}
+      {/* Mobile Menu */}
       <div
         className={cn(
-          "fixed inset-0 bg-portfolio-cream z-50 md:hidden transition-transform duration-300 transform flex flex-col items-center justify-center",
+          "fixed inset-0 z-50 md:hidden transition-transform duration-300 transform flex flex-col items-center justify-center",
           mobileMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
+        style={{
+          background:
+            "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+        }}
       >
+        {/* Close Button */}
         <button
-          className="absolute top-4 right-4 text-portfolio-navy"
+          className="absolute top-4 right-4 transition-colors"
+          style={{
+            color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+          }}
           onClick={() => setMobileMenuOpen(false)}
           aria-label="Close menu"
         >
           <X size={24} />
         </button>
+
+        {/* Mobile Navigation */}
         <nav className="flex flex-col space-y-8 items-center">
           {navItems.map((item) => (
             <NavLink
@@ -95,11 +134,17 @@ const Navbar = () => {
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "text-xl font-medium text-portfolio-navy hover:text-portfolio-purple font-serif-display transition-colors relative",
+                  "text-xl font-medium font-serif-display transition-colors relative",
+                  "hover:text-[#2D6A4F]",
                   isActive &&
-                    "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-portfolio-purple",
+                    "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#2D6A4F]",
                 )
               }
+              style={({ isActive }) => ({
+                color: isActive
+                  ? "rgb(45 106 79 / var(--tw-text-opacity, 0.80))"
+                  : "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              })}
             >
               {item.name}
             </NavLink>

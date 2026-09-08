@@ -25,6 +25,7 @@ const experiences: ExperienceProps[] = [
     logo: "/images/trance4mation.jpeg",
     bullets: ["Incoming Software Engineer Intern for Fall 2026."],
   },
+
   {
     title: "Data Analyst Intern",
     company: "Metropolitan Transportation Authority (MTA)",
@@ -37,6 +38,7 @@ const experiences: ExperienceProps[] = [
       "Built a personnel dashboard consolidating 4 SharePoint lists across 1,200+ employees, using optimized DAX measures to track accident trends and support staffing decisions.",
     ],
   },
+
   {
     title: "Software Engineer Fellow",
     company: "CUNY Tech Prep",
@@ -44,11 +46,12 @@ const experiences: ExperienceProps[] = [
     duration: "July 2025 — May 2026",
     logo: "/images/ctp.jpeg",
     bullets: [
-      " Developed the frontend for CUNY Hunter Marketplace, a student-to-student platform, using React, Next.js, and Tailwind CSS to build a responsive, component-based interface within a collaborative, agile team.",
+      "Developed the frontend for CUNY Hunter Marketplace, a student-to-student platform, using React, Next.js, and Tailwind CSS to build a responsive, component-based interface within a collaborative, agile team.",
       "Built API endpoints with Next.js and Node.js, integrating an Azure-hosted PostgreSQL database via Prisma ORM, following Git branching workflows and peer code reviews through pull requests.",
-      "Implemented JWT-based user authentication and an item listing dashboard with CRUD functionality usingSupabase and Prisma to enable student-to-student transactions.",
+      "Implemented JWT-based user authentication and an item listing dashboard with CRUD functionality using Supabase and Prisma to enable student-to-student transactions.",
     ],
   },
+
   {
     company: "Computer Science Club at Hunter College",
     location: "New York, NY",
@@ -63,6 +66,7 @@ const experiences: ExperienceProps[] = [
           "Mentored project leads in the club's Project Development Program, supporting student teams through semester-long collaborative projects by reviewing proposals, refining technical scopes, and providing guidance to ensure successful and educational outcomes.",
         ],
       },
+
       {
         title: "Web Developer",
         duration: "January 2025 — August 2025",
@@ -72,6 +76,7 @@ const experiences: ExperienceProps[] = [
       },
     ],
   },
+
   {
     title: "Software Engineer Intern",
     company: "Permanence AI",
@@ -83,6 +88,7 @@ const experiences: ExperienceProps[] = [
       "Engineered a Pythonic Code Evaluator to detect style violations, non-idiomatic syntax, and poor code structure in LLM-generated code, improving code quality across multiple Python codebases using Python and OpenAI API.",
     ],
   },
+
   {
     title: "IT Service Management Intern",
     company: "New York City Housing Authority (NYCHA)",
@@ -96,6 +102,7 @@ const experiences: ExperienceProps[] = [
       "Documented project charters and closing reports for key initiatives, recorded outcomes, and next steps with R-markdown to incorporate data visualization of our findings.",
     ],
   },
+
   {
     title: "Cybersecurity Intern",
     company: "The City of New York Office of Labor Relations",
@@ -112,57 +119,136 @@ const experiences: ExperienceProps[] = [
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-24 relative overflow-hidden">
-      <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-portfolio-cream/40 blur-3xl"></div>
+    <section
+      id="experience"
+      className="py-24 relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+      }}
+    >
+      {/* Decorative background element */}
+      <div
+        className="absolute -top-20 -left-20 w-80 h-80 rounded-full blur-3xl"
+        style={{
+          backgroundColor: "rgb(45 106 79 / 0.07)",
+        }}
+      ></div>
 
       <div className="container relative">
+        {/* Section Heading */}
         <div className="flex flex-col items-center text-center mb-16">
-          <p className="section-eyebrow">— My Journey —</p>
-          <h2 className="section-title">Experience</h2>
+          <p
+            className="section-eyebrow"
+            style={{
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+            }}
+          >
+            — My Journey —
+          </p>
+
+          <h2
+            className="section-title"
+            style={{
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+            }}
+          >
+            Experience
+          </h2>
         </div>
 
         <div className="max-w-5xl mx-auto space-y-6">
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-portfolio-cream to-portfolio-mauve/30 rounded-2xl p-6 border border-portfolio-mauve/20 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              style={{
+                background:
+                  "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f1ebe9 100%)",
+                border: "1px solid rgb(237 110 146 / 0.18)",
+              }}
             >
               {exp.roles ? (
                 <>
+                  {/* Company Header */}
                   <div className="flex items-start gap-4 mb-4">
                     <img
                       src={exp.logo}
                       alt={exp.company}
                       className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
                     />
+
                     <div className="flex-1">
-                      <h3 className="text-portfolio-navy text-xl font-bold">
+                      <h3
+                        className="text-xl font-bold"
+                        style={{
+                          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                        }}
+                      >
                         {exp.company}
                       </h3>
-                      <p className="text-portfolio-navy/70 text-sm mt-1">
+
+                      <p
+                        className="text-sm mt-1"
+                        style={{
+                          color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+                        }}
+                      >
                         {exp.location}
                       </p>
                     </div>
                   </div>
 
-                  <div className="space-y-6 pl-4 border-l-2 border-portfolio-mauve/30 ml-6">
+                  {/* Multiple Roles */}
+                  <div
+                    className="space-y-6 pl-4 ml-6"
+                    style={{
+                      borderLeft: "2px solid rgb(237 110 146 / 0.3)",
+                    }}
+                  >
                     {exp.roles.map((role, idx) => (
                       <div key={idx} className="pl-4">
                         <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
-                          <h4 className="text-portfolio-navy font-bold text-lg">
+                          <h4
+                            className="font-bold text-lg"
+                            style={{
+                              color:
+                                "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                            }}
+                          >
                             {role.title}
                           </h4>
-                          <span className="flex-shrink-0 whitespace-nowrap rounded-full bg-portfolio-cream border border-portfolio-mauve/30 px-4 py-1.5 text-sm font-semibold text-portfolio-navy/70">
+
+                          <span
+                            className="flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
+                            style={{
+                              backgroundColor: "rgb(237 110 146 / 0.06)",
+                              border: "1px solid rgb(237 110 146 / 0.18)",
+                              color: "rgb(45 106 79 / 0.80)",
+                            }}
+                          >
                             {role.duration}
                           </span>
                         </div>
+
                         <ul className="space-y-2">
                           {role.bullets.map((bullet, bIdx) => (
                             <li
                               key={bIdx}
-                              className="flex items-start gap-2 text-portfolio-navy text-sm leading-relaxed"
+                              className="flex items-start gap-2 text-sm leading-relaxed"
+                              style={{
+                                color:
+                                  "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                              }}
                             >
-                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-portfolio-purple flex-shrink-0"></span>
+                              <span
+                                className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                                style={{
+                                  backgroundColor:
+                                    "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+                                }}
+                              ></span>
+
                               {bullet}
                             </li>
                           ))}
@@ -173,6 +259,7 @@ const ExperienceSection = () => {
                 </>
               ) : (
                 <>
+                  {/* Single Role */}
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
                     <div className="flex items-start gap-4">
                       <img
@@ -180,21 +267,49 @@ const ExperienceSection = () => {
                         alt={exp.company}
                         className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
                       />
+
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-portfolio-navy text-xl font-bold">
+                        <h3
+                          className="text-xl font-bold"
+                          style={{
+                            color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                          }}
+                        >
                           {exp.title}
                         </h3>
-                        <p className="text-portfolio-navy/70 text-sm mt-1">
-                          <span className="text-portfolio-purple font-semibold">
+
+                        <p
+                          className="text-sm mt-1"
+                          style={{
+                            color:
+                              "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+                          }}
+                        >
+                          <span
+                            className="font-semibold"
+                            style={{
+                              color:
+                                "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                            }}
+                          >
                             {exp.company}
                           </span>
+
                           <span className="mx-1.5 opacity-70">·</span>
+
                           {exp.location}
                         </p>
                       </div>
                     </div>
 
-                    <span className="self-start flex-shrink-0 whitespace-nowrap rounded-full bg-portfolio-cream border border-portfolio-mauve/30 px-4 py-1.5 text-sm font-semibold text-portfolio-navy/70">
+                    <span
+                      className="self-start flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
+                      style={{
+                        backgroundColor: "rgb(237 110 146 / 0.06)",
+                        border: "1px solid rgb(237 110 146 / 0.18)",
+                        color: "rgb(45 106 79 / 0.75)",
+                      }}
+                    >
                       {exp.duration}
                     </span>
                   </div>
@@ -203,9 +318,19 @@ const ExperienceSection = () => {
                     {exp.bullets!.map((bullet, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start gap-2 text-portfolio-navy text-sm leading-relaxed"
+                        className="flex items-start gap-2 text-sm leading-relaxed"
+                        style={{
+                          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                        }}
                       >
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-portfolio-purple flex-shrink-0"></span>
+                        <span
+                          className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                          style={{
+                            backgroundColor:
+                              "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+                          }}
+                        ></span>
+
                         {bullet}
                       </li>
                     ))}

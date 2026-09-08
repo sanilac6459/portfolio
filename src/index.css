@@ -22,7 +22,7 @@
     --muted: 11 19% 84%;
     --muted-foreground: 240 10% 50%;
 
-    --accent: 300 12% 75%;
+    --accent: 343 40% 78%;
     --accent-foreground: 240 22% 32%;
 
     --destructive: 0 84.2% 60.2%;
@@ -39,7 +39,7 @@
       135deg,
       hsl(17 25% 95%) 0%,
       hsl(11 30% 90%) 50%,
-      hsl(300 15% 85%) 100%
+      hsl(343 35% 85%) 100%
     );
     --gradient-warm: linear-gradient(
       120deg,

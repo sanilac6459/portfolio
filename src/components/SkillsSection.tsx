@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Code2, Wrench, Layers, Bot, Database, BarChart3 } from "lucide-react";
 
 interface SkillCategoryProps {
@@ -23,6 +24,7 @@ const skillCategories: SkillCategoryProps[] = [
       { name: "Swift", icon: "/images/swift.png" },
     ],
   },
+
   {
     title: "Developer Tools",
     icon: <Wrench size={20} />,
@@ -41,6 +43,7 @@ const skillCategories: SkillCategoryProps[] = [
       { name: "Vercel", icon: "/images/vercel.svg" },
     ],
   },
+
   {
     title: "Frameworks & Libraries",
     icon: <Layers size={20} />,
@@ -53,6 +56,7 @@ const skillCategories: SkillCategoryProps[] = [
       { name: "Tailwind CSS", icon: "/images/tailwind-css.png" },
     ],
   },
+
   {
     title: "AI / LLM Tools",
     icon: <Bot size={20} />,
@@ -63,6 +67,7 @@ const skillCategories: SkillCategoryProps[] = [
       { name: "OpenRouter", icon: "/images/openrouter.webp" },
     ],
   },
+
   {
     title: "Databases & Backend Services",
     icon: <Database size={20} />,
@@ -73,6 +78,7 @@ const skillCategories: SkillCategoryProps[] = [
       { name: "ChromaDB", icon: "/images/chromadb.png" },
     ],
   },
+
   {
     title: "Data Analytics & Visualization",
     icon: <BarChart3 size={20} />,
@@ -81,41 +87,96 @@ const skillCategories: SkillCategoryProps[] = [
       // { name: "DAX", icon: "/images/dax.png" },
       { name: "Power Query", icon: "/images/powerquery.png" },
       // { name: "Excel", icon: "/images/excel.png" },
-      { name: "Microsoft Power Automate", icon: "/images/powerautomate.png" },
+      {
+        name: "Microsoft Power Automate",
+        icon: "/images/powerautomate.png",
+      },
     ],
   },
 ];
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-24 relative overflow-hidden">
-      <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-portfolio-mauve/10 blur-3xl -translate-y-1/2"></div>
-      <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-portfolio-pink/10 blur-3xl"></div>
+    <section
+      id="skills"
+      className="py-24 relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+      }}
+    >
+      {/* Decorative background elements */}
+      <div
+        className="absolute top-1/2 left-0 w-96 h-96 rounded-full blur-3xl -translate-y-1/2"
+        style={{
+          backgroundColor: "rgb(45 106 79 / 0.07)",
+        }}
+      ></div>
+
+      <div
+        className="absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl"
+        style={{
+          backgroundColor: "rgb(237 110 146 / 0.08)",
+        }}
+      ></div>
 
       <div className="container relative">
+        {/* Section Heading */}
         <div className="flex flex-col items-center text-center mb-16">
-          <p className="section-eyebrow">— What I Work With —</p>
-          <h2 className="section-title">Skills</h2>
+          <p
+            className="section-eyebrow"
+            style={{
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+            }}
+          >
+            — What I Work With —
+          </p>
+
+          <h2
+            className="section-title"
+            style={{
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+            }}
+          >
+            Skills
+          </h2>
         </div>
 
         <div className="flex flex-col gap-12">
           {skillCategories.map((category, index) => (
             <div key={index}>
-              {/* Category heading with icon and divider */}
+              {/* Category heading */}
               <div className="flex items-center gap-2 mb-5">
-                <span className="text-portfolio-navy">{category.icon}</span>
-                <h3 className="font-serif-display text-2xl text-portfolio-navy">
+                <span
+                  style={{
+                    color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
+                  }}
+                >
+                  {category.icon}
+                </span>
+
+                <h3
+                  className="font-serif-display text-2xl"
+                  style={{
+                    color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                  }}
+                >
                   {category.title}
                 </h3>
-                {/* <div className="flex-1 h-px bg-portfolio-navy/20 ml-2"></div> */}
               </div>
 
-              {/* Pill row */}
+              {/* Skill pills */}
               <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-portfolio-mauve/20 bg-gradient-to-br from-portfolio-cream to-portfolio-mauve/30 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 text-portfolio-navy"
+                    className="flex items-center gap-2 px-4 py-2 rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f1ebe9 100%)",
+                      border: "1px solid rgb(237 110 146 / 0.20)",
+                      color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+                    }}
                   >
                     <img
                       src={skill.icon}
@@ -125,6 +186,7 @@ const SkillsSection = () => {
                         (e.target as HTMLImageElement).style.display = "none";
                       }}
                     />
+
                     <span className="font-medium text-sm">{skill.name}</span>
                   </div>
                 ))}

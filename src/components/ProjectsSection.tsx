@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import { Button } from "@/components/ui/button";
+
 import { ExternalLink, Github } from "lucide-react";
 
 interface ProjectProps {
@@ -58,10 +60,18 @@ const techIcons: Record<string, string> = {
 
 const TechTag = ({ tech }: { tech: string }) => {
   const [imgFailed, setImgFailed] = React.useState(false);
+
   const iconSrc = techIcons[tech];
 
   return (
-    <span className="flex items-center gap-1.5 px-2.5 py-1 bg-portfolio-cream text-portfolio-navy text-xs rounded-full border border-portfolio-mauve/30">
+    <span
+      className="flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-full"
+      style={{
+        backgroundColor: "rgb(237 110 146 / 0.08)",
+        color: "rgb(45 106 79 / var(--tw-text-opacity, 0.80))",
+        border: "1px solid rgb(237 110 146 / 0.20)",
+      }}
+    >
       {iconSrc && !imgFailed && (
         <img
           src={iconSrc}
@@ -76,6 +86,15 @@ const TechTag = ({ tech }: { tech: string }) => {
 };
 
 const projects: ProjectProps[] = [
+  // {
+  //   title: "CUNY Marketplace",
+  //   description:
+  //     "An app for Hunter College students to discover and join campus clubs, share announcements, and stay connected with their college community.",
+  //   technologies: ["React", "Node.js", "Express.js", "Prisma", "Supabase"],
+  //   image: "/images/",
+  //   demoUrl: "",
+  //   repoUrl: "https://github.com/farmiha/cuny-marketplace",
+  // },
   {
     title: "HunterConnect",
     description:
@@ -85,6 +104,7 @@ const projects: ProjectProps[] = [
     demoUrl: "https://hunter-connect-psi.vercel.app/",
     repoUrl: "https://github.com/sanilac6459/hunter-connect",
   },
+
   {
     title: "Phil — Job Applier Agent",
     description:
@@ -95,16 +115,21 @@ const projects: ProjectProps[] = [
       "https://drive.google.com/file/d/1NNQAlaI6GqRZ3moRA5YVlMKBbLKKBzz-/view?usp=sharing",
     repoUrl: "https://github.com/sanilac6459/job-agent",
   },
-  // {
-  //   title: "AuraTracks",
-  //   description:
-  //     "A new way to soundtrack memories, discover music, and bring your photos to life with sound!",
-  //   technologies: ["React", "Gemini API", "Sportify API", "FastAPI"],
-  //   image: "/images/project-aura.png",
-  //   demoUrl:
-  //     "https://devpost.com/software/project-aura-y49k2j?_gl=1*6l35lf*_gcl_au*MjAyMjU4Mzk1OC4xNzU1OTY3ODQ1*_ga*MjE0MjA2MDkwNS4xNzU1OTY3ODQ1*_ga_0YHJK3Y10M*czE3NTYwNjY4NDckbzYkZzEkdDE3NTYwNjY5MjQkajQ4JGwwJGgw",
-  //   repoUrl: "https://github.com/maida5/ctp-hacks-2025",
-  // },
+
+  /*
+  {
+    title: "AuraTracks",
+    description:
+      "A new way to soundtrack memories, discover music, and bring your photos to life with sound!",
+    technologies: ["React", "Gemini API", "Spotify API", "FastAPI"],
+    image: "/images/project-aura.png",
+    demoUrl:
+      "https://devpost.com/software/project-aura-y49k2j",
+    repoUrl:
+      "https://github.com/maida5/ctp-hacks-2025",
+  },
+  */
+
   {
     title: "StyleMe",
     description:
@@ -115,6 +140,7 @@ const projects: ProjectProps[] = [
       "https://drive.google.com/file/d/1Hox0GU5vjn6Zmxep-Tz5oX5rOxcfNtbc/view?usp=sharing",
     repoUrl: "https://github.com/weijiej2964/Fashion-Project",
   },
+
   {
     title: "Python Code Evaluator",
     description:
@@ -123,6 +149,7 @@ const projects: ProjectProps[] = [
     image: "/images/python-computer.png",
     repoUrl: "https://github.com/sanilac6459/pythonic-code-evaluator",
   },
+
   {
     title: "Winter Wordleland",
     description:
@@ -133,6 +160,7 @@ const projects: ProjectProps[] = [
       "https://drive.google.com/file/d/1nA2Tjaf9ZgVG9kCAeBXm-5qcnNyu-R-J/view?usp=sharing",
     repoUrl: "https://github.com/TheSimmer101/wordle",
   },
+
   {
     title: "GIMMIE CANDY!!!",
     description:
@@ -142,16 +170,21 @@ const projects: ProjectProps[] = [
     demoUrl: "https://example.com",
     repoUrl: "https://github.com/sanilac6459",
   },
-  // {
-  //   title: "FinTech Focus Weather App",
-  //   description:
-  //     "A weather app that delivers real-time forecasts worldwide, showing current conditions and a three-day outlook based on the user's location.",
-  //   technologies: ["Python", "Flask", "OpenWeather API"],
-  //   image: "/images/weather.png",
-  //   demoUrl:
-  //     "https://drive.google.com/file/d/1WdWFLjX1RC3wM0LR9Jp2YswwVAwo5boe/view?usp=sharing",
-  //   // repoUrl: "https://replit.com/@MashrafiAlam/FTF-Weather-App-2",
-  // },
+
+  /*
+  {
+    title: "FinTech Focus Weather App",
+    description:
+      "A weather app that delivers real-time forecasts worldwide, showing current conditions and a three-day outlook based on the user's location.",
+    technologies: ["Python", "Flask", "OpenWeather API"],
+    image: "/images/weather.png",
+    demoUrl:
+      "https://drive.google.com/file/d/1WdWFLjX1RC3wM0LR9Jp2YswwVAwo5boe/view?usp=sharing",
+    // repoUrl:
+    //   "https://replit.com/@MashrafiAlam/FTF-Weather-App-2",
+  },
+  */
+
   {
     title: "Discord Music Bot",
     description:
@@ -164,6 +197,7 @@ const projects: ProjectProps[] = [
       "https://photos.google.com/share/AF1QipM98JBT3MIDm-JN2YyQVtM2agU3yMzoaU3lzIvR0l8Ls-mK65OYZDh51NeiH8sjJw/photo/AF1QipOEoqB5UZ7_-FzkikLJk4MvfqfPsYh6LGTN9ijG?key=aWtId3V5Z1JIZUdVMnloMzFXREhnWmZBVmJLeFNn",
     repoUrl: "https://github.com/vickyc5/ditto-discord-bot",
   },
+
   {
     title: "Keysanity Typing Game",
     description:
@@ -185,67 +219,119 @@ const ProjectCard = ({
   presentationUrl,
   index,
 }: ProjectProps & { index: number }) => (
-  <div className="group relative bg-white rounded-2xl overflow-hidden border border-portfolio-mauve/20 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+  <div
+    className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+    style={{
+      background:
+        "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f1ebe9 100%)",
+      border: "1px solid rgb(237 110 146 / 0.18)",
+    }}
+  >
+    {/* Project Image */}
     <div className="relative h-48 overflow-hidden">
       {image ? (
         <img src={image} alt={title} className="w-full h-full object-cover" />
       ) : (
-        <div className="w-full h-full bg-gradient-to-br from-portfolio-pink/40 via-portfolio-mauve/40 to-portfolio-purple/40 flex items-center justify-center">
-          <span className="font-serif-display italic text-7xl text-white/40">
+        <div
+          className="w-full h-full flex items-center justify-center"
+          style={{
+            background:
+              "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+          }}
+        >
+          <span
+            className="font-serif-display italic text-7xl"
+            style={{
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+            }}
+          >
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
       )}
     </div>
 
+    {/* Project Content */}
     <div className="p-6">
-      <h3 className="font-serif-display text-2xl mb-2 text-portfolio-navy">
+      <h3
+        className="font-serif-display text-2xl mb-2"
+        style={{
+          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+        }}
+      >
         {title}
       </h3>
-      <p className="text-portfolio-navy mb-4 text-sm leading-relaxed font-light">
+
+      <p
+        className="mb-4 text-sm leading-relaxed font-light"
+        style={{
+          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+        }}
+      >
         {description}
       </p>
 
+      {/* Technologies */}
       <div className="flex flex-wrap gap-2 mb-5">
         {technologies.map((tech, i) => (
           <TechTag key={i} tech={tech} />
         ))}
       </div>
 
-      <div className="flex gap-3 pt-4 border-t flex-wrap">
+      {/* Project Links */}
+      <div
+        className="flex gap-3 pt-4 flex-wrap"
+        style={{
+          borderTop: "1px solid rgb(237 110 146 / 0.18)",
+        }}
+      >
         {demoUrl && (
           <Button
             variant="ghost"
             size="sm"
             asChild
-            className="text-portfolio-navy hover:bg-portfolio-pink/20"
+            className="transition-colors"
+            style={{
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+            }}
           >
             <a href={demoUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={14} className="mr-1.5" /> Preview
+              <ExternalLink size={14} className="mr-1.5" />
+              Preview
             </a>
           </Button>
         )}
+
         {presentationUrl && (
           <Button
             variant="ghost"
             size="sm"
             asChild
-            className="text-portfolio-navy hover:bg-portfolio-pink/20"
+            className="transition-colors"
+            style={{
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+            }}
           >
             <a href={presentationUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={14} className="mr-1.5" /> Live Presentation
+              <ExternalLink size={14} className="mr-1.5" />
+              Live Presentation
             </a>
           </Button>
         )}
+
         {repoUrl && (
           <Button
             variant="ghost"
             size="sm"
             asChild
-            className="text-portfolio-navy hover:bg-portfolio-pink/20"
+            className="transition-colors"
+            style={{
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+            }}
           >
             <a href={repoUrl} target="_blank" rel="noopener noreferrer">
-              <Github size={14} className="mr-1.5" /> Code
+              <Github size={14} className="mr-1.5" />
+              Code
             </a>
           </Button>
         )}
@@ -256,34 +342,77 @@ const ProjectCard = ({
 
 const ProjectsSection = () => {
   const [showAll, setShowAll] = useState(false);
+
   const visibleProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-portfolio-cream/40 blur-3xl"></div>
+    <section
+      id="projects"
+      className="py-24 relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+      }}
+    >
+      {/* Decorative background element */}
+      <div
+        className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
+        style={{
+          backgroundColor: "rgb(45 106 79 / 0.07)",
+        }}
+      ></div>
 
       <div className="container relative">
+        {/* Section Heading */}
         <div className="flex flex-col items-center text-center mb-16">
-          <p className="section-eyebrow">— What I've Built —</p>
-          <h2 className="section-title">Projects</h2>
+          <p
+            className="section-eyebrow"
+            style={{
+              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+            }}
+          >
+            — What I've Built —
+          </p>
+
+          <h2
+            className="section-title"
+            style={{
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+            }}
+          >
+            Projects
+          </h2>
         </div>
 
+        {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {visibleProjects.map((project, index) => (
             <ProjectCard key={index} index={index} {...project} />
           ))}
         </div>
 
+        {/* View More */}
         <div className="mt-12 text-center flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             variant="outline"
-            className="border-portfolio-navy/40 text-portfolio-navy hover:bg-portfolio-navy/5 px-8 py-6 rounded-full"
+            className="px-8 py-6 rounded-full transition-all"
+            style={{
+              borderColor: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              backgroundColor: "rgb(255 255 255 / 0.25)",
+            }}
             onClick={() => setShowAll(!showAll)}
           >
             {showAll ? "Show Less" : "View More"}
           </Button>
-          {/* <Button
-            className="bg-portfolio-navy hover:bg-portfolio-navy/90 text-white px-8 py-6 rounded-full shadow-lg"
+
+          {/*
+          <Button
+            className="text-white px-8 py-6 rounded-full shadow-lg"
+            style={{
+              backgroundColor:
+                "rgb(164 19 60 / var(--tw-bg-opacity, 1))",
+            }}
             asChild
           >
             <a
@@ -291,9 +420,11 @@ const ProjectsSection = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Github size={18} className="mr-2" /> Visit My GitHub
+              <Github size={18} className="mr-2" />
+              Visit My GitHub
             </a>
-          </Button> */}
+          </Button>
+          */}
         </div>
       </div>
     </section>

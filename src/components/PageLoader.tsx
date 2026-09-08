@@ -5,19 +5,32 @@ const PageLoader = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 800);
+
     return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-portfolio-cream dark:bg-gray-900 flex items-center justify-center z-50">
+      <div
+        className="fixed inset-0 flex items-center justify-center z-50"
+        style={{
+          background:
+            "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+        }}
+      >
         <div className="flex flex-col items-center gap-4">
           <img
-            src="/logo.png"
+            src="/logo2.png"
             alt="Loading"
-            className="w-40 h-40 object-contain"
+            className="w-50 h-50 object-contain"
           />
-          <p className="text-portfolio-navy/50 dark:text-white/50 text-sm tracking-widest uppercase">
+
+          <p
+            className="text-sm tracking-widest uppercase"
+            style={{
+              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+            }}
+          >
             Loading...
           </p>
         </div>
