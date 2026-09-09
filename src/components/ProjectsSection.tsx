@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import { Button } from "@/components/ui/button";
-
 import { ExternalLink, Github } from "lucide-react";
 
 interface ProjectProps {
@@ -60,7 +58,6 @@ const techIcons: Record<string, string> = {
 
 const TechTag = ({ tech }: { tech: string }) => {
   const [imgFailed, setImgFailed] = React.useState(false);
-
   const iconSrc = techIcons[tech];
 
   return (
@@ -92,9 +89,9 @@ const projects: ProjectProps[] = [
   //     "An app for Hunter College students to discover and join campus clubs, share announcements, and stay connected with their college community.",
   //   technologies: ["React", "Node.js", "Express.js", "Prisma", "Supabase"],
   //   image: "/images/",
-  //   demoUrl: "",
-  //   repoUrl: "https://github.com/farmiha/cuny-marketplace",
+  //   demoUrl: "https://github.com/farmiha/cuny-marketplace",
   // },
+
   {
     title: "HunterConnect",
     description:
@@ -116,7 +113,7 @@ const projects: ProjectProps[] = [
     repoUrl: "https://github.com/sanilac6459/job-agent",
   },
 
-  /*
+  /**
   {
     title: "AuraTracks",
     description:
@@ -171,7 +168,7 @@ const projects: ProjectProps[] = [
     repoUrl: "https://github.com/sanilac6459",
   },
 
-  /*
+  /**
   {
     title: "FinTech Focus Weather App",
     description:
@@ -290,7 +287,7 @@ const ProjectCard = ({
             variant="ghost"
             size="sm"
             asChild
-            className="transition-colors"
+            className="relative transition-colors hover:bg-transparent hover:text-[rgb(201_24_74_/_var(--tw-text-opacity,1))] after:content-[''] after:absolute after:left-2 after:right-2 after:bottom-0 after:h-0.5 after:w-0 hover:after:w-[calc(100%-1rem)] after:bg-[#C9184A] after:transition-all"
             style={{
               color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
@@ -307,7 +304,7 @@ const ProjectCard = ({
             variant="ghost"
             size="sm"
             asChild
-            className="transition-colors"
+            className="relative transition-colors hover:bg-transparent hover:text-[rgb(201_24_74_/_var(--tw-text-opacity,1))] after:content-[''] after:absolute after:left-2 after:right-2 after:bottom-0 after:h-0.5 after:w-0 hover:after:w-[calc(100%-1rem)] after:bg-[#C9184A] after:transition-all"
             style={{
               color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
@@ -324,7 +321,7 @@ const ProjectCard = ({
             variant="ghost"
             size="sm"
             asChild
-            className="transition-colors"
+            className="relative transition-colors hover:bg-transparent hover:text-[rgb(201_24_74_/_var(--tw-text-opacity,1))] after:content-[''] after:absolute after:left-2 after:right-2 after:bottom-0 after:h-0.5 after:w-0 hover:after:w-[calc(100%-1rem)] after:bg-[#C9184A] after:transition-all"
             style={{
               color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
             }}
@@ -406,7 +403,7 @@ const ProjectsSection = () => {
             {showAll ? "Show Less" : "View More"}
           </Button>
 
-          {/*
+          {/**
           <Button
             className="text-white px-8 py-6 rounded-full shadow-lg"
             style={{
