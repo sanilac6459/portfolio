@@ -26,7 +26,9 @@ const ContactSection = () => {
 
     const response = await fetch("https://formspree.io/f/xzdwlbny", {
       method: "POST",
+
       body: formData,
+
       headers: {
         Accept: "application/json",
       },
@@ -34,6 +36,7 @@ const ContactSection = () => {
 
     if (response.ok) {
       form.reset();
+
       setError(false);
     } else {
       setError(true);
@@ -202,7 +205,7 @@ const ContactSection = () => {
               {/* Email */}
               <a
                 href="mailto:sanilachowdhury@gmail.com"
-                className="flex items-center gap-4 p-4 rounded-2xl transition-colors shadow-sm"
+                className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1"
                 style={{
                   background:
                     "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f1ebe9 100%)",
@@ -249,7 +252,7 @@ const ContactSection = () => {
                 href="https://github.com/sanilac6459"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl transition-colors shadow-sm"
+                className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1"
                 style={{
                   background:
                     "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f1ebe9 100%)",
@@ -296,7 +299,7 @@ const ContactSection = () => {
                 href="https://www.linkedin.com/in/sanilachowdhury/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl transition-colors shadow-sm"
+                className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1"
                 style={{
                   background:
                     "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f1ebe9 100%)",
