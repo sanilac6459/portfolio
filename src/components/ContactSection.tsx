@@ -42,7 +42,7 @@ const ContactSection = () => {
       className="py-24 relative overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #FFF8F7 0%, #F8EFF0 45%, #F2E3E6 75%, #E9D5DA 100%)",
+          "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
       }}
     >
       {/* Success / Error Modal */}
@@ -110,7 +110,7 @@ const ContactSection = () => {
                   <CheckCircle
                     size={32}
                     style={{
-                      color: "#800F2F",
+                      color: "#A4133C",
                     }}
                   />
                 </div>
@@ -118,7 +118,7 @@ const ContactSection = () => {
                 <h3
                   className="font-serif-display text-xl mb-2"
                   style={{
-                    color: "#800F2F",
+                    color: "#A4133C",
                   }}
                 >
                   Message Sent!
@@ -127,7 +127,7 @@ const ContactSection = () => {
                 <p
                   className="text-sm"
                   style={{
-                    color: "#590D22",
+                    color: "#A4133C",
                   }}
                 >
                   Thank you for reaching out. I'll get back to you soon.
@@ -137,7 +137,7 @@ const ContactSection = () => {
                   onClick={() => setShowModal(false)}
                   className="mt-6 text-white rounded-full px-8"
                   style={{
-                    backgroundColor: "#800F2F",
+                    backgroundColor: "#A4133C",
                   }}
                 >
                   Close
