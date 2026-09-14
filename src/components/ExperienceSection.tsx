@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 
 interface Role {
   title: string;
@@ -69,7 +71,6 @@ const experiences: ExperienceProps[] = [
           "Mentored project leads in the club's Project Development Program, supporting student teams through semester-long collaborative projects by reviewing proposals, refining technical scopes, and providing guidance to ensure successful and educational outcomes.",
         ],
       },
-
       {
         title: "Web Developer",
         duration: "January 2025 — August 2025",
@@ -120,10 +121,88 @@ const experiences: ExperienceProps[] = [
   },
 ];
 
+// Interpolates a color along the section's diagonal gradient stops,
+// so each rose's backdrop can match its local background shade.
+const GRADIENT_STOPS: { stop: number; color: [number, number, number] }[] = [
+  { stop: 0, color: [255, 248, 247] }, // #FFF8F7
+  { stop: 0.35, color: [248, 240, 241] }, // #F8F0F1
+  { stop: 0.65, color: [235, 216, 221] }, // #EBD8DD
+  { stop: 1, color: [217, 184, 192] }, // #D9B8C0
+];
+
+function getGradientColorAt(t: number): string {
+  const clamped = Math.min(1, Math.max(0, t));
+  let start = GRADIENT_STOPS[0];
+  let end = GRADIENT_STOPS[GRADIENT_STOPS.length - 1];
+
+  for (let i = 0; i < GRADIENT_STOPS.length - 1; i++) {
+    if (
+      clamped >= GRADIENT_STOPS[i].stop &&
+      clamped <= GRADIENT_STOPS[i + 1].stop
+    ) {
+      start = GRADIENT_STOPS[i];
+      end = GRADIENT_STOPS[i + 1];
+      break;
+    }
+  }
+
+  const range = end.stop - start.stop || 1;
+  const localT = (clamped - start.stop) / range;
+
+  const r = Math.round(
+    start.color[0] + (end.color[0] - start.color[0]) * localT,
+  );
+  const g = Math.round(
+    start.color[1] + (end.color[1] - start.color[1]) * localT,
+  );
+  const b = Math.round(
+    start.color[2] + (end.color[2] - start.color[2]) * localT,
+  );
+
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+function toRgba(rgb: string, alpha: number): string {
+  return rgb.replace("rgb", "rgba").replace(")", `, ${alpha})`);
+}
+
 const ExperienceSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const roseRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [roseColors, setRoseColors] = useState<string[]>(() =>
+    experiences.map((_, i) => getGradientColorAt(i / (experiences.length - 1))),
+  );
+
+  useEffect(() => {
+    function updateColors() {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const sectionRect = section.getBoundingClientRect();
+      const sectionHeight = section.offsetHeight || 1;
+
+      const newColors = roseRefs.current.map((el) => {
+        if (!el) return getGradientColorAt(0);
+        const elRect = el.getBoundingClientRect();
+        // Position of the rose's own center, relative to the section's box,
+        // matches the same coordinate space the section's gradient is painted in.
+        const relativeTop = elRect.top - sectionRect.top + elRect.height / 2;
+        const t = relativeTop / sectionHeight;
+        return getGradientColorAt(t);
+      });
+
+      setRoseColors(newColors);
+    }
+
+    updateColors();
+    window.addEventListener("resize", updateColors);
+    return () => window.removeEventListener("resize", updateColors);
+  }, []);
+
   return (
     <section
       id="experience"
+      ref={sectionRef}
       className="py-24 relative overflow-hidden"
       style={{
         background:
@@ -136,7 +215,7 @@ const ExperienceSection = () => {
         style={{
           backgroundColor: "rgba(128, 15, 47, 0.06)",
         }}
-      ></div>
+      />
 
       <div className="container relative">
         {/* Section Heading */}
@@ -160,83 +239,194 @@ const ExperienceSection = () => {
           </h2>
         </div>
 
-        <div className="max-w-5xl mx-auto space-y-6">
-          {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-              style={{
-                background:
-                  "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
-                border: "1px solid rgba(128, 15, 47, 0.15)",
-              }}
-            >
-              {exp.roles ? (
-                <>
-                  {/* Company Header */}
-                  <div className="flex items-start gap-4 mb-4">
-                    <img
-                      src={exp.logo}
-                      alt={exp.company}
-                      className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
+        {/* Timeline */}
+        <div className="max-w-5xl mx-auto relative">
+          {/* Vertical Timeline Line */}
+          <div
+            className="absolute left-5 top-0 bottom-0 w-px hidden sm:block"
+            style={{
+              backgroundColor: "rgba(128, 15, 47, 0.25)",
+            }}
+          />
+
+          <div className="space-y-8">
+            {experiences.map((exp, index) => {
+              const localColor = roseColors[index] ?? getGradientColorAt(0);
+              return (
+                <div key={index} className="relative sm:pl-16">
+                  {/* Rose */}
+                  <div
+                    ref={(el) => {
+                      roseRefs.current[index] = el;
+                    }}
+                    className="absolute -left-2 -top-2 hidden sm:flex items-start justify-center w-14 h-28 z-10"
+                  >
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background: `radial-gradient(ellipse 45% 55% at center, ${toRgba(localColor, 0.55)} 0%, ${toRgba(localColor, 0.25)} 55%, ${toRgba(localColor, 0)} 80%)`,
+                      }}
                     />
-
-                    <div className="flex-1">
-                      <h3
-                        className="text-xl font-bold"
-                        style={{
-                          color: "#800F2F",
-                        }}
-                      >
-                        {exp.company}
-                      </h3>
-
-                      <p
-                        className="text-sm mt-1"
-                        style={{
-                          color: "#A4133C",
-                        }}
-                      >
-                        {exp.location}
-                      </p>
-                    </div>
+                    <img
+                      src="/images/rose2.png"
+                      alt=""
+                      className="relative w-full h-full object-contain"
+                    />
                   </div>
 
-                  {/* Multiple Roles */}
+                  {/* Experience Card */}
                   <div
-                    className="space-y-6 pl-4 ml-6"
+                    className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                     style={{
-                      borderLeft: "2px solid rgba(164, 19, 60, 0.25)",
+                      background:
+                        "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
+                      border: "1px solid rgba(128, 15, 47, 0.15)",
                     }}
                   >
-                    {exp.roles.map((role, idx) => (
-                      <div key={idx} className="pl-4">
-                        <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
-                          <h4
-                            className="font-bold text-lg"
-                            style={{
-                              color: "#800F2F",
-                            }}
-                          >
-                            {role.title}
-                          </h4>
+                    {exp.roles ? (
+                      <>
+                        {/* Company Header */}
+                        <div className="flex items-start gap-4 mb-4">
+                          <img
+                            src={exp.logo}
+                            alt={exp.company}
+                            className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
+                          />
+
+                          <div className="flex-1">
+                            <h3
+                              className="text-xl font-bold"
+                              style={{
+                                color: "#800F2F",
+                              }}
+                            >
+                              {exp.company}
+                            </h3>
+
+                            <p
+                              className="text-sm mt-1"
+                              style={{
+                                color: "#A4133C",
+                              }}
+                            >
+                              {exp.location}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Multiple Roles */}
+                        <div
+                          className="space-y-6 pl-4 ml-6"
+                          style={{
+                            borderLeft: "2px solid rgba(164, 19, 60, 0.25)",
+                          }}
+                        >
+                          {exp.roles.map((role, idx) => (
+                            <div key={idx} className="pl-4">
+                              <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
+                                <h4
+                                  className="font-bold text-lg"
+                                  style={{
+                                    color: "#800F2F",
+                                  }}
+                                >
+                                  {role.title}
+                                </h4>
+
+                                <span
+                                  className="flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
+                                  style={{
+                                    backgroundColor: "rgba(164, 19, 60, 0.04)",
+                                    border: "1px solid rgba(164, 19, 60, 0.18)",
+                                    color: "#A4133C",
+                                  }}
+                                >
+                                  {role.duration}
+                                </span>
+                              </div>
+
+                              <ul className="space-y-2">
+                                {role.bullets.map((bullet, bIdx) => (
+                                  <li
+                                    key={bIdx}
+                                    className="flex items-start gap-2 text-sm leading-relaxed"
+                                    style={{
+                                      color: "#590D22",
+                                    }}
+                                  >
+                                    <span
+                                      className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                                      style={{
+                                        backgroundColor: "#A4133C",
+                                      }}
+                                    />
+                                    {bullet}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        {/* Single Role */}
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
+                          <div className="flex items-start gap-4">
+                            <img
+                              src={exp.logo}
+                              alt={exp.company}
+                              className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
+                            />
+
+                            <div className="flex-1 min-w-0">
+                              <h3
+                                className="text-xl font-bold"
+                                style={{
+                                  color: "#800F2F",
+                                }}
+                              >
+                                {exp.title}
+                              </h3>
+
+                              <p
+                                className="text-sm mt-1"
+                                style={{
+                                  color: "#A4133C",
+                                }}
+                              >
+                                <span
+                                  className="font-semibold"
+                                  style={{
+                                    color: "#A4133C",
+                                  }}
+                                >
+                                  {exp.company}
+                                </span>
+
+                                <span className="mx-1.5 opacity-70">·</span>
+
+                                {exp.location}
+                              </p>
+                            </div>
+                          </div>
 
                           <span
-                            className="flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
+                            className="self-start flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
                             style={{
                               backgroundColor: "rgba(164, 19, 60, 0.04)",
                               border: "1px solid rgba(164, 19, 60, 0.18)",
                               color: "#A4133C",
                             }}
                           >
-                            {role.duration}
+                            {exp.duration}
                           </span>
                         </div>
 
                         <ul className="space-y-2">
-                          {role.bullets.map((bullet, bIdx) => (
+                          {exp.bullets!.map((bullet, idx) => (
                             <li
-                              key={bIdx}
+                              key={idx}
                               className="flex items-start gap-2 text-sm leading-relaxed"
                               style={{
                                 color: "#590D22",
@@ -247,95 +437,18 @@ const ExperienceSection = () => {
                                 style={{
                                   backgroundColor: "#A4133C",
                                 }}
-                              ></span>
-
+                              />
                               {bullet}
                             </li>
                           ))}
                         </ul>
-                      </div>
-                    ))}
+                      </>
+                    )}
                   </div>
-                </>
-              ) : (
-                <>
-                  {/* Single Role */}
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
-                    <div className="flex items-start gap-4">
-                      <img
-                        src={exp.logo}
-                        alt={exp.company}
-                        className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
-                      />
-
-                      <div className="flex-1 min-w-0">
-                        <h3
-                          className="text-xl font-bold"
-                          style={{
-                            color: "#800F2F",
-                          }}
-                        >
-                          {exp.title}
-                        </h3>
-
-                        <p
-                          className="text-sm mt-1"
-                          style={{
-                            color: "#A4133C",
-                          }}
-                        >
-                          <span
-                            className="font-semibold"
-                            style={{
-                              color: "#A4133C",
-                            }}
-                          >
-                            {exp.company}
-                          </span>
-
-                          <span className="mx-1.5 opacity-70">·</span>
-
-                          {exp.location}
-                        </p>
-                      </div>
-                    </div>
-
-                    <span
-                      className="self-start flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
-                      style={{
-                        backgroundColor: "rgba(164, 19, 60, 0.04)",
-                        border: "1px solid rgba(164, 19, 60, 0.18)",
-                        color: "#A4133C",
-                      }}
-                    >
-                      {exp.duration}
-                    </span>
-                  </div>
-
-                  <ul className="space-y-2">
-                    {exp.bullets!.map((bullet, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-2 text-sm leading-relaxed"
-                        style={{
-                          color: "#800F2F",
-                        }}
-                      >
-                        <span
-                          className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
-                          style={{
-                            backgroundColor: "#A4133C",
-                          }}
-                        ></span>
-
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
-          ))}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
