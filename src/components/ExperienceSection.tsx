@@ -127,7 +127,7 @@ const ExperienceSection = () => {
       className="py-24 relative overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #FFF7F6 0%, #F7E9EC 40%, #EED9DE 70%, #D9B8C0 100%)",
+          "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
       }}
     >
       {/* Decorative background element */}

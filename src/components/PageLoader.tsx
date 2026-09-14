@@ -15,7 +15,7 @@ const PageLoader = ({ children }: { children: React.ReactNode }) => {
         className="fixed inset-0 flex items-center justify-center z-50"
         style={{
           background:
-            "linear-gradient(135deg, #FFF8F7 0%, #F8EFF0 45%, #F2E3E6 75%, #E9D5DA 100%)",
+            "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
         }}
       >
         <div className="flex flex-col items-center gap-4">

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const roles = [
   "Software Engineer",
+  "CS Student at Hunter College",
   "Data Analyst",
   "Full-Stack Developer",
   "Tech Enthusiast",
@@ -45,7 +46,7 @@ const HomeSection = () => {
       className="min-h-screen flex items-center relative overflow-hidden grain-overlay"
       style={{
         background:
-          "linear-gradient(135deg, #FFF8F7 0%, #F8EFF0 45%, #F2E3E6 75%, #E9D5DA 100%)",
+          "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
       }}
     >
       <div className="container mx-auto px-4 z-10 w-full">
