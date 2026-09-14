@@ -15,12 +15,12 @@ const PageLoader = ({ children }: { children: React.ReactNode }) => {
         className="fixed inset-0 flex items-center justify-center z-50"
         style={{
           background:
-            "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+            "linear-gradient(135deg, #FFF8F7 0%, #F8EFF0 45%, #F2E3E6 75%, #E9D5DA 100%)",
         }}
       >
         <div className="flex flex-col items-center gap-4">
           <img
-            src="/logo3.png"
+            src="/public/images/logo7.png"
             alt="Loading"
             className="w-50 h-50 object-contain"
           />
@@ -28,7 +28,7 @@ const PageLoader = ({ children }: { children: React.ReactNode }) => {
           <p
             className="text-sm tracking-widest uppercase"
             style={{
-              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "#800F2F",
             }}
           >
             Loading...

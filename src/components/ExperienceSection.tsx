@@ -127,14 +127,14 @@ const ExperienceSection = () => {
       className="py-24 relative overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+          "linear-gradient(135deg, #FFF7F6 0%, #F7E9EC 40%, #EED9DE 70%, #D9B8C0 100%)",
       }}
     >
       {/* Decorative background element */}
       <div
         className="absolute -top-20 -left-20 w-80 h-80 rounded-full blur-3xl"
         style={{
-          backgroundColor: "rgb(64 145 108 / 0.07)",
+          backgroundColor: "rgba(128, 15, 47, 0.06)",
         }}
       ></div>
 
@@ -144,7 +144,7 @@ const ExperienceSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+              color: "#A4133C",
             }}
           >
             — My Journey —
@@ -153,7 +153,7 @@ const ExperienceSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "#800F2F",
             }}
           >
             Experience
@@ -167,8 +167,8 @@ const ExperienceSection = () => {
               className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
               style={{
                 background:
-                  "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f1ebe9 100%)",
-                border: "1px solid rgb(237 110 146 / 0.18)",
+                  "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
+                border: "1px solid rgba(128, 15, 47, 0.15)",
               }}
             >
               {exp.roles ? (
@@ -185,7 +185,7 @@ const ExperienceSection = () => {
                       <h3
                         className="text-xl font-bold"
                         style={{
-                          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                          color: "#800F2F",
                         }}
                       >
                         {exp.company}
@@ -194,7 +194,7 @@ const ExperienceSection = () => {
                       <p
                         className="text-sm mt-1"
                         style={{
-                          color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+                          color: "#A4133C",
                         }}
                       >
                         {exp.location}
@@ -206,7 +206,7 @@ const ExperienceSection = () => {
                   <div
                     className="space-y-6 pl-4 ml-6"
                     style={{
-                      borderLeft: "2px solid rgb(237 110 146 / 0.3)",
+                      borderLeft: "2px solid rgba(164, 19, 60, 0.25)",
                     }}
                   >
                     {exp.roles.map((role, idx) => (
@@ -215,8 +215,7 @@ const ExperienceSection = () => {
                           <h4
                             className="font-bold text-lg"
                             style={{
-                              color:
-                                "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                              color: "#800F2F",
                             }}
                           >
                             {role.title}
@@ -225,10 +224,9 @@ const ExperienceSection = () => {
                           <span
                             className="flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
                             style={{
-                              backgroundColor: "rgb(237 110 146 / 0.06)",
-                              border: "1px solid rgb(237 110 146 / 0.18)",
-                              color:
-                                "rgb(64 145 108 / var(--tw-text-opacity, 1))",
+                              backgroundColor: "rgba(164, 19, 60, 0.04)",
+                              border: "1px solid rgba(164, 19, 60, 0.18)",
+                              color: "#A4133C",
                             }}
                           >
                             {role.duration}
@@ -241,15 +239,13 @@ const ExperienceSection = () => {
                               key={bIdx}
                               className="flex items-start gap-2 text-sm leading-relaxed"
                               style={{
-                                color:
-                                  "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                                color: "#590D22",
                               }}
                             >
                               <span
                                 className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
                                 style={{
-                                  backgroundColor:
-                                    "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+                                  backgroundColor: "#A4133C",
                                 }}
                               ></span>
 
@@ -276,7 +272,7 @@ const ExperienceSection = () => {
                         <h3
                           className="text-xl font-bold"
                           style={{
-                            color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                            color: "#800F2F",
                           }}
                         >
                           {exp.title}
@@ -285,15 +281,13 @@ const ExperienceSection = () => {
                         <p
                           className="text-sm mt-1"
                           style={{
-                            color:
-                              "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+                            color: "#A4133C",
                           }}
                         >
                           <span
                             className="font-semibold"
                             style={{
-                              color:
-                                "rgb(64 145 108 / var(--tw-text-opacity, 1))",
+                              color: "#A4133C",
                             }}
                           >
                             {exp.company}
@@ -309,9 +303,9 @@ const ExperienceSection = () => {
                     <span
                       className="self-start flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
                       style={{
-                        backgroundColor: "rgb(237 110 146 / 0.06)",
-                        border: "1px solid rgb(237 110 146 / 0.18)",
-                        color: "rgb(64 145 108 / var(--tw-text-opacity, 1))",
+                        backgroundColor: "rgba(164, 19, 60, 0.04)",
+                        border: "1px solid rgba(164, 19, 60, 0.18)",
+                        color: "#A4133C",
                       }}
                     >
                       {exp.duration}
@@ -324,14 +318,13 @@ const ExperienceSection = () => {
                         key={idx}
                         className="flex items-start gap-2 text-sm leading-relaxed"
                         style={{
-                          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                          color: "#800F2F",
                         }}
                       >
                         <span
                           className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
                           style={{
-                            backgroundColor:
-                              "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+                            backgroundColor: "#A4133C",
                           }}
                         ></span>
 

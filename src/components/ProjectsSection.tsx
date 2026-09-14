@@ -64,9 +64,9 @@ const TechTag = ({ tech }: { tech: string }) => {
     <span
       className="flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-full"
       style={{
-        backgroundColor: "rgb(237 110 146 / 0.08)",
-        color: "rgb(64 145 108 / var(--tw-text-opacity, 1))",
-        border: "1px solid rgb(237 110 146 / 0.20)",
+        backgroundColor: "rgba(164, 19, 60, 0.06)",
+        color: "#590D22",
+        border: "1px solid rgba(128, 15, 47, 0.16)",
       }}
     >
       {iconSrc && !imgFailed && (
@@ -77,6 +77,7 @@ const TechTag = ({ tech }: { tech: string }) => {
           onError={() => setImgFailed(true)}
         />
       )}
+
       {tech}
     </span>
   );
@@ -177,8 +178,6 @@ const projects: ProjectProps[] = [
     image: "/images/weather.png",
     demoUrl:
       "https://drive.google.com/file/d/1WdWFLjX1RC3wM0LR9Jp2YswwVAwo5boe/view?usp=sharing",
-    // repoUrl:
-    //   "https://replit.com/@MashrafiAlam/FTF-Weather-App-2",
   },
   */
 
@@ -220,8 +219,8 @@ const ProjectCard = ({
     className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
     style={{
       background:
-        "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f1ebe9 100%)",
-      border: "1px solid rgb(237 110 146 / 0.18)",
+        "linear-gradient(135deg, #FFFAF9 0%, #FAF2F2 55%, #F5E9EB 100%)",
+      border: "1px solid rgba(128, 15, 47, 0.10)",
     }}
   >
     {/* Project Image */}
@@ -233,13 +232,13 @@ const ProjectCard = ({
           className="w-full h-full flex items-center justify-center"
           style={{
             background:
-              "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+              "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 50%, #F2E5E8 100%)",
           }}
         >
           <span
             className="font-serif-display italic text-7xl"
             style={{
-              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+              color: "#A4133C",
             }}
           >
             {String(index + 1).padStart(2, "0")}
@@ -253,7 +252,7 @@ const ProjectCard = ({
       <h3
         className="font-serif-display text-2xl mb-2"
         style={{
-          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+          color: "#A4133C",
         }}
       >
         {title}
@@ -262,7 +261,7 @@ const ProjectCard = ({
       <p
         className="mb-4 text-sm leading-relaxed font-light"
         style={{
-          color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+          color: "#590D22",
         }}
       >
         {description}
@@ -279,7 +278,7 @@ const ProjectCard = ({
       <div
         className="flex gap-3 pt-4 flex-wrap"
         style={{
-          borderTop: "1px solid rgb(237 110 146 / 0.18)",
+          borderTop: "1px solid rgba(128, 15, 47, 0.10)",
         }}
       >
         {demoUrl && (
@@ -287,9 +286,9 @@ const ProjectCard = ({
             variant="ghost"
             size="sm"
             asChild
-            className="relative transition-colors hover:bg-transparent hover:text-[rgb(201_24_74_/_var(--tw-text-opacity,1))] after:content-[''] after:absolute after:left-2 after:right-2 after:bottom-0 after:h-0.5 after:w-0 hover:after:w-[calc(100%-1rem)] after:bg-[#C9184A] after:transition-all"
+            className="relative transition-colors hover:bg-transparent"
             style={{
-              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "#A4133C",
             }}
           >
             <a href={demoUrl} target="_blank" rel="noopener noreferrer">
@@ -304,9 +303,9 @@ const ProjectCard = ({
             variant="ghost"
             size="sm"
             asChild
-            className="relative transition-colors hover:bg-transparent hover:text-[rgb(201_24_74_/_var(--tw-text-opacity,1))] after:content-[''] after:absolute after:left-2 after:right-2 after:bottom-0 after:h-0.5 after:w-0 hover:after:w-[calc(100%-1rem)] after:bg-[#C9184A] after:transition-all"
+            className="relative transition-colors hover:bg-transparent"
             style={{
-              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "#A4133C",
             }}
           >
             <a href={presentationUrl} target="_blank" rel="noopener noreferrer">
@@ -321,9 +320,9 @@ const ProjectCard = ({
             variant="ghost"
             size="sm"
             asChild
-            className="relative transition-colors hover:bg-transparent hover:text-[rgb(201_24_74_/_var(--tw-text-opacity,1))] after:content-[''] after:absolute after:left-2 after:right-2 after:bottom-0 after:h-0.5 after:w-0 hover:after:w-[calc(100%-1rem)] after:bg-[#C9184A] after:transition-all"
+            className="relative transition-colors hover:bg-transparent"
             style={{
-              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "#A4133C",
             }}
           >
             <a href={repoUrl} target="_blank" rel="noopener noreferrer">
@@ -348,14 +347,14 @@ const ProjectsSection = () => {
       className="py-24 relative overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+          "linear-gradient(135deg, #FFF8F7 0%, #F8EFF0 45%, #F2E3E6 75%, #E9D5DA 100%)",
       }}
     >
       {/* Decorative background element */}
       <div
         className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
         style={{
-          backgroundColor: "rgb(64 145 108 / 0.07)",
+          backgroundColor: "rgba(128, 15, 47, 0.06)",
         }}
       ></div>
 
@@ -365,7 +364,7 @@ const ProjectsSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+              color: "#A4133C",
             }}
           >
             — What I've Built —
@@ -374,7 +373,7 @@ const ProjectsSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "#800F2F",
             }}
           >
             Projects
@@ -394,9 +393,9 @@ const ProjectsSection = () => {
             variant="outline"
             className="px-8 py-6 rounded-full transition-all"
             style={{
-              borderColor: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
-              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
-              backgroundColor: "rgb(255 255 255 / 0.25)",
+              borderColor: "#800F2F",
+              color: "#800F2F",
+              backgroundColor: "rgba(255, 255, 255, 0.25)",
             }}
             onClick={() => setShowAll(!showAll)}
           >
@@ -407,8 +406,7 @@ const ProjectsSection = () => {
           <Button
             className="text-white px-8 py-6 rounded-full shadow-lg"
             style={{
-              backgroundColor:
-                "rgb(164 19 60 / var(--tw-bg-opacity, 1))",
+              backgroundColor: "#A4133C",
             }}
             asChild
           >
