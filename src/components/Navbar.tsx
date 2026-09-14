@@ -59,7 +59,7 @@ const Navbar = () => {
               color: "#800F2F",
             }}
           >
-            Sanila Chowdhury ♡
+            Sanila Chowdhury
           </Link>
 
           {/* Desktop Navigation */}
