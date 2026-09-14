@@ -45,7 +45,7 @@ const HomeSection = () => {
       className="min-h-screen flex items-center relative overflow-hidden grain-overlay"
       style={{
         background:
-          "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+          "linear-gradient(135deg, #FFF8F7 0%, #F8EFF0 45%, #F2E3E6 75%, #E9D5DA 100%)",
       }}
     >
       <div className="container mx-auto px-4 z-10 w-full">
@@ -54,7 +54,7 @@ const HomeSection = () => {
           <p
             className="section-eyebrow text-xs sm:text-sm whitespace-nowrap"
             style={{
-              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+              color: "#A4133C",
             }}
           >
             — Welcome To My Portfolio —
@@ -66,7 +66,7 @@ const HomeSection = () => {
             <span
               className="block text-4xl md:text-6xl"
               style={{
-                color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                color: "#800F2F",
               }}
             >
               Hi! I'm Sanila
@@ -76,11 +76,20 @@ const HomeSection = () => {
             <span
               className="block mt-2 italic text-4xl md:text-6xl"
               style={{
-                color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+                color: "#A4133C",
               }}
             >
               {displayed}
-              <span className="animate-pulse">|</span>
+
+              {/* Typing Cursor */}
+              <span
+                className="animate-pulse"
+                style={{
+                  color: "#A4133C",
+                }}
+              >
+                |
+              </span>
             </span>
           </h1>
 
@@ -89,7 +98,7 @@ const HomeSection = () => {
             <p
               className="text-base md:text-lg max-w-xl font-light"
               style={{
-                color: "rgb(164 19 60 / var(--tw-text-opacity, 1))",
+                color: "#590D22",
               }}
             >
               The best part of every project isn't the finished product. It's
@@ -103,7 +112,7 @@ const HomeSection = () => {
             <Button
               className="text-white px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
               style={{
-                backgroundColor: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                backgroundColor: "#A4133C",
               }}
               asChild
             >
@@ -113,10 +122,11 @@ const HomeSection = () => {
             {/* View My Work */}
             <Button
               variant="outline"
-              className="px-8 py-6 rounded-full backdrop-blur-sm bg-white/30 hover:bg-white/30 hover:text-[rgb(201_24_74_/_var(--tw-text-opacity,1))] transition-all"
+              className="px-8 py-6 rounded-full backdrop-blur-sm transition-all"
               style={{
-                borderColor: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
-                color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                backgroundColor: "rgba(255, 255, 255, 0.3)",
+                borderColor: "#800F2F",
+                color: "#800F2F",
               }}
               asChild
             >

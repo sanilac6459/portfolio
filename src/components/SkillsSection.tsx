@@ -103,21 +103,21 @@ const SkillsSection = () => {
       className="py-24 relative overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+          "linear-gradient(135deg, #FFF8F7 0%, #F8EFF0 45%, #F2E3E6 75%, #E9D5DA 100%)",
       }}
     >
       {/* Decorative background elements */}
       <div
         className="absolute top-1/2 left-0 w-96 h-96 rounded-full blur-3xl -translate-y-1/2"
         style={{
-          backgroundColor: "rgb(64 145 108 / 0)",
+          backgroundColor: "rgba(128, 15, 47, 0.05)",
         }}
       ></div>
 
       <div
         className="absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl"
         style={{
-          backgroundColor: "rgb(237 110 146 / 0.08)",
+          backgroundColor: "rgba(164, 19, 60, 0.06)",
         }}
       ></div>
 
@@ -127,7 +127,7 @@ const SkillsSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+              color: "#A4133C",
             }}
           >
             — What I Work With —
@@ -136,7 +136,7 @@ const SkillsSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "#800F2F",
             }}
           >
             Skills
@@ -150,7 +150,7 @@ const SkillsSection = () => {
               <div className="flex items-center gap-2 mb-5">
                 <span
                   style={{
-                    color: "rgb(64 145 108 / var(--tw-text-opacity, 0.80))",
+                    color: "#800F2F",
                   }}
                 >
                   {category.icon}
@@ -159,7 +159,7 @@ const SkillsSection = () => {
                 <h3
                   className="font-serif-display text-2xl"
                   style={{
-                    color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                    color: "#800F2F",
                   }}
                 >
                   {category.title}
@@ -174,9 +174,9 @@ const SkillsSection = () => {
                     className="flex items-center gap-2 px-4 py-2 rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
                     style={{
                       background:
-                        "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f1ebe9 100%)",
-                      border: "1px solid rgb(237 110 146 / 0.20)",
-                      color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+                        "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
+                      border: "1px solid rgba(128, 15, 47, 0.16)",
+                      color: "#A4133C",
                     }}
                   >
                     <img

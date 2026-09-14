@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Target, Heart, User } from "lucide-react";
 
 const AboutSection = () => {
@@ -9,14 +8,14 @@ const AboutSection = () => {
       className="py-24 relative overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+          "linear-gradient(135deg, #FFF8F7 0%, #F8EFF0 45%, #F2E3E6 75%, #E9D5DA 100%)",
       }}
     >
       {/* Decorative background element */}
       <div
         className="absolute top-20 right-0 w-96 h-96 rounded-full blur-3xl"
         style={{
-          backgroundColor: "rgb(237 110 146 / 0.08)",
+          backgroundColor: "rgba(128, 15, 47, 0.06)",
         }}
       ></div>
 
@@ -26,7 +25,7 @@ const AboutSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "rgb(237 110 146 / var(--tw-text-opacity, 1))",
+              color: "#A4133C",
             }}
           >
             — Hello —
@@ -35,7 +34,7 @@ const AboutSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "#800F2F",
             }}
           >
             About Me
@@ -48,16 +47,16 @@ const AboutSection = () => {
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             style={{
               background:
-                "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f3e9eb 100%)",
-              border: "1px solid rgb(237 110 146 / 0.18)",
+                "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
+              border: "1px solid rgba(128, 15, 47, 0.15)",
             }}
           >
             <div className="flex items-center gap-3 mb-4">
               <div
                 className="p-2 rounded-lg"
                 style={{
-                  backgroundColor: "rgb(237 110 146 / 0.10)",
-                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                  backgroundColor: "rgba(164, 19, 60, 0.08)",
+                  color: "#A4133C",
                 }}
               >
                 <User size={20} />
@@ -66,7 +65,7 @@ const AboutSection = () => {
               <h3
                 className="font-serif-display text-2xl"
                 style={{
-                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                  color: "#A4133C",
                 }}
               >
                 Who I Am
@@ -76,7 +75,7 @@ const AboutSection = () => {
             <div
               className="space-y-3 leading-relaxed text-base"
               style={{
-                color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                color: "#A4133C",
               }}
             >
               <p>
@@ -104,16 +103,16 @@ const AboutSection = () => {
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             style={{
               background:
-                "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f3e9eb 100%)",
-              border: "1px solid rgb(237 110 146 / 0.18)",
+                "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
+              border: "1px solid rgba(128, 15, 47, 0.15)",
             }}
           >
             <div className="flex items-center gap-3 mb-4">
               <div
                 className="p-2 rounded-lg"
                 style={{
-                  backgroundColor: "rgb(237 110 146 / 0.10)",
-                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                  backgroundColor: "rgba(164, 19, 60, 0.08)",
+                  color: "#A4133C",
                 }}
               >
                 <Target size={20} />
@@ -122,7 +121,7 @@ const AboutSection = () => {
               <h3
                 className="font-serif-display text-2xl"
                 style={{
-                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                  color: "#A4133C",
                 }}
               >
                 Goals
@@ -132,7 +131,7 @@ const AboutSection = () => {
             <div
               className="space-y-3 leading-relaxed text-base"
               style={{
-                color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                color: "#A4133C",
               }}
             >
               <p>
@@ -157,16 +156,16 @@ const AboutSection = () => {
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             style={{
               background:
-                "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 65%, #f3e9eb 100%)",
-              border: "1px solid rgb(237 110 146 / 0.18)",
+                "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
+              border: "1px solid rgba(128, 15, 47, 0.15)",
             }}
           >
             <div className="flex items-center gap-3 mb-4">
               <div
                 className="p-2 rounded-lg"
                 style={{
-                  backgroundColor: "rgb(237 110 146 / 0.10)",
-                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                  backgroundColor: "rgba(164, 19, 60, 0.08)",
+                  color: "#A4133C",
                 }}
               >
                 <Heart size={20} />
@@ -175,7 +174,7 @@ const AboutSection = () => {
               <h3
                 className="font-serif-display text-2xl"
                 style={{
-                  color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                  color: "#A4133C",
                 }}
               >
                 Interests
@@ -185,7 +184,7 @@ const AboutSection = () => {
             <div
               className="space-y-3 leading-relaxed text-base"
               style={{
-                color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                color: "#A4133C",
               }}
             >
               <p>

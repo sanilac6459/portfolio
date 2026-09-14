@@ -19,7 +19,9 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -30,6 +32,7 @@ const Navbar = () => {
 
   return (
     <>
+      {/* Navbar */}
       <header
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6",
@@ -41,8 +44,8 @@ const Navbar = () => {
           isScrolled || location.pathname !== "/"
             ? {
                 background:
-                  "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
-                boxShadow: "0 2px 10px rgb(201 24 74 / 0.15)",
+                  "linear-gradient(135deg, #FFF8F7 0%, #F8EFF0 45%, #F2E3E6 75%, #E9D5DA 100%)",
+                boxShadow: "0 2px 10px rgba(89, 13, 34, 0.12)",
               }
             : undefined
         }
@@ -53,7 +56,7 @@ const Navbar = () => {
             to="/"
             className="text-xl md:text-2xl font-serif-display font-semibold transition-colors"
             style={{
-              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "#800F2F",
             }}
           >
             Sanila Chowdhury
@@ -68,15 +71,13 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   cn(
                     "font-medium font-serif-display transition-colors relative",
-                    "hover:text-[#40916C]",
+                    "hover:text-[#A4133C]",
                     isActive &&
-                      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#40916C]",
+                      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#A4133C]",
                   )
                 }
                 style={({ isActive }) => ({
-                  color: isActive
-                    ? "rgb(64 145 108 / var(--tw-text-opacity, 1))"
-                    : "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                  color: isActive ? "#A4133C" : "#800F2F",
                 })}
               >
                 {item.name}
@@ -88,7 +89,7 @@ const Navbar = () => {
           <button
             className="md:hidden transition-colors"
             style={{
-              color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+              color: "#800F2F",
             }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
@@ -106,14 +107,14 @@ const Navbar = () => {
         )}
         style={{
           background:
-            "linear-gradient(135deg, #fffaf9 0%, #f9f0f1 45%, #f3e9eb 75%, #e8f1ec 100%)",
+            "linear-gradient(135deg, #FFF8F7 0%, #F8EFF0 45%, #F2E3E6 75%, #E9D5DA 100%)",
         }}
       >
         {/* Close Button */}
         <button
           className="absolute top-4 right-4 transition-colors"
           style={{
-            color: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+            color: "#800F2F",
           }}
           onClick={() => setMobileMenuOpen(false)}
           aria-label="Close menu"
@@ -130,15 +131,13 @@ const Navbar = () => {
               className={({ isActive }) =>
                 cn(
                   "text-xl font-medium font-serif-display transition-colors relative",
-                  "hover:text-[#40916C]",
+                  "hover:text-[#A4133C]",
                   isActive &&
-                    "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#40916C]",
+                    "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:w-full after:bg-[#A4133C]",
                 )
               }
               style={({ isActive }) => ({
-                color: isActive
-                  ? "rgb(64 145 108 / var(--tw-text-opacity, 1))"
-                  : "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+                color: isActive ? "#A4133C" : "#800F2F",
               })}
             >
               {item.name}

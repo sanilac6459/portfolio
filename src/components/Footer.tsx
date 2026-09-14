@@ -19,20 +19,21 @@ const Footer = () => {
     <footer
       className="relative py-12 text-white overflow-hidden"
       style={{
-        backgroundColor: "rgb(201 24 74 / var(--tw-text-opacity, 1))",
+        backgroundColor: "#A4133C",
       }}
     >
+      {/* Decorative background element */}
       <div
         className="absolute -top-40 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] rounded-full blur-3xl"
         style={{
-          backgroundColor: "rgb(45 106 79 / 0.10)",
+          backgroundColor: "rgba(164, 19, 60, 0.10)",
         }}
       ></div>
 
       <div className="container relative">
         <div className="flex flex-col items-center text-center gap-6">
           {/* Navigation Links */}
-          {/* 
+          {/**
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-2">
             {navLinks.map((item) => (
               <Link
