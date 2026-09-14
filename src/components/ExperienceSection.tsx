@@ -23,7 +23,10 @@ const experiences: ExperienceProps[] = [
     location: "New York, NY",
     duration: "August 2026 — Present",
     logo: "/images/trance4mation.jpeg",
-    bullets: ["Incoming Software Engineer Intern for Fall 2026."],
+    bullets: [
+      "Leading a team of 5 developing TRILL, a real-time multiplayer game for addiction recovery, by breaking features into scoped tasks across frontend, backend, and middleware.",
+      "Contributing to full-stack development with React, Node.js, Express, and Socket.IO for real-time, server-authoritative game state synchronization.",
+    ],
   },
 
   {
@@ -34,7 +37,7 @@ const experiences: ExperienceProps[] = [
     logo: "/images/mta.jpeg",
     bullets: [
       "Analyzed the MTA Power Cable Enterprise Asset Management database with 11,000+ manhole inspection records, using Python, Pandas, and NumPy to detect duplicate entries and drive a ∼15% increase in maintenance activity.",
-      "Developed a Power BI compliance dashboard using DAX measures and Power Query M to evaluate 18,000+ ELM training records against a safety training matrix, supporting compliance reporting for VP-level review.",
+      "Developed a Power BI compliance dashboard using DAX measures and Power Query M to evaluate 18,000+ ELM training records against a safety training matrix, presenting findings to the Office of the Vice President, Chief Operations, to close gaps in the department’s overall compliance.",
       "Built a personnel dashboard consolidating 4 SharePoint lists across 1,200+ employees, using optimized DAX measures to track accident trends and support staffing decisions.",
     ],
   },
@@ -84,8 +87,8 @@ const experiences: ExperienceProps[] = [
     duration: "January 2025",
     logo: "/images/permanence.jpeg",
     bullets: [
-      "Tested ChatGPT across temperature and token limit configurations and optimized prompt design to enhance the LLM’s output accuracy with OpenAI API, reducing token usage by ∼15% and improving result quality to minimize additional queries.",
-      "Engineered a Pythonic Code Evaluator to detect style violations, non-idiomatic syntax, and poor code structure in LLM-generated code, improving code quality across multiple Python codebases using Python and OpenAI API.",
+      "Tested OpenAI models across temperature and token configurations and optimized prompt design with OpenAI API, reducing token usage by ∼15% while improving output quality with fewer queries.",
+      "Engineered a Pythonic Code Evaluator using Python and the OpenAI API to assess code style, identify non-Pythonic patterns, and generate more Pythonic alternatives with output comparisons.",
     ],
   },
 
