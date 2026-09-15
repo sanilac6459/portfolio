@@ -243,7 +243,7 @@ const ExperienceSection = () => {
         <div className="max-w-5xl mx-auto relative">
           {/* Vertical Timeline Line */}
           <div
-            className="absolute left-5 top-0 bottom-0 w-px hidden sm:block"
+            className="absolute left-5 top-0 bottom-0 w-px block"
             style={{
               backgroundColor: "rgba(128, 15, 47, 0.25)",
             }}
@@ -253,13 +253,13 @@ const ExperienceSection = () => {
             {experiences.map((exp, index) => {
               const localColor = roseColors[index] ?? getGradientColorAt(0);
               return (
-                <div key={index} className="relative sm:pl-16">
+                <div key={index} className="relative pl-14 sm:pl-16">
                   {/* Rose */}
                   <div
                     ref={(el) => {
                       roseRefs.current[index] = el;
                     }}
-                    className="absolute -left-2 -top-2 hidden sm:flex items-start justify-center w-14 h-28 z-10"
+                    className="absolute -left-2 -top-2 flex items-start justify-center w-14 h-28 z-10"
                   >
                     <div
                       className="absolute inset-0"
