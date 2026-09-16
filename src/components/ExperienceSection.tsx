@@ -268,7 +268,7 @@ const ExperienceSection = () => {
                       }}
                     />
                     <img
-                      src="/images/rose2.png"
+                      src="/images/rose3.png"
                       alt=""
                       className="relative w-full h-full object-contain"
                     />
