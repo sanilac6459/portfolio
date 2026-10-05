@@ -26,8 +26,9 @@ const experiences: ExperienceProps[] = [
     duration: "August 2026 — Present",
     logo: "/images/trance4mation.jpeg",
     bullets: [
-      "Leading a team of 5 developing TRILL, a real-time multiplayer game for addiction recovery, by breaking features into scoped tasks across frontend, backend, and middleware.",
-      "Contributing to full-stack development with React, Node.js, Express, and Socket.IO for real-time, server-authoritative game state synchronization.",
+      "Lead a team of 5 developing TRILL, a real-time multiplayer dialogue game for addiction prevention and recovery, by coordinating tasks and driving weekly deliverables.",
+      "Engineer the frontend architecture in React by developing the Home, Lobby, and Spirit Animal Selection screens and implementing application routing to create a cohesive player flow.",
+      "Facilitate frontend-backend integration with backend developers on room creation, player lobbies, and game-state syncing using Socket.io, enabling real-time multiplayer interactions.",
     ],
   },
 
