@@ -40,7 +40,7 @@ const experiences: ExperienceProps[] = [
     logo: "/images/mta.jpeg",
     bullets: [
       "Analyzed the MTA Power Cable Enterprise Asset Management database with 11,000+ manhole inspection records, using Python, Pandas, and NumPy to detect duplicate entries and drive a ∼15% increase in maintenance activity.",
-      "Developed a Power BI compliance dashboard using DAX measures and Power Query M to evaluate 18,000+ ELM training records against a safety training matrix, presenting findings to the Office of the Vice President, Chief Operations, to close gaps in the department’s overall compliance.",
+      "Developed a Power BI compliance dashboard using DAX measures and Power Query M to track 18,000+ ELM training records against safety requirements, flagging compliance gaps for the Office of the Vice President, Chief Operations.",
       "Built a personnel dashboard consolidating 4 SharePoint lists across 1,200+ employees, using optimized DAX measures to track accident trends and support staffing decisions.",
     ],
   },
