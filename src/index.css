@@ -131,3 +131,99 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
+
+/* ---------- One-page scroll: fixed backdrop + reveals ---------- */
+
+/* Background pinned behind the whole page */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #fff8f7 0%,
+    #f8f0f1 35%,
+    #ebd8dd 65%,
+    #d9b8c0 100%
+  );
+}
+
+/* Grain texture */
+.backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Soft glowing blobs that slowly drift */
+.backdrop-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  animation: blobDrift 18s ease-in-out infinite alternate;
+}
+.backdrop-blob-1 {
+  width: 28rem;
+  height: 28rem;
+  top: -6rem;
+  left: -6rem;
+  background: rgba(164, 19, 60, 0.1);
+}
+.backdrop-blob-2 {
+  width: 32rem;
+  height: 32rem;
+  bottom: -8rem;
+  right: -8rem;
+  background: rgba(128, 15, 47, 0.1);
+  animation-delay: -6s;
+}
+.backdrop-blob-3 {
+  width: 20rem;
+  height: 20rem;
+  top: 40%;
+  left: 55%;
+  background: rgba(255, 255, 255, 0.5);
+  animation-delay: -12s;
+}
+
+@keyframes blobDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(60px, 40px) scale(1.12);
+  }
+}
+
+/* Fade-up reveal on scroll (class added in pages/Home.tsx) */
+[data-reveal] {
+  opacity: 0;
+  translate: 0 46px;
+}
+[data-reveal].revealed {
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity 0.7s ease var(--reveal-delay, 0s),
+    translate 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop-blob {
+    animation: none;
+  }
+  [data-reveal] {
+    opacity: 1;
+    translate: none;
+  }
+  [data-reveal].revealed {
+    transition: none;
+  }
+}

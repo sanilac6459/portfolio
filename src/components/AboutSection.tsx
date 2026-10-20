@@ -6,10 +6,6 @@ const AboutSection = () => {
     <section
       id="about"
       className="py-24 relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
-      }}
     >
       {/* Decorative background element */}
       <div
@@ -21,7 +17,10 @@ const AboutSection = () => {
 
       <div className="container relative">
         {/* Section Heading */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div
+          className="flex flex-col items-center text-center mb-16"
+          data-reveal
+        >
           <p
             className="section-eyebrow"
             style={{
@@ -45,6 +44,7 @@ const AboutSection = () => {
           {/* Who I Am */}
           <div
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+            data-reveal
             style={{
               background:
                 "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
@@ -101,6 +101,7 @@ const AboutSection = () => {
           {/* Goals */}
           <div
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+            data-reveal
             style={{
               background:
                 "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
@@ -154,6 +155,7 @@ const AboutSection = () => {
           {/* Interests */}
           <div
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+            data-reveal
             style={{
               background:
                 "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",

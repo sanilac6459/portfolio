@@ -40,10 +40,6 @@ const ContactSection = () => {
     <section
       id="contact"
       className="py-24 relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
-      }}
     >
       {/* Success / Error Modal */}
       {showModal && (
@@ -158,7 +154,10 @@ const ContactSection = () => {
 
       <div className="container relative">
         {/* Section Heading */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div
+          className="flex flex-col items-center text-center mb-16"
+          data-reveal
+        >
           <p
             className="section-eyebrow"
             style={{
@@ -188,7 +187,10 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+          data-reveal
+        >
           {/* Contact Information */}
           <div className="flex flex-col gap-6">
             <div className="space-y-3">

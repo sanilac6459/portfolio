@@ -217,11 +217,15 @@ const ProjectCard = ({
 }: ProjectProps & { index: number }) => (
   <div
     className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-    style={{
-      background:
-        "linear-gradient(135deg, #FFFAF9 0%, #FAF2F2 55%, #F5E9EB 100%)",
-      border: "1px solid rgba(128, 15, 47, 0.10)",
-    }}
+    data-reveal
+    style={
+      {
+        background:
+          "linear-gradient(135deg, #FFFAF9 0%, #FAF2F2 55%, #F5E9EB 100%)",
+        border: "1px solid rgba(128, 15, 47, 0.10)",
+        "--reveal-delay": `${(index % 3) * 0.12}s`,
+      } as React.CSSProperties
+    }
   >
     {/* Project Image */}
     <div className="relative h-48 overflow-hidden">
@@ -345,10 +349,6 @@ const ProjectsSection = () => {
     <section
       id="projects"
       className="py-24 relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
-      }}
     >
       {/* Decorative background element */}
       <div
@@ -360,7 +360,10 @@ const ProjectsSection = () => {
 
       <div className="container relative">
         {/* Section Heading */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div
+          className="flex flex-col items-center text-center mb-16"
+          data-reveal
+        >
           <p
             className="section-eyebrow"
             style={{

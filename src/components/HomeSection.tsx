@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const roles = [
@@ -42,14 +41,11 @@ const HomeSection = () => {
 
   return (
     <section
-      className="min-h-screen flex items-center relative overflow-hidden grain-overlay"
-      style={{
-        background:
-          "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
-      }}
+      id="home"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden grain-overlay"
     >
       <div className="container mx-auto px-4 z-10 w-full">
-        <div className="animate-fade-in max-w-3xl">
+        <div className="animate-fade-in max-w-4xl mx-auto flex flex-col items-center text-center">
           {/* Welcome Text */}
           <p
             className="section-eyebrow text-xs sm:text-sm whitespace-nowrap"
@@ -61,10 +57,10 @@ const HomeSection = () => {
           </p>
 
           {/* Main Heading */}
-          <h1 className="font-serif-display text-6xl md:text-6xl font-semibold mb-6 leading-[0.95]">
+          <h1 className="font-serif-display font-semibold mb-6 leading-[0.95]">
             {/* Name */}
             <span
-              className="block text-4xl md:text-6xl"
+              className="block text-5xl md:text-7xl lg:text-8xl"
               style={{
                 color: "#800F2F",
               }}
@@ -74,7 +70,7 @@ const HomeSection = () => {
 
             {/* Rotating Roles */}
             <span
-              className="block mt-2 italic text-4xl md:text-6xl"
+              className="block mt-4 italic text-3xl md:text-5xl min-h-[1.2em]"
               style={{
                 color: "#A4133C",
               }}
@@ -107,8 +103,8 @@ const HomeSection = () => {
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-wrap gap-4">
-            {/* About Me */}
+          <div className="flex flex-wrap justify-center gap-4">
+            {/* View My Work */}
             <Button
               className="text-white px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
               style={{
@@ -116,10 +112,10 @@ const HomeSection = () => {
               }}
               asChild
             >
-              <Link to="/about">About Me</Link>
+              <a href="#projects">View My Work</a>
             </Button>
 
-            {/* View My Work */}
+            {/* About Me */}
             <Button
               variant="outline"
               className="px-8 py-6 rounded-full backdrop-blur-sm transition-all"
@@ -130,7 +126,7 @@ const HomeSection = () => {
               }}
               asChild
             >
-              <Link to="/projects">View My Work</Link>
+              <a href="#about">About Me</a>
             </Button>
           </div>
         </div>

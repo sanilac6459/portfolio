@@ -122,94 +122,55 @@ const experiences: ExperienceProps[] = [
   },
 ];
 
-// Interpolates a color along the section's diagonal gradient stops,
-// so each rose's backdrop can match its local background shade.
-const GRADIENT_STOPS: { stop: number; color: [number, number, number] }[] = [
-  { stop: 0, color: [255, 248, 247] }, // #FFF8F7
-  { stop: 0.35, color: [248, 240, 241] }, // #F8F0F1
-  { stop: 0.65, color: [235, 216, 221] }, // #EBD8DD
-  { stop: 1, color: [217, 184, 192] }, // #D9B8C0
-];
-
-function getGradientColorAt(t: number): string {
-  const clamped = Math.min(1, Math.max(0, t));
-  let start = GRADIENT_STOPS[0];
-  let end = GRADIENT_STOPS[GRADIENT_STOPS.length - 1];
-
-  for (let i = 0; i < GRADIENT_STOPS.length - 1; i++) {
-    if (
-      clamped >= GRADIENT_STOPS[i].stop &&
-      clamped <= GRADIENT_STOPS[i + 1].stop
-    ) {
-      start = GRADIENT_STOPS[i];
-      end = GRADIENT_STOPS[i + 1];
-      break;
-    }
-  }
-
-  const range = end.stop - start.stop || 1;
-  const localT = (clamped - start.stop) / range;
-
-  const r = Math.round(
-    start.color[0] + (end.color[0] - start.color[0]) * localT,
-  );
-  const g = Math.round(
-    start.color[1] + (end.color[1] - start.color[1]) * localT,
-  );
-  const b = Math.round(
-    start.color[2] + (end.color[2] - start.color[2]) * localT,
-  );
-
-  return `rgb(${r}, ${g}, ${b})`;
-}
-
-function toRgba(rgb: string, alpha: number): string {
-  return rgb.replace("rgb", "rgba").replace(")", `, ${alpha})`);
-}
-
 const ExperienceSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
   const roseRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [roseColors, setRoseColors] = useState<string[]>(() =>
-    experiences.map((_, i) => getGradientColorAt(i / (experiences.length - 1))),
+  const [progress, setProgress] = useState(0);
+  const [passed, setPassed] = useState<boolean[]>(() =>
+    experiences.map(() => false),
   );
 
+  // As you scroll, the line fills down to a point 60% of the way down the screen,
+  // and each rose "blooms" once the fill reaches it.
   useEffect(() => {
-    function updateColors() {
-      const section = sectionRef.current;
-      if (!section) return;
+    let frame = 0;
 
-      const sectionRect = section.getBoundingClientRect();
-      const sectionHeight = section.offsetHeight || 1;
+    function update() {
+      frame = 0;
+      const timeline = timelineRef.current;
+      if (!timeline) return;
 
-      const newColors = roseRefs.current.map((el) => {
-        if (!el) return getGradientColorAt(0);
-        const elRect = el.getBoundingClientRect();
-        // Position of the rose's own center, relative to the section's box,
-        // matches the same coordinate space the section's gradient is painted in.
-        const relativeTop = elRect.top - sectionRect.top + elRect.height / 2;
-        const t = relativeTop / sectionHeight;
-        return getGradientColorAt(t);
+      const mark = window.innerHeight * 0.6;
+      const rect = timeline.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, (mark - rect.top) / rect.height));
+      setProgress(p);
+
+      const next = roseRefs.current.map((el) => {
+        if (!el) return false;
+        const r = el.getBoundingClientRect();
+        return r.top + r.height / 2 <= mark;
       });
-
-      setRoseColors(newColors);
+      setPassed((prev) =>
+        prev.every((v, i) => v === next[i]) ? prev : next,
+      );
     }
 
-    updateColors();
-    window.addEventListener("resize", updateColors);
-    return () => window.removeEventListener("resize", updateColors);
+    function onScroll() {
+      if (!frame) frame = requestAnimationFrame(update);
+    }
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
-    <section
-      id="experience"
-      ref={sectionRef}
-      className="py-24 relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
-      }}
-    >
+    <section id="experience" className="py-24 relative overflow-hidden">
       {/* Decorative background element */}
       <div
         className="absolute -top-20 -left-20 w-80 h-80 rounded-full blur-3xl"
@@ -220,7 +181,10 @@ const ExperienceSection = () => {
 
       <div className="container relative">
         {/* Section Heading */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div
+          className="flex flex-col items-center text-center mb-16"
+          data-reveal
+        >
           <p
             className="section-eyebrow"
             style={{
@@ -241,7 +205,7 @@ const ExperienceSection = () => {
         </div>
 
         {/* Timeline */}
-        <div className="max-w-5xl mx-auto relative">
+        <div ref={timelineRef} className="max-w-5xl mx-auto relative">
           {/* Vertical Timeline Line */}
           <div
             className="absolute left-5 top-0 bottom-0 w-px block"
@@ -250,11 +214,26 @@ const ExperienceSection = () => {
             }}
           />
 
+          {/* Line that fills as you scroll */}
+          <div
+            className="absolute top-0 bottom-0 w-[3px] rounded-full origin-top"
+            style={{
+              left: "calc(1.25rem - 1px)",
+              backgroundColor: "#A4133C",
+              boxShadow: "0 0 10px rgba(164, 19, 60, 0.45)",
+              transform: `scaleY(${progress})`,
+            }}
+          />
+
           <div className="space-y-8">
             {experiences.map((exp, index) => {
-              const localColor = roseColors[index] ?? getGradientColorAt(0);
+              const isPassed = passed[index];
               return (
-                <div key={index} className="relative pl-14 sm:pl-16">
+                <div
+                  key={index}
+                  className="relative pl-14 sm:pl-16"
+                  data-reveal
+                >
                   {/* Rose */}
                   <div
                     ref={(el) => {
@@ -265,13 +244,21 @@ const ExperienceSection = () => {
                     <div
                       className="absolute inset-0"
                       style={{
-                        background: `radial-gradient(ellipse 45% 55% at center, ${toRgba(localColor, 0.55)} 0%, ${toRgba(localColor, 0.25)} 55%, ${toRgba(localColor, 0)} 80%)`,
+                        background:
+                          "radial-gradient(ellipse 45% 55% at center, rgba(255, 248, 247, 0.9) 0%, rgba(255, 248, 247, 0.5) 55%, rgba(255, 248, 247, 0) 80%)",
                       }}
                     />
                     <img
                       src="/images/rose3.png"
                       alt=""
                       className="relative w-full h-full object-contain"
+                      style={{
+                        transition:
+                          "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s, filter 0.4s",
+                        transform: isPassed ? "scale(1.1)" : "scale(0.85)",
+                        opacity: isPassed ? 1 : 0.55,
+                        filter: isPassed ? "none" : "grayscale(0.6)",
+                      }}
                     />
                   </div>
 
