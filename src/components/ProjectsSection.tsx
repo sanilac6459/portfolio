@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react";
 
 interface ProjectProps {
   title: string;
@@ -64,9 +63,9 @@ const TechTag = ({ tech }: { tech: string }) => {
     <span
       className="flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-full"
       style={{
-        backgroundColor: "rgba(164, 19, 60, 0.06)",
-        color: "#590D22",
-        border: "1px solid rgba(128, 15, 47, 0.16)",
+        backgroundColor: "rgba(255, 255, 255, 0.08)",
+        color: "#FFE5EC",
+        border: "1px solid rgba(255, 229, 236, 0.22)",
       }}
     >
       {iconSrc && !imgFailed && (
@@ -205,151 +204,39 @@ const projects: ProjectProps[] = [
   },
 ];
 
-const ProjectCard = ({
-  title,
-  description,
-  technologies,
-  image,
-  demoUrl,
-  repoUrl,
-  presentationUrl,
-  index,
-}: ProjectProps & { index: number }) => (
-  <div
-    className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-    data-reveal
-    style={
-      {
-        background:
-          "linear-gradient(135deg, #FFFAF9 0%, #FAF2F2 55%, #F5E9EB 100%)",
-        border: "1px solid rgba(128, 15, 47, 0.10)",
-        "--reveal-delay": `${(index % 3) * 0.12}s`,
-      } as React.CSSProperties
-    }
-  >
-    {/* Project Image */}
-    <div className="relative h-48 overflow-hidden">
-      {image ? (
-        <img src={image} alt={title} className="w-full h-full object-cover" />
-      ) : (
-        <div
-          className="w-full h-full flex items-center justify-center"
-          style={{
-            background:
-              "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 50%, #F2E5E8 100%)",
-          }}
-        >
-          <span
-            className="font-serif-display italic text-7xl"
-            style={{
-              color: "#A4133C",
-            }}
-          >
-            {String(index + 1).padStart(2, "0")}
-          </span>
-        </div>
-      )}
-    </div>
-
-    {/* Project Content */}
-    <div className="p-6">
-      <h3
-        className="font-serif-display text-2xl mb-2"
-        style={{
-          color: "#A4133C",
-        }}
-      >
-        {title}
-      </h3>
-
-      <p
-        className="mb-4 text-sm leading-relaxed font-light"
-        style={{
-          color: "#590D22",
-        }}
-      >
-        {description}
-      </p>
-
-      {/* Technologies */}
-      <div className="flex flex-wrap gap-2 mb-5">
-        {technologies.map((tech, i) => (
-          <TechTag key={i} tech={tech} />
-        ))}
-      </div>
-
-      {/* Project Links */}
-      <div
-        className="flex gap-3 pt-4 flex-wrap"
-        style={{
-          borderTop: "1px solid rgba(128, 15, 47, 0.10)",
-        }}
-      >
-        {demoUrl && (
-          <Button
-            variant="ghost"
-            size="sm"
-            asChild
-            className="relative transition-colors hover:bg-transparent"
-            style={{
-              color: "#A4133C",
-            }}
-          >
-            <a href={demoUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={14} className="mr-1.5" />
-              Preview
-            </a>
-          </Button>
-        )}
-
-        {presentationUrl && (
-          <Button
-            variant="ghost"
-            size="sm"
-            asChild
-            className="relative transition-colors hover:bg-transparent"
-            style={{
-              color: "#A4133C",
-            }}
-          >
-            <a href={presentationUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={14} className="mr-1.5" />
-              Live Presentation
-            </a>
-          </Button>
-        )}
-
-        {repoUrl && (
-          <Button
-            variant="ghost"
-            size="sm"
-            asChild
-            className="relative transition-colors hover:bg-transparent"
-            style={{
-              color: "#A4133C",
-            }}
-          >
-            <a href={repoUrl} target="_blank" rel="noopener noreferrer">
-              <Github size={14} className="mr-1.5" />
-              Code
-            </a>
-          </Button>
-        )}
-      </div>
-    </div>
-  </div>
-);
+const SLIDE_MS = 7000; // how long each project shows before auto-advancing
 
 const ProjectsSection = () => {
-  const [showAll, setShowAll] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const touchX = useRef<number | null>(null);
+  const total = projects.length;
+  const project = projects[index];
 
-  const visibleProjects = showAll ? projects : projects.slice(0, 3);
+  const go = useCallback(
+    (next: number) => setIndex((next + total) % total),
+    [total],
+  );
+
+  // Auto-advance (paused on hover, off for reduced motion)
+  useEffect(() => {
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (paused || reduce) return;
+    const timer = setTimeout(() => go(index + 1), SLIDE_MS);
+    return () => clearTimeout(timer);
+  }, [index, paused, go]);
+
+  const linkStyle = { color: "#FFB3C1" };
 
   return (
-    <section
-      id="projects"
-      className="py-24 relative overflow-hidden"
-    >
+    <section id="projects" className="py-24 relative overflow-hidden">
+      <style>{`
+        @keyframes projectTimer { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+        @keyframes projectInfoIn { from { opacity: 0; transform: translateY(12px); } }
+      `}</style>
+
       {/* Decorative background element */}
       <div
         className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
@@ -381,48 +268,300 @@ const ProjectsSection = () => {
           >
             Projects
           </h2>
+
+          <p
+            className="font-serif-display italic text-lg mt-3"
+            style={{
+              color: "#590D22",
+            }}
+          >
+            Flip through them.
+          </p>
         </div>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {visibleProjects.map((project, index) => (
-            <ProjectCard key={index} index={index} {...project} />
-          ))}
-        </div>
+        <div
+          className="max-w-6xl mx-auto"
+          data-reveal
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 items-stretch">
+            {/* Stage: screenshots slide left/right */}
+            <div className="relative min-w-0">
+              <div
+                className="relative rounded-2xl overflow-hidden"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
+                  border: "1.5px solid #800F2F",
+                  boxShadow: "8px 8px 0 #800F2F",
+                }}
+                onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+                onTouchEnd={(e) => {
+                  if (touchX.current === null) return;
+                  const dx = e.changedTouches[0].clientX - touchX.current;
+                  if (Math.abs(dx) > 40) go(dx < 0 ? index + 1 : index - 1);
+                  touchX.current = null;
+                }}
+              >
+                <div
+                  className="flex"
+                  style={{
+                    transform: `translateX(-${index * 100}%)`,
+                    transition: "transform 0.7s cubic-bezier(0.65, 0, 0.35, 1)",
+                  }}
+                >
+                  {projects.map((p, i) => (
+                    <div
+                      key={p.title}
+                      className="flex-[0_0_100%] p-4 sm:p-8 md:p-10"
+                      aria-hidden={i !== index}
+                    >
+                      {/* Browser-style frame */}
+                      <div
+                        className="rounded-xl overflow-hidden bg-white"
+                        style={{
+                          border: "1px solid rgba(128, 15, 47, 0.15)",
+                          boxShadow: "0 18px 40px -18px rgba(89, 13, 34, 0.35)",
+                        }}
+                      >
+                        <div
+                          className="flex items-center gap-1.5 px-3 py-2"
+                          style={{
+                            backgroundColor: "#F8F0F1",
+                            borderBottom: "1px solid rgba(128, 15, 47, 0.1)",
+                          }}
+                        >
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
+                          <span
+                            className="flex-1 text-center text-[11px] truncate pr-8"
+                            style={{ color: "#590D22" }}
+                          >
+                            {p.title}
+                          </span>
+                        </div>
 
-        {/* View More */}
-        <div className="mt-12 text-center flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            variant="outline"
-            className="px-8 py-6 rounded-full transition-all"
-            style={{
-              borderColor: "#800F2F",
-              color: "#800F2F",
-              backgroundColor: "rgba(255, 255, 255, 0.25)",
-            }}
-            onClick={() => setShowAll(!showAll)}
-          >
-            {showAll ? "Show Less" : "View More"}
-          </Button>
+                        <div className="aspect-[16/10] overflow-hidden">
+                          {p.image ? (
+                            <img
+                              src={p.image}
+                              alt={p.title}
+                              className="w-full h-full object-cover object-top"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <div
+                              className="w-full h-full flex items-center justify-center"
+                              style={{
+                                background:
+                                  "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 50%, #F2E5E8 100%)",
+                              }}
+                            >
+                              <span
+                                className="font-serif-display italic text-7xl"
+                                style={{ color: "#A4133C" }}
+                              >
+                                {String(i + 1).padStart(2, "0")}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
-          {/**
-          <Button
-            className="text-white px-8 py-6 rounded-full shadow-lg"
-            style={{
-              backgroundColor: "#A4133C",
-            }}
-            asChild
-          >
+                {/* Progress bar for auto-advance */}
+                <div
+                  key={`${index}-${paused}`}
+                  className="absolute bottom-0 left-0 h-1 w-full origin-left"
+                  style={{
+                    backgroundColor: "#A4133C",
+                    animation: paused
+                      ? "none"
+                      : `projectTimer ${SLIDE_MS}ms linear forwards`,
+                    transform: paused ? "scaleX(0)" : undefined,
+                  }}
+                />
+              </div>
+
+              {/* Arrows */}
+              {[
+                {
+                  dir: -1,
+                  label: "Previous project",
+                  Icon: ArrowLeft,
+                  side: "left-2 sm:-left-6",
+                },
+                {
+                  dir: 1,
+                  label: "Next project",
+                  Icon: ArrowRight,
+                  side: "right-2 sm:-right-6",
+                },
+              ].map(({ dir, label, Icon, side }) => (
+                <button
+                  key={label}
+                  onClick={() => go(index + dir)}
+                  aria-label={label}
+                  className={`absolute top-1/2 -translate-y-1/2 ${side} rounded-full flex items-center justify-center transition-transform hover:scale-110 backdrop-blur-sm`}
+                  style={{
+                    width: 52,
+                    height: 52,
+                    backgroundColor: "rgba(89, 13, 34, 0.92)",
+                    color: "#FFF8F7",
+                    border: "1.5px solid #FFF8F7",
+                    boxShadow: "3px 3px 0 #800F2F",
+                  }}
+                >
+                  <Icon size={22} />
+                </button>
+              ))}
+            </div>
+
+            {/* Side panel with the description */}
+            <div
+              key={index}
+              className="rounded-2xl p-7 flex flex-col"
+              style={{
+                background:
+                  "linear-gradient(160deg, #590D22 0%, #6E1530 60%, #800F2F 100%)",
+                border: "1.5px solid #800F2F",
+                boxShadow: "8px 8px 0 rgba(128, 15, 47, 0.35)",
+                color: "#FFF8F7",
+              }}
+            >
+              <div
+                className="flex items-baseline gap-3 mb-4"
+                style={{ animation: "projectInfoIn 0.5s ease both" }}
+              >
+                <span
+                  className="font-serif-display italic text-4xl"
+                  style={{ color: "#FFB3C1" }}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="text-xs uppercase tracking-[0.25em] opacity-70">
+                  Project
+                </span>
+                <span className="ml-auto text-xs tracking-widest opacity-70">
+                  {String(index + 1).padStart(2, "0")} /{" "}
+                  {String(total).padStart(2, "0")}
+                </span>
+              </div>
+
+              <h3
+                className="font-serif-display text-3xl md:text-4xl leading-tight mb-4"
+                style={{
+                  color: "#FFF8F7",
+                  animation: "projectInfoIn 0.5s 0.05s ease both",
+                }}
+              >
+                {project.title}
+              </h3>
+
+              <p
+                className="leading-relaxed text-[15px] mb-6"
+                style={{
+                  color: "rgba(255, 248, 247, 0.85)",
+                  animation: "projectInfoIn 0.5s 0.1s ease both",
+                }}
+              >
+                {project.description}
+              </p>
+
+              <div
+                className="flex flex-wrap gap-2 mb-6"
+                style={{ animation: "projectInfoIn 0.5s 0.15s ease both" }}
+              >
+                {project.technologies.map((tech) => (
+                  <TechTag key={tech} tech={tech} />
+                ))}
+              </div>
+
+              {/* Links */}
+              <div
+                className="mt-auto pt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium"
+                style={{ borderTop: "1px solid rgba(255, 229, 236, 0.2)" }}
+              >
+                {project.demoUrl && (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 hover:underline"
+                    style={linkStyle}
+                  >
+                    <ExternalLink size={14} /> Preview
+                  </a>
+                )}
+                {project.presentationUrl && (
+                  <a
+                    href={project.presentationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 hover:underline"
+                    style={linkStyle}
+                  >
+                    <ExternalLink size={14} /> Live Presentation
+                  </a>
+                )}
+                {project.repoUrl && (
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 hover:underline"
+                    style={linkStyle}
+                  >
+                    <Github size={14} /> Code
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Project tabs */}
+          <div className="flex flex-wrap justify-center gap-2 mt-8">
+            {projects.map((p, i) => (
+              <button
+                key={p.title}
+                onClick={() => go(i)}
+                className="px-4 py-2 rounded-full text-sm font-medium transition-all"
+                style={
+                  i === index
+                    ? {
+                        backgroundColor: "#A4133C",
+                        color: "#FFF8F7",
+                        border: "1.5px solid #800F2F",
+                        boxShadow: "3px 3px 0 #800F2F",
+                      }
+                    : {
+                        backgroundColor: "rgba(255, 255, 255, 0.45)",
+                        color: "#800F2F",
+                        border: "1.5px solid rgba(128, 15, 47, 0.25)",
+                      }
+                }
+              >
+                {p.title}
+              </button>
+            ))}
+
             <a
               href="https://github.com/sanilac6459"
               target="_blank"
               rel="noopener noreferrer"
+              className="px-4 py-2 rounded-full text-sm font-medium transition-all hover:bg-white/60"
+              style={{
+                color: "#800F2F",
+                border: "1.5px dashed rgba(128, 15, 47, 0.5)",
+              }}
             >
-              <Github size={18} className="mr-2" />
-              Visit My GitHub
+              More on GitHub ↗
             </a>
-          </Button>
-          */}
+          </div>
         </div>
       </div>
     </section>
