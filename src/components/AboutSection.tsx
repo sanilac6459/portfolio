@@ -4,14 +4,6 @@ import { Target, Heart, User } from "lucide-react";
 const AboutSection = () => {
   return (
     <section id="about" className="py-24 relative overflow-hidden">
-      {/* Decorative background element */}
-      <div
-        className="absolute top-20 right-0 w-96 h-96 rounded-full blur-3xl"
-        style={{
-          backgroundColor: "rgba(128, 15, 47, 0.06)",
-        }}
-      ></div>
-
       <div className="container relative">
         {/* Section Heading */}
         <div

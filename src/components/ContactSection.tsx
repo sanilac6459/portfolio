@@ -37,10 +37,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-24 relative overflow-hidden"
-    >
+    <section id="contact" className="py-24 relative overflow-hidden">
       {/* Success / Error Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
@@ -144,14 +141,6 @@ const ContactSection = () => {
         </div>
       )}
 
-      {/* Decorative background element */}
-      <div
-        className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl"
-        style={{
-          backgroundColor: "rgba(164, 19, 60, 0.06)",
-        }}
-      ></div>
-
       <div className="container relative">
         {/* Section Heading */}
         <div
@@ -187,10 +176,7 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
-          data-reveal
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" data-reveal>
           {/* Contact Information */}
           <div className="flex flex-col gap-6">
             <div className="space-y-3">

@@ -42,7 +42,7 @@ const HomeSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden grain-overlay"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       <div className="container mx-auto px-4 z-10 w-full">
         <div className="animate-fade-in max-w-4xl mx-auto flex flex-col items-center text-center">

@@ -181,14 +181,6 @@ const ExperienceSection = () => {
 
   return (
     <section id="experience" className="py-24 relative overflow-hidden">
-      {/* Decorative background element */}
-      <div
-        className="absolute -top-20 -left-20 w-80 h-80 rounded-full blur-3xl"
-        style={{
-          backgroundColor: "rgba(128, 15, 47, 0.06)",
-        }}
-      />
-
       <div className="container relative">
         {/* Section Heading */}
         <div
