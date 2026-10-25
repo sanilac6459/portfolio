@@ -43,10 +43,14 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState("home");
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? window.scrollY / max : 0);
 
       // Highlight the last section whose top has passed the navbar
       let current = "home";
@@ -106,12 +110,14 @@ const Navbar = () => {
           {/* Logo */}
           <a
             href="#home"
-            className="text-xl md:text-2xl font-serif-display font-semibold transition-colors"
+            aria-label="Sanila Chowdhury, back to top"
+            className="font-mono-ui text-base sm:text-lg md:text-xl transition-colors whitespace-nowrap"
             style={{
               color: "var(--wine)",
             }}
           >
-            Sanila Chowdhury
+            <span style={{ color: "var(--rose)" }}>~/</span>sanila
+            <span className="blink-cursor" aria-hidden="true" />
           </a>
 
           <div className="flex items-center gap-5 md:gap-8">
@@ -144,6 +150,14 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+        {/* Scroll progress line */}
+        <div
+          className="absolute left-0 bottom-0 h-[2px] pointer-events-none"
+          style={{
+            width: `${progress * 100}%`,
+            background: "var(--rose)",
+          }}
+        />
       </header>
 
       {/* Mobile Menu */}

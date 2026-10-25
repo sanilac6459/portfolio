@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 const roles = [
-  "Software Engineer",
-  "Data Analyst",
-  "Full-Stack Developer",
-  "Tech Enthusiast",
-  "Women in Tech",
+  "software engineer",
+  "data analyst",
+  "cs at hunter college",
+  "women in tech",
 ];
 
 const HomeSection = () => {
@@ -42,7 +41,7 @@ const HomeSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-32 md:pt-44"
     >
       <div className="container mx-auto px-4 z-10 w-full">
         <div className="animate-fade-in max-w-4xl mx-auto flex flex-col items-center text-center">
@@ -60,34 +59,23 @@ const HomeSection = () => {
           <h1 className="font-serif-display font-semibold mb-6 leading-[0.95]">
             {/* Name */}
             <span
-              className="block text-5xl md:text-7xl lg:text-8xl"
+              className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
               style={{
                 color: "var(--wine)",
               }}
             >
-              Hi! I'm Sanila
-            </span>
-
-            {/* Rotating Roles */}
-            <span
-              className="block mt-4 italic text-3xl md:text-5xl min-h-[1.2em]"
-              style={{
-                color: "var(--rose)",
-              }}
-            >
-              {displayed}
-
-              {/* Typing Cursor */}
-              <span
-                className="animate-pulse"
-                style={{
-                  color: "var(--rose)",
-                }}
-              >
-                |
-              </span>
+              Sanila Chowdhury
             </span>
           </h1>
+
+          {/* Rotating Roles, terminal style */}
+          <p className="font-mono-ui text-xl md:text-3xl mb-6 min-h-[1.5em]">
+            <span className="mr-3" style={{ color: "var(--live)" }}>
+              $
+            </span>
+            <span style={{ color: "var(--rose)" }}>{displayed}</span>
+            <span className="blink-cursor" aria-hidden="true" />
+          </p>
 
           {/* Description */}
           <div className="mb-8">
@@ -128,6 +116,40 @@ const HomeSection = () => {
             >
               <a href="#about">About Me</a>
             </Button>
+          </div>
+
+          {/* Right now */}
+          <div
+            className="mt-10 w-full max-w-md rounded-2xl px-5 py-4 text-left grid gap-2 backdrop-blur-sm"
+            style={{
+              background: "var(--card-bg)",
+              border: "1px solid var(--line)",
+            }}
+          >
+            <p
+              className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-medium"
+              style={{ color: "var(--muted)" }}
+            >
+              <span
+                className="live-dot w-2 h-2 rounded-full"
+                style={{ background: "var(--live)" }}
+              />
+              Right now
+            </p>
+            <p
+              className="text-sm sm:text-base"
+              style={{ color: "var(--wine)" }}
+            >
+              <b className="font-semibold">Software Engineer Intern</b> at{" "}
+              <span style={{ color: "var(--rose)" }}>Trance4mation Games</span>
+            </p>
+            <p
+              className="text-sm sm:text-base"
+              style={{ color: "var(--wine)" }}
+            >
+              <b className="font-semibold">Data Analyst Intern</b> at{" "}
+              <span style={{ color: "var(--rose)" }}>the MTA</span>
+            </p>
           </div>
         </div>
       </div>
