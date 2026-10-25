@@ -5,10 +5,10 @@ import { Menu, X } from "lucide-react";
 // Same order as the sections on the page
 const navItems = [
   { name: "Home", id: "home" },
-  { name: "Skills", id: "skills" },
-  { name: "Experience", id: "experience" },
-  { name: "Projects", id: "projects" },
   { name: "About", id: "about" },
+  { name: "Experience", id: "experience" },
+  { name: "Skills", id: "skills" },
+  { name: "Projects", id: "projects" },
   { name: "Contact", id: "contact" },
 ];
 
@@ -31,7 +31,7 @@ const Navbar = () => {
       if (
         window.scrollY > 0 &&
         window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 4
+          document.documentElement.scrollHeight - 4
       ) {
         current = navItems[navItems.length - 1].id;
       }

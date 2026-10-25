@@ -1,14 +1,13 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import PageLoader from "@/components/PageLoader";
 import HomeSection from "@/components/HomeSection";
-import SkillsSection from "@/components/SkillsSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import ProjectsSection from "@/components/ProjectsSection";
 import AboutSection from "@/components/AboutSection";
+import ExperienceSection from "@/components/ExperienceSection";
+import SkillsSection from "@/components/SkillsSection";
+import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 
-const Sections = () => {
+const Home = () => {
   const location = useLocation();
 
   // Fade-up reveal: anything with data-reveal slides in when it enters the screen.
@@ -32,7 +31,7 @@ const Sections = () => {
 
     watch();
 
-    // Catch new elements too (e.g. "View More" projects).
+    // Catch new elements too.
     const mo = new MutationObserver(watch);
     mo.observe(document.body, { childList: true, subtree: true });
 
@@ -51,19 +50,13 @@ const Sections = () => {
   return (
     <>
       <HomeSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
       <AboutSection />
+      <ExperienceSection />
+      <SkillsSection />
+      <ProjectsSection />
       <ContactSection />
     </>
   );
 };
-
-const Home = () => (
-  <PageLoader>
-    <Sections />
-  </PageLoader>
-);
 
 export default Home;

@@ -129,9 +129,13 @@ const ExperienceSection = () => {
   const [passed, setPassed] = useState<boolean[]>(() =>
     experiences.map(() => false),
   );
+  const [shown, setShown] = useState<boolean[]>(() =>
+    experiences.map(() => false),
+  );
 
-  // As you scroll, the line fills down to a point 60% of the way down the screen,
-  // and each rose "blooms" once the fill reaches it.
+  // As you scroll, the line fills down to a point 60% of the way down the screen.
+  // Each card appears dimmed once it enters the screen, then lights up (and its
+  // rose blooms) when the line reaches it. Scrolling back up reverses both.
   useEffect(() => {
     let frame = 0;
 
@@ -150,8 +154,14 @@ const ExperienceSection = () => {
         const r = el.getBoundingClientRect();
         return r.top + r.height / 2 <= mark;
       });
-      setPassed((prev) =>
-        prev.every((v, i) => v === next[i]) ? prev : next,
+      setPassed((prev) => (prev.every((v, i) => v === next[i]) ? prev : next));
+
+      const inView = roseRefs.current.map((el) => {
+        if (!el) return false;
+        return el.getBoundingClientRect().top <= window.innerHeight * 0.92;
+      });
+      setShown((prev) =>
+        prev.every((v, i) => v === inView[i]) ? prev : inView,
       );
     }
 
@@ -228,12 +238,9 @@ const ExperienceSection = () => {
           <div className="space-y-8">
             {experiences.map((exp, index) => {
               const isPassed = passed[index];
+              const isShown = shown[index];
               return (
-                <div
-                  key={index}
-                  className="relative pl-14 sm:pl-16"
-                  data-reveal
-                >
+                <div key={index} className="relative pl-14 sm:pl-16">
                   {/* Rose */}
                   <div
                     ref={(el) => {
@@ -264,11 +271,17 @@ const ExperienceSection = () => {
 
                   {/* Experience Card */}
                   <div
-                    className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                    className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-2"
                     style={{
                       background:
                         "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
-                      border: "1px solid rgba(128, 15, 47, 0.15)",
+                      border: isPassed
+                        ? "1px solid rgba(164, 19, 60, 0.45)"
+                        : "1px solid rgba(128, 15, 47, 0.15)",
+                      // hidden → dimmed (in view) → lit (line reached it)
+                      opacity: !isShown ? 0 : isPassed ? 1 : 0.45,
+                      translate: isShown ? "0 0" : "0 50px",
+                      filter: isPassed ? "none" : "grayscale(0.7)",
                     }}
                   >
                     {exp.roles ? (
