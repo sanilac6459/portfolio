@@ -96,16 +96,17 @@ const skillCategories: SkillCategoryProps[] = [
   },
 ];
 
+
 const SkillIcon = ({ name, icon }: { name: string; icon: string }) => {
   const [failed, setFailed] = React.useState(false);
 
   return (
     <div className="group flex flex-col items-center gap-2 sm:gap-3 w-20 sm:w-28">
-      <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+      <div className="skill-tile w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
         {failed ? (
           <span
             className="font-serif-display text-3xl"
-            style={{ color: "#A4133C" }}
+            style={{ color: "var(--rose)" }}
           >
             {name[0]}
           </span>
@@ -122,7 +123,7 @@ const SkillIcon = ({ name, icon }: { name: string; icon: string }) => {
 
       <span
         className="text-sm sm:text-[15px] font-semibold text-center leading-tight"
-        style={{ color: "#800F2F" }}
+        style={{ color: "var(--wine)" }}
       >
         {name}
       </span>
@@ -142,7 +143,7 @@ const SkillsSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "#A4133C",
+              color: "var(--rose)",
             }}
           >
             — What I Work With —
@@ -151,7 +152,7 @@ const SkillsSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "#800F2F",
+              color: "var(--wine)",
             }}
           >
             Skills
@@ -165,7 +166,7 @@ const SkillsSection = () => {
               <div className="flex items-center justify-center gap-2 mb-8">
                 <span
                   style={{
-                    color: "#800F2F",
+                    color: "var(--wine)",
                   }}
                 >
                   {category.icon}
@@ -174,7 +175,7 @@ const SkillsSection = () => {
                 <h3
                   className="font-serif-display text-2xl"
                   style={{
-                    color: "#800F2F",
+                    color: "var(--wine)",
                   }}
                 >
                   {category.title}

@@ -50,7 +50,7 @@ const HomeSection = () => {
           <p
             className="section-eyebrow text-xs sm:text-sm whitespace-nowrap"
             style={{
-              color: "#A4133C",
+              color: "var(--rose)",
             }}
           >
             — Welcome To My Portfolio —
@@ -62,7 +62,7 @@ const HomeSection = () => {
             <span
               className="block text-5xl md:text-7xl lg:text-8xl"
               style={{
-                color: "#800F2F",
+                color: "var(--wine)",
               }}
             >
               Hi! I'm Sanila
@@ -72,7 +72,7 @@ const HomeSection = () => {
             <span
               className="block mt-4 italic text-3xl md:text-5xl min-h-[1.2em]"
               style={{
-                color: "#A4133C",
+                color: "var(--rose)",
               }}
             >
               {displayed}
@@ -81,7 +81,7 @@ const HomeSection = () => {
               <span
                 className="animate-pulse"
                 style={{
-                  color: "#A4133C",
+                  color: "var(--rose)",
                 }}
               >
                 |
@@ -94,7 +94,7 @@ const HomeSection = () => {
             <p
               className="text-base md:text-lg max-w-xl font-light"
               style={{
-                color: "#590D22",
+                color: "var(--ink)",
               }}
             >
               The best part of every project isn't the finished product. It's
@@ -108,7 +108,7 @@ const HomeSection = () => {
             <Button
               className="text-white px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
               style={{
-                backgroundColor: "#A4133C",
+                backgroundColor: "var(--rose)",
               }}
               asChild
             >
@@ -120,9 +120,9 @@ const HomeSection = () => {
               variant="outline"
               className="px-8 py-6 rounded-full backdrop-blur-sm transition-all"
               style={{
-                backgroundColor: "rgba(255, 255, 255, 0.3)",
-                borderColor: "#800F2F",
-                color: "#800F2F",
+                backgroundColor: "var(--glass)",
+                borderColor: "var(--wine)",
+                color: "var(--wine)",
               }}
               asChild
             >

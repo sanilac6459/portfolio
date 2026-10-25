@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 
 // Same order as the sections on the page
 const navItems = [
@@ -11,6 +12,32 @@ const navItems = [
   { name: "Projects", id: "projects" },
   { name: "Contact", id: "contact" },
 ];
+
+// Light / dark mode switch
+const ThemeButton = () => {
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const isDark = mounted && resolvedTheme === "dark";
+
+  return (
+    <button
+      type="button"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      title={isDark ? "Light mode" : "Dark mode"}
+      className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-105"
+      style={{
+        color: "var(--wine)",
+        border: "1px solid var(--line-strong)",
+        backgroundColor: "var(--glass)",
+      }}
+    >
+      {isDark ? <Sun size={17} /> : <Moon size={17} />}
+    </button>
+  );
+};
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,14 +74,14 @@ const Navbar = () => {
   const linkClass = (id: string, extra = "") =>
     cn(
       "font-medium font-serif-display transition-colors relative",
-      "hover:text-[#A4133C]",
-      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:bg-[#A4133C] after:transition-all after:duration-300",
+      "hover:text-[color:var(--rose)]",
+      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:bg-[color:var(--rose)] after:transition-all after:duration-300",
       activeId === id ? "after:w-full" : "after:w-0",
       extra,
     );
 
   const linkStyle = (id: string) => ({
-    color: activeId === id ? "#A4133C" : "#800F2F",
+    color: activeId === id ? "var(--rose)" : "var(--wine)",
   });
 
   return (
@@ -68,9 +95,9 @@ const Navbar = () => {
         style={
           isScrolled
             ? {
-                background:
-                  "linear-gradient(135deg, rgba(255, 248, 247, 0.85) 0%, rgba(248, 239, 240, 0.85) 45%, rgba(242, 227, 230, 0.85) 75%, rgba(233, 213, 218, 0.85) 100%)",
-                boxShadow: "0 2px 10px rgba(89, 13, 34, 0.12)",
+                background: "var(--nav-bg)",
+                boxShadow:
+                  "0 2px 10px rgba(89, 13, 34, 0.12), inset 0 -1px 0 var(--line)",
               }
             : undefined
         }
@@ -81,37 +108,41 @@ const Navbar = () => {
             href="#home"
             className="text-xl md:text-2xl font-serif-display font-semibold transition-colors"
             style={{
-              color: "#800F2F",
+              color: "var(--wine)",
             }}
           >
             Sanila Chowdhury
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={`#${item.id}`}
-                className={linkClass(item.id)}
-                style={linkStyle(item.id)}
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
+          <div className="flex items-center gap-5 md:gap-8">
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex space-x-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={`#${item.id}`}
+                  className={linkClass(item.id)}
+                  style={linkStyle(item.id)}
+                >
+                  {item.name}
+                </a>
+              ))}
+            </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden transition-colors"
-            style={{
-              color: "#800F2F",
-            }}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            <ThemeButton />
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden transition-colors"
+              style={{
+                color: "var(--wine)",
+              }}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -122,15 +153,14 @@ const Navbar = () => {
           mobileMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
         style={{
-          background:
-            "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
+          background: "var(--page-bg)",
         }}
       >
         {/* Close Button */}
         <button
           className="absolute top-4 right-4 transition-colors"
           style={{
-            color: "#800F2F",
+            color: "var(--wine)",
           }}
           onClick={() => setMobileMenuOpen(false)}
           aria-label="Close menu"

@@ -3,7 +3,10 @@ import { Target, Heart, User } from "lucide-react";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section
+      id="about"
+      className="py-24 relative overflow-hidden"
+    >
       <div className="container relative">
         {/* Section Heading */}
         <div
@@ -13,7 +16,7 @@ const AboutSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "#A4133C",
+              color: "var(--rose)",
             }}
           >
             — Hello —
@@ -22,7 +25,7 @@ const AboutSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "#800F2F",
+              color: "var(--wine)",
             }}
           >
             About Me
@@ -36,16 +39,16 @@ const AboutSection = () => {
             data-reveal="both"
             style={{
               background:
-                "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
-              border: "1px solid rgba(128, 15, 47, 0.15)",
+                "var(--card-bg)",
+              border: "1px solid var(--line)",
             }}
           >
             <div className="flex items-center gap-3 mb-4">
               <div
                 className="p-2 rounded-lg"
                 style={{
-                  backgroundColor: "rgba(164, 19, 60, 0.08)",
-                  color: "#A4133C",
+                  backgroundColor: "var(--rose-soft)",
+                  color: "var(--rose)",
                 }}
               >
                 <User size={20} />
@@ -54,7 +57,7 @@ const AboutSection = () => {
               <h3
                 className="font-serif-display text-2xl"
                 style={{
-                  color: "#A4133C",
+                  color: "var(--rose)",
                 }}
               >
                 Who I Am
@@ -62,9 +65,9 @@ const AboutSection = () => {
             </div>
 
             <div
-              className="space-y-3 leading-relaxed text-base"
+              className="about-body space-y-3 leading-relaxed text-base"
               style={{
-                color: "#A4133C",
+                color: "var(--rose)",
               }}
             >
               <p>
@@ -93,16 +96,16 @@ const AboutSection = () => {
             data-reveal="both"
             style={{
               background:
-                "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
-              border: "1px solid rgba(128, 15, 47, 0.15)",
+                "var(--card-bg)",
+              border: "1px solid var(--line)",
             }}
           >
             <div className="flex items-center gap-3 mb-4">
               <div
                 className="p-2 rounded-lg"
                 style={{
-                  backgroundColor: "rgba(164, 19, 60, 0.08)",
-                  color: "#A4133C",
+                  backgroundColor: "var(--rose-soft)",
+                  color: "var(--rose)",
                 }}
               >
                 <Target size={20} />
@@ -111,7 +114,7 @@ const AboutSection = () => {
               <h3
                 className="font-serif-display text-2xl"
                 style={{
-                  color: "#A4133C",
+                  color: "var(--rose)",
                 }}
               >
                 Goals
@@ -119,9 +122,9 @@ const AboutSection = () => {
             </div>
 
             <div
-              className="space-y-3 leading-relaxed text-base"
+              className="about-body space-y-3 leading-relaxed text-base"
               style={{
-                color: "#A4133C",
+                color: "var(--rose)",
               }}
             >
               <p>
@@ -147,16 +150,16 @@ const AboutSection = () => {
             data-reveal="both"
             style={{
               background:
-                "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
-              border: "1px solid rgba(128, 15, 47, 0.15)",
+                "var(--card-bg)",
+              border: "1px solid var(--line)",
             }}
           >
             <div className="flex items-center gap-3 mb-4">
               <div
                 className="p-2 rounded-lg"
                 style={{
-                  backgroundColor: "rgba(164, 19, 60, 0.08)",
-                  color: "#A4133C",
+                  backgroundColor: "var(--rose-soft)",
+                  color: "var(--rose)",
                 }}
               >
                 <Heart size={20} />
@@ -165,7 +168,7 @@ const AboutSection = () => {
               <h3
                 className="font-serif-display text-2xl"
                 style={{
-                  color: "#A4133C",
+                  color: "var(--rose)",
                 }}
               >
                 Interests
@@ -173,9 +176,9 @@ const AboutSection = () => {
             </div>
 
             <div
-              className="space-y-3 leading-relaxed text-base"
+              className="about-body space-y-3 leading-relaxed text-base"
               style={{
-                color: "#A4133C",
+                color: "var(--rose)",
               }}
             >
               <p>

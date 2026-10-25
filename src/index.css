@@ -54,6 +54,64 @@
     --shadow-soft: 0 10px 40px -15px hsl(240 22% 32% / 0.15);
     --shadow-elegant: 0 20px 60px -20px hsl(240 22% 32% / 0.25);
     --shadow-glow: 0 0 40px hsl(11 30% 80% / 0.4);
+
+    /* Site palette — light (pink) */
+    --rose: #a4133c;          /* accent: eyebrows, buttons, highlights */
+    --wine: #800f2f;          /* headings */
+    --ink: #590d22;           /* body text */
+    --muted: rgba(89, 13, 34, 0.6);
+    --line: rgba(128, 15, 47, 0.15);
+    --line-strong: rgba(128, 15, 47, 0.28);
+    --rose-soft: rgba(164, 19, 60, 0.07);
+    --rose-glow: rgba(164, 19, 60, 0.45);
+    --frame: #800f2f;
+    --card-bg: linear-gradient(135deg, #fff8f7 0%, #f8f0f1 65%, #f1e2e5 100%);
+    --card-bar: #f8f0f1;
+    --glass: rgba(255, 255, 255, 0.4);
+    --halo: radial-gradient(ellipse 45% 55% at center, rgba(255, 248, 247, 0.9) 0%, rgba(255, 248, 247, 0.5) 55%, rgba(255, 248, 247, 0) 80%);
+    --page-bg: linear-gradient(135deg, #fff8f7 0%, #f8f0f1 35%, #ebd8dd 65%, #d9b8c0 100%);
+    --blob-1: rgba(164, 19, 60, 0.1);
+    --blob-2: rgba(128, 15, 47, 0.1);
+    --blob-3: rgba(255, 255, 255, 0.5);
+    --nav-bg: rgba(255, 248, 247, 0.82);
+    --footer: #a4133c;
+  }
+
+  /* Site palette — dark (wine) */
+  .dark {
+    --background: 330 25% 6%;
+    --foreground: 340 45% 92%;
+    --card: 330 22% 9%;
+    --card-foreground: 340 45% 92%;
+    --popover: 330 22% 9%;
+    --popover-foreground: 340 45% 92%;
+    --primary: 340 80% 64%;
+    --primary-foreground: 330 25% 6%;
+    --muted-foreground: 340 15% 70%;
+    --border: 340 30% 18%;
+    --input: 340 30% 22%;
+    --ring: 340 80% 64%;
+
+    --rose: #ec5a86;
+    --wine: #f7dce4;
+    --ink: #dcc6ce;
+    --muted: rgba(220, 198, 206, 0.62);
+    --line: rgba(255, 143, 171, 0.14);
+    --line-strong: rgba(255, 143, 171, 0.26);
+    --rose-soft: rgba(255, 143, 171, 0.08);
+    --rose-glow: rgba(236, 90, 134, 0.55);
+    --frame: #4a1830;
+    --card-bg: linear-gradient(135deg, #1d1118 0%, #190e15 65%, #170c12 100%);
+    --card-bar: #24141c;
+    --glass: rgba(255, 255, 255, 0.04);
+    --halo: radial-gradient(ellipse 45% 55% at center, rgba(18, 10, 14, 0.95) 0%, rgba(18, 10, 14, 0.6) 55%, rgba(18, 10, 14, 0) 80%);
+    --page-bg: linear-gradient(135deg, #120a0e 0%, #150b11 45%, #1c0d15 100%);
+    --blob-1: rgba(236, 90, 134, 0.1);
+    --blob-2: rgba(128, 15, 47, 0.28);
+    --blob-3: rgba(255, 143, 171, 0.04);
+    --nav-bg: rgba(18, 10, 14, 0.82);
+    --footer: #1a0d14;
+    color-scheme: dark;
   }
 
   * {
@@ -61,9 +119,15 @@
   }
 
   body {
-    @apply bg-portfolio-cream text-portfolio-navy font-sans antialiased;
+    @apply font-sans antialiased;
     font-family: "Space Grotesk", system-ui, sans-serif;
+    background: #fff8f7;
+    color: var(--ink);
   }
+  .dark body {
+    background: #120a0e;
+  }
+
   .glass-card {
     @apply bg-white/60 backdrop-blur-sm border border-white/40;
     box-shadow: var(--shadow-soft);
@@ -79,7 +143,8 @@
   h4,
   h5,
   h6 {
-    @apply font-medium text-portfolio-navy;
+    @apply font-medium;
+    color: var(--wine);
   }
 
   .font-serif-display {
@@ -90,11 +155,13 @@
 
 @layer utilities {
   .section-title {
-    @apply text-4xl md:text-5xl font-serif-display font-semibold mb-2 text-portfolio-navy relative inline-block;
+    @apply text-4xl md:text-5xl font-serif-display font-semibold mb-2 relative inline-block;
+    color: var(--wine);
   }
 
   .section-eyebrow {
-    @apply text-xs uppercase tracking-[0.3em] text-portfolio-purple font-medium mb-3;
+    @apply text-xs uppercase tracking-[0.3em] font-medium mb-3;
+    color: var(--rose);
   }
 
   .ornament-line {
@@ -141,14 +208,9 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    #fff8f7 0%,
-    #f8f0f1 35%,
-    #ebd8dd 65%,
-    #d9b8c0 100%
-  );
+  background: var(--page-bg);
 }
+
 
 /* Grain texture */
 .backdrop::after {
@@ -171,14 +233,14 @@
   height: 28rem;
   top: -6rem;
   left: -6rem;
-  background: rgba(164, 19, 60, 0.1);
+  background: var(--blob-1);
 }
 .backdrop-blob-2 {
   width: 32rem;
   height: 32rem;
   bottom: -8rem;
   right: -8rem;
-  background: rgba(128, 15, 47, 0.1);
+  background: var(--blob-2);
   animation-delay: -6s;
 }
 .backdrop-blob-3 {
@@ -186,7 +248,7 @@
   height: 20rem;
   top: 40%;
   left: 55%;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--blob-3);
   animation-delay: -12s;
 }
 
@@ -222,6 +284,7 @@
     box-shadow 0.5s ease;
 }
 
+
 @media (prefers-reduced-motion: reduce) {
   .backdrop-blob {
     animation: none;
@@ -233,4 +296,16 @@
   [data-reveal].revealed {
     transition: none;
   }
+}
+
+/* Dark mode: give tool logos a light tile so black logos stay visible */
+.dark .skill-tile {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 14px;
+  padding: 8px;
+}
+
+/* Dark mode: softer color for long About paragraphs */
+.dark .about-body {
+  color: var(--ink) !important;
 }

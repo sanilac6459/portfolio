@@ -15,7 +15,7 @@ const PageLoader = ({ children }: { children: React.ReactNode }) => {
         className="fixed inset-0 flex items-center justify-center z-50"
         style={{
           background:
-            "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
+            "var(--page-bg)",
         }}
       >
         <div className="flex flex-col items-center gap-4">
@@ -28,7 +28,7 @@ const PageLoader = ({ children }: { children: React.ReactNode }) => {
           <p
             className="text-sm tracking-widest uppercase"
             style={{
-              color: "#800F2F",
+              color: "var(--wine)",
             }}
           >
             Loading...

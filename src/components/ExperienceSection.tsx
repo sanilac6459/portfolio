@@ -154,7 +154,9 @@ const ExperienceSection = () => {
         const r = el.getBoundingClientRect();
         return r.top + r.height / 2 <= mark;
       });
-      setPassed((prev) => (prev.every((v, i) => v === next[i]) ? prev : next));
+      setPassed((prev) =>
+        prev.every((v, i) => v === next[i]) ? prev : next,
+      );
 
       const inView = roseRefs.current.map((el) => {
         if (!el) return false;
@@ -190,7 +192,7 @@ const ExperienceSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "#A4133C",
+              color: "var(--rose)",
             }}
           >
             — My Journey —
@@ -199,7 +201,7 @@ const ExperienceSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "#800F2F",
+              color: "var(--wine)",
             }}
           >
             Experience
@@ -212,7 +214,7 @@ const ExperienceSection = () => {
           <div
             className="absolute left-5 top-0 bottom-0 w-px block"
             style={{
-              backgroundColor: "rgba(128, 15, 47, 0.25)",
+              backgroundColor: "var(--line-strong)",
             }}
           />
 
@@ -221,8 +223,8 @@ const ExperienceSection = () => {
             className="absolute top-0 bottom-0 w-[3px] rounded-full origin-top"
             style={{
               left: "calc(1.25rem - 1px)",
-              backgroundColor: "#A4133C",
-              boxShadow: "0 0 10px rgba(164, 19, 60, 0.45)",
+              backgroundColor: "var(--rose)",
+              boxShadow: "0 0 10px var(--rose-glow)",
               transform: `scaleY(${progress})`,
             }}
           />
@@ -244,7 +246,7 @@ const ExperienceSection = () => {
                       className="absolute inset-0"
                       style={{
                         background:
-                          "radial-gradient(ellipse 45% 55% at center, rgba(255, 248, 247, 0.9) 0%, rgba(255, 248, 247, 0.5) 55%, rgba(255, 248, 247, 0) 80%)",
+                          "var(--halo)",
                       }}
                     />
                     <img
@@ -266,10 +268,10 @@ const ExperienceSection = () => {
                     className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-2"
                     style={{
                       background:
-                        "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
+                        "var(--card-bg)",
                       border: isPassed
-                        ? "1px solid rgba(164, 19, 60, 0.45)"
-                        : "1px solid rgba(128, 15, 47, 0.15)",
+                        ? "1px solid var(--rose-glow)"
+                        : "1px solid var(--line)",
                       // hidden → dimmed (in view) → lit (line reached it)
                       opacity: !isShown ? 0 : isPassed ? 1 : 0.45,
                       translate: isShown ? "0 0" : "0 50px",
@@ -290,7 +292,7 @@ const ExperienceSection = () => {
                             <h3
                               className="text-xl font-bold"
                               style={{
-                                color: "#800F2F",
+                                color: "var(--wine)",
                               }}
                             >
                               {exp.company}
@@ -299,7 +301,7 @@ const ExperienceSection = () => {
                             <p
                               className="text-sm mt-1"
                               style={{
-                                color: "#A4133C",
+                                color: "var(--rose)",
                               }}
                             >
                               {exp.location}
@@ -311,7 +313,7 @@ const ExperienceSection = () => {
                         <div
                           className="space-y-6 pl-4 ml-6"
                           style={{
-                            borderLeft: "2px solid rgba(164, 19, 60, 0.25)",
+                            borderLeft: "2px solid var(--line-strong)",
                           }}
                         >
                           {exp.roles.map((role, idx) => (
@@ -320,7 +322,7 @@ const ExperienceSection = () => {
                                 <h4
                                   className="font-bold text-lg"
                                   style={{
-                                    color: "#800F2F",
+                                    color: "var(--wine)",
                                   }}
                                 >
                                   {role.title}
@@ -329,9 +331,9 @@ const ExperienceSection = () => {
                                 <span
                                   className="flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
                                   style={{
-                                    backgroundColor: "rgba(164, 19, 60, 0.04)",
-                                    border: "1px solid rgba(164, 19, 60, 0.18)",
-                                    color: "#A4133C",
+                                    backgroundColor: "var(--rose-soft)",
+                                    border: "1px solid var(--line)",
+                                    color: "var(--rose)",
                                   }}
                                 >
                                   {role.duration}
@@ -344,13 +346,13 @@ const ExperienceSection = () => {
                                     key={bIdx}
                                     className="flex items-start gap-2 text-sm leading-relaxed"
                                     style={{
-                                      color: "#590D22",
+                                      color: "var(--ink)",
                                     }}
                                   >
                                     <span
                                       className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
                                       style={{
-                                        backgroundColor: "#A4133C",
+                                        backgroundColor: "var(--rose)",
                                       }}
                                     />
                                     {bullet}
@@ -376,7 +378,7 @@ const ExperienceSection = () => {
                               <h3
                                 className="text-xl font-bold"
                                 style={{
-                                  color: "#800F2F",
+                                  color: "var(--wine)",
                                 }}
                               >
                                 {exp.title}
@@ -385,13 +387,13 @@ const ExperienceSection = () => {
                               <p
                                 className="text-sm mt-1"
                                 style={{
-                                  color: "#A4133C",
+                                  color: "var(--rose)",
                                 }}
                               >
                                 <span
                                   className="font-semibold"
                                   style={{
-                                    color: "#A4133C",
+                                    color: "var(--rose)",
                                   }}
                                 >
                                   {exp.company}
@@ -407,9 +409,9 @@ const ExperienceSection = () => {
                           <span
                             className="self-start flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
                             style={{
-                              backgroundColor: "rgba(164, 19, 60, 0.04)",
-                              border: "1px solid rgba(164, 19, 60, 0.18)",
-                              color: "#A4133C",
+                              backgroundColor: "var(--rose-soft)",
+                              border: "1px solid var(--line)",
+                              color: "var(--rose)",
                             }}
                           >
                             {exp.duration}
@@ -422,13 +424,13 @@ const ExperienceSection = () => {
                               key={idx}
                               className="flex items-start gap-2 text-sm leading-relaxed"
                               style={{
-                                color: "#590D22",
+                                color: "var(--ink)",
                               }}
                             >
                               <span
                                 className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
                                 style={{
-                                  backgroundColor: "#A4133C",
+                                  backgroundColor: "var(--rose)",
                                 }}
                               />
                               {bullet}

@@ -220,9 +220,7 @@ const ProjectsSection = () => {
 
   // Auto-advance (paused on hover, off for reduced motion)
   useEffect(() => {
-    const reduce = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (paused || reduce) return;
     const timer = setTimeout(() => go(index + 1), SLIDE_MS);
     return () => clearTimeout(timer);
@@ -246,7 +244,7 @@ const ProjectsSection = () => {
           <p
             className="section-eyebrow"
             style={{
-              color: "#A4133C",
+              color: "var(--rose)",
             }}
           >
             — What I've Built —
@@ -255,7 +253,7 @@ const ProjectsSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "#800F2F",
+              color: "var(--wine)",
             }}
           >
             Projects
@@ -264,7 +262,7 @@ const ProjectsSection = () => {
           <p
             className="font-serif-display italic text-lg mt-3"
             style={{
-              color: "#590D22",
+              color: "var(--ink)",
             }}
           >
             Flip through them.
@@ -284,9 +282,9 @@ const ProjectsSection = () => {
                 className="relative rounded-2xl overflow-hidden"
                 style={{
                   background:
-                    "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
-                  border: "1.5px solid #800F2F",
-                  boxShadow: "8px 8px 0 #800F2F",
+                    "var(--card-bg)",
+                  border: "1.5px solid var(--frame)",
+                  boxShadow: "8px 8px 0 var(--frame)",
                 }}
                 onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
                 onTouchEnd={(e) => {
@@ -313,15 +311,15 @@ const ProjectsSection = () => {
                       <div
                         className="rounded-xl overflow-hidden bg-white"
                         style={{
-                          border: "1px solid rgba(128, 15, 47, 0.15)",
+                          border: "1px solid var(--line)",
                           boxShadow: "0 18px 40px -18px rgba(89, 13, 34, 0.35)",
                         }}
                       >
                         <div
                           className="flex items-center gap-1.5 px-3 py-2"
                           style={{
-                            backgroundColor: "#F8F0F1",
-                            borderBottom: "1px solid rgba(128, 15, 47, 0.1)",
+                            backgroundColor: "var(--card-bar)",
+                            borderBottom: "1px solid var(--line)",
                           }}
                         >
                           <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
@@ -329,7 +327,7 @@ const ProjectsSection = () => {
                           <span className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
                           <span
                             className="flex-1 text-center text-[11px] truncate pr-8"
-                            style={{ color: "#590D22" }}
+                            style={{ color: "var(--ink)" }}
                           >
                             {p.title}
                           </span>
@@ -348,12 +346,12 @@ const ProjectsSection = () => {
                               className="w-full h-full flex items-center justify-center"
                               style={{
                                 background:
-                                  "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 50%, #F2E5E8 100%)",
+                                  "var(--card-bg)",
                               }}
                             >
                               <span
                                 className="font-serif-display italic text-7xl"
-                                style={{ color: "#A4133C" }}
+                                style={{ color: "var(--rose)" }}
                               >
                                 {String(i + 1).padStart(2, "0")}
                               </span>
@@ -370,7 +368,7 @@ const ProjectsSection = () => {
                   key={`${index}-${paused}`}
                   className="absolute bottom-0 left-0 h-1 w-full origin-left"
                   style={{
-                    backgroundColor: "#A4133C",
+                    backgroundColor: "var(--rose)",
                     animation: paused
                       ? "none"
                       : `projectTimer ${SLIDE_MS}ms linear forwards`,
@@ -381,18 +379,8 @@ const ProjectsSection = () => {
 
               {/* Arrows */}
               {[
-                {
-                  dir: -1,
-                  label: "Previous project",
-                  Icon: ArrowLeft,
-                  side: "left-2 sm:-left-6",
-                },
-                {
-                  dir: 1,
-                  label: "Next project",
-                  Icon: ArrowRight,
-                  side: "right-2 sm:-right-6",
-                },
+                { dir: -1, label: "Previous project", Icon: ArrowLeft, side: "left-2 sm:-left-6" },
+                { dir: 1, label: "Next project", Icon: ArrowRight, side: "right-2 sm:-right-6" },
               ].map(({ dir, label, Icon, side }) => (
                 <button
                   key={label}
@@ -405,7 +393,7 @@ const ProjectsSection = () => {
                     backgroundColor: "rgba(89, 13, 34, 0.92)",
                     color: "#FFF8F7",
                     border: "1.5px solid #FFF8F7",
-                    boxShadow: "3px 3px 0 #800F2F",
+                    boxShadow: "3px 3px 0 var(--frame)",
                   }}
                 >
                   <Icon size={22} />
@@ -420,7 +408,7 @@ const ProjectsSection = () => {
               style={{
                 background:
                   "linear-gradient(160deg, #590D22 0%, #6E1530 60%, #800F2F 100%)",
-                border: "1.5px solid #800F2F",
+                border: "1.5px solid var(--frame)",
                 boxShadow: "8px 8px 0 rgba(128, 15, 47, 0.35)",
                 color: "#FFF8F7",
               }}
@@ -525,15 +513,15 @@ const ProjectsSection = () => {
                 style={
                   i === index
                     ? {
-                        backgroundColor: "#A4133C",
+                        backgroundColor: "var(--rose)",
                         color: "#FFF8F7",
-                        border: "1.5px solid #800F2F",
-                        boxShadow: "3px 3px 0 #800F2F",
+                        border: "1.5px solid var(--frame)",
+                        boxShadow: "3px 3px 0 var(--frame)",
                       }
                     : {
-                        backgroundColor: "rgba(255, 255, 255, 0.45)",
-                        color: "#800F2F",
-                        border: "1.5px solid rgba(128, 15, 47, 0.25)",
+                        backgroundColor: "var(--glass)",
+                        color: "var(--wine)",
+                        border: "1.5px solid var(--line-strong)",
                       }
                 }
               >
@@ -547,8 +535,8 @@ const ProjectsSection = () => {
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-full text-sm font-medium transition-all hover:bg-white/60"
               style={{
-                color: "#800F2F",
-                border: "1.5px dashed rgba(128, 15, 47, 0.5)",
+                color: "var(--wine)",
+                border: "1.5px dashed var(--line-strong)",
               }}
             >
               More on GitHub ↗
