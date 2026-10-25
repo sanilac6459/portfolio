@@ -11,13 +11,20 @@ const Home = () => {
   const location = useLocation();
 
   // Fade-up reveal: anything with data-reveal slides in when it enters the screen.
+  // data-reveal="both" also fades back out when you scroll up past it.
   useEffect(() => {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          const twoWay = el.dataset.reveal === "both";
+
           if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-            io.unobserve(entry.target);
+            el.classList.add("revealed");
+            if (!twoWay) io.unobserve(el);
+          } else if (twoWay && entry.boundingClientRect.top > 0) {
+            // Below the screen again = you scrolled back up
+            el.classList.remove("revealed");
           }
         });
       },

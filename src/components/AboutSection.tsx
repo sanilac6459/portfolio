@@ -3,10 +3,7 @@ import { Target, Heart, User } from "lucide-react";
 
 const AboutSection = () => {
   return (
-    <section
-      id="about"
-      className="py-24 relative overflow-hidden"
-    >
+    <section id="about" className="py-24 relative overflow-hidden">
       {/* Decorative background element */}
       <div
         className="absolute top-20 right-0 w-96 h-96 rounded-full blur-3xl"
@@ -19,7 +16,7 @@ const AboutSection = () => {
         {/* Section Heading */}
         <div
           className="flex flex-col items-center text-center mb-16"
-          data-reveal
+          data-reveal="both"
         >
           <p
             className="section-eyebrow"
@@ -44,7 +41,7 @@ const AboutSection = () => {
           {/* Who I Am */}
           <div
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-            data-reveal
+            data-reveal="both"
             style={{
               background:
                 "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
@@ -101,7 +98,7 @@ const AboutSection = () => {
           {/* Goals */}
           <div
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-            data-reveal
+            data-reveal="both"
             style={{
               background:
                 "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
@@ -155,7 +152,7 @@ const AboutSection = () => {
           {/* Interests */}
           <div
             className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-            data-reveal
+            data-reveal="both"
             style={{
               background:
                 "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
