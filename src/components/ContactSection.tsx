@@ -6,7 +6,54 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-import { Mail, Linkedin, Github, CheckCircle, X } from "lucide-react";
+import {
+  Mail,
+  Linkedin,
+  Github,
+  FileText,
+  ArrowUpRight,
+  CheckCircle,
+  X,
+} from "lucide-react";
+
+// Add your resume link here when it's ready (for example "/resume.pdf")
+// and a Resume box will show up automatically.
+const RESUME_URL = "";
+
+const contactLinks = [
+  {
+    label: "Email",
+    value: "sanilachowdhury@gmail.com",
+    href: "mailto:sanilachowdhury@gmail.com",
+    Icon: Mail,
+    external: false,
+  },
+  {
+    label: "GitHub",
+    value: "sanilac6459",
+    href: "https://github.com/sanilac6459",
+    Icon: Github,
+    external: true,
+  },
+  {
+    label: "LinkedIn",
+    value: "sanilachowdhury",
+    href: "https://www.linkedin.com/in/sanilachowdhury/",
+    Icon: Linkedin,
+    external: true,
+  },
+  ...(RESUME_URL
+    ? [
+        {
+          label: "Resume",
+          value: "PDF",
+          href: RESUME_URL,
+          Icon: FileText,
+          external: true,
+        },
+      ]
+    : []),
+];
 
 const ContactSection = () => {
   const [showModal, setShowModal] = useState(false);
@@ -37,10 +84,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-24 relative overflow-hidden"
-    >
+    <section id="contact" className="py-24 relative overflow-hidden">
       {/* Success / Error Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
@@ -180,151 +224,51 @@ const ContactSection = () => {
         </div>
 
         <div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start"
           data-reveal
         >
-          {/* Contact Information */}
-          <div className="flex flex-col gap-6">
-            <div className="space-y-3">
-              {/* Email */}
+          {/* Contact links, stacked */}
+          <div
+            className="grid grid-cols-1 rounded-2xl overflow-hidden"
+            style={{
+              background: "var(--card-bg)",
+              border: "1px solid var(--line)",
+            }}
+          >
+            {contactLinks.map(({ label, value, href, Icon, external }) => (
               <a
-                href="mailto:sanilachowdhury@gmail.com"
-                className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1"
-                style={{
-                  background:
-                    "var(--card-bg)",
-                  border: "1px solid var(--line)",
-                }}
+                key={label}
+                href={href}
+                {...(external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="contact-cell group flex flex-col gap-5 p-6 transition-colors min-w-0"
               >
-                <div
-                  className="p-2.5 rounded-xl"
-                  style={{
-                    backgroundColor: "var(--rose-soft)",
-                  }}
-                >
-                  <Mail
-                    size={22}
-                    style={{
-                      color: "var(--rose)",
-                    }}
+                <div className="flex items-start justify-between">
+                  <Icon size={22} style={{ color: "var(--rose)" }} />
+                  <ArrowUpRight
+                    size={18}
+                    className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    style={{ color: "var(--muted)" }}
                   />
                 </div>
 
-                <div>
+                <div className="min-w-0">
                   <p
-                    className="text-xs uppercase tracking-widest font-medium mb-0.5"
-                    style={{
-                      color: "var(--rose)",
-                    }}
+                    className="font-mono-ui text-[11px] uppercase tracking-[0.2em] mb-1.5"
+                    style={{ color: "var(--muted)" }}
                   >
-                    Email
+                    {label}
                   </p>
-
                   <p
-                    className="font-medium"
-                    style={{
-                      color: "var(--ink)",
-                    }}
+                    className="font-mono-ui text-sm sm:text-[15px] break-words"
+                    style={{ color: "var(--wine)" }}
                   >
-                    sanilachowdhury@gmail.com
+                    {value}
                   </p>
                 </div>
               </a>
-
-              {/* GitHub */}
-              <a
-                href="https://github.com/sanilac6459"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1"
-                style={{
-                  background:
-                    "var(--card-bg)",
-                  border: "1px solid var(--line)",
-                }}
-              >
-                <div
-                  className="p-2.5 rounded-xl"
-                  style={{
-                    backgroundColor: "var(--rose-soft)",
-                  }}
-                >
-                  <Github
-                    size={22}
-                    style={{
-                      color: "var(--rose)",
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <p
-                    className="text-xs uppercase tracking-widest font-medium mb-0.5"
-                    style={{
-                      color: "var(--rose)",
-                    }}
-                  >
-                    GitHub
-                  </p>
-
-                  <p
-                    className="font-medium"
-                    style={{
-                      color: "var(--ink)",
-                    }}
-                  >
-                    github.com/sanilac6459
-                  </p>
-                </div>
-              </a>
-
-              {/* LinkedIn */}
-              <a
-                href="https://www.linkedin.com/in/sanilachowdhury/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1"
-                style={{
-                  background:
-                    "var(--card-bg)",
-                  border: "1px solid var(--line)",
-                }}
-              >
-                <div
-                  className="p-2.5 rounded-xl"
-                  style={{
-                    backgroundColor: "var(--rose-soft)",
-                  }}
-                >
-                  <Linkedin
-                    size={22}
-                    style={{
-                      color: "var(--rose)",
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <p
-                    className="text-xs uppercase tracking-widest font-medium mb-0.5"
-                    style={{
-                      color: "var(--rose)",
-                    }}
-                  >
-                    LinkedIn
-                  </p>
-
-                  <p
-                    className="font-medium"
-                    style={{
-                      color: "var(--ink)",
-                    }}
-                  >
-                    linkedin.com/in/sanilachowdhury
-                  </p>
-                </div>
-              </a>
-            </div>
+            ))}
           </div>
 
           {/* Contact Form */}
@@ -332,8 +276,7 @@ const ContactSection = () => {
             <Card
               className="p-8 rounded-2xl shadow-lg"
               style={{
-                background:
-                  "var(--card-bg)",
+                background: "var(--card-bg)",
                 border: "1px solid var(--line)",
               }}
             >

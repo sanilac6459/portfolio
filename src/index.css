@@ -301,6 +301,17 @@
     box-shadow 0.5s ease;
 }
 
+/* Contact links: stacked boxes with dividers */
+.contact-cell {
+  border-bottom: 1px solid var(--line);
+}
+.contact-cell:last-child {
+  border-bottom: 0;
+}
+.contact-cell:hover {
+  background: var(--rose-soft);
+}
+
 /* Code font for the $ typing line */
 .font-mono-ui {
   font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
