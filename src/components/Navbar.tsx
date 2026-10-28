@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 // Same order as the sections on the page
 const navItems = [
@@ -12,32 +11,6 @@ const navItems = [
   { name: "Projects", id: "projects" },
   { name: "Contact", id: "contact" },
 ];
-
-// Light / dark mode switch
-const ThemeButton = () => {
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  const isDark = mounted && resolvedTheme === "dark";
-
-  return (
-    <button
-      type="button"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      title={isDark ? "Light mode" : "Dark mode"}
-      className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-105"
-      style={{
-        color: "var(--wine)",
-        border: "1px solid var(--line-strong)",
-        backgroundColor: "var(--glass)",
-      }}
-    >
-      {isDark ? <Sun size={17} /> : <Moon size={17} />}
-    </button>
-  );
-};
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -117,7 +90,6 @@ const Navbar = () => {
             }}
           >
             <span style={{ color: "var(--rose)" }}>~/</span>sanila
-            <span className="blink-cursor" aria-hidden="true" />
           </a>
 
           <div className="flex items-center gap-5 md:gap-8">
@@ -134,8 +106,6 @@ const Navbar = () => {
                 </a>
               ))}
             </nav>
-
-            <ThemeButton />
 
             {/* Mobile Menu Button */}
             <button
