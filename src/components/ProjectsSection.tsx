@@ -93,8 +93,8 @@ const projects: ProjectProps[] = [
       "A unique trick-or-treating game where enemies steal trick or treater's candies. A great way to get into the Halloween spirit!",
     technologies: ["C#", "Unity"],
     image: "/images/gimme-candy.png",
-    demoUrl: "https://example.com",
-    repoUrl: "https://github.com/sanilac6459",
+    demoUrl: "https://caipan.itch.io/gimme-candy",
+    repoUrl: "https://github.com/weijiej2964/GIMMECANDY_Halloween",
   },
 
   /**
