@@ -223,7 +223,7 @@ const ExperienceSection = () => {
             className="absolute top-0 bottom-0 w-[3px] rounded-full origin-top"
             style={{
               left: "calc(1.25rem - 1px)",
-              backgroundColor: "var(--rose)",
+              backgroundColor: "var(--rose-btn)",
               boxShadow: "0 0 10px var(--rose-glow)",
               transform: `scaleY(${progress})`,
             }}

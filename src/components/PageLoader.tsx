@@ -18,13 +18,13 @@ const PageLoader = ({ children }: { children: React.ReactNode }) => {
         }}
       >
         <div className="flex flex-col items-center gap-4">
-          {/* Logo painted with the theme's rose color (deep rose in light, pink in dark) */}
+          {/* Logo painted with the same rose as the "View My Work" button */}
           <div
             role="img"
             aria-label="Loading"
             className="w-[200px] h-[200px]"
             style={{
-              backgroundColor: "var(--rose)",
+              backgroundColor: "var(--rose-btn)",
               WebkitMaskImage: "url(/images/logo7.png)",
               maskImage: "url(/images/logo7.png)",
               WebkitMaskRepeat: "no-repeat",

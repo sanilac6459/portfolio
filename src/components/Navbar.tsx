@@ -52,7 +52,7 @@ const Navbar = () => {
     cn(
       "font-medium font-serif-display transition-colors relative",
       "hover:text-[color:var(--rose)]",
-      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:bg-[color:var(--rose)] after:transition-all after:duration-300",
+      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:bg-[color:var(--rose-btn)] after:transition-all after:duration-300",
       activeId === id ? "after:w-full" : "after:w-0",
       extra,
     );
@@ -89,7 +89,7 @@ const Navbar = () => {
               color: "var(--wine)",
             }}
           >
-            <span style={{ color: "var(--rose)" }}>~/</span>sanila
+            <span style={{ color: "var(--rose-btn)" }}>~/</span>sanilachowdhury
           </a>
 
           <div className="flex items-center gap-5 md:gap-8">
@@ -125,7 +125,7 @@ const Navbar = () => {
           className="absolute left-0 bottom-0 h-[2px] pointer-events-none"
           style={{
             width: `${progress * 100}%`,
-            background: "var(--rose)",
+            background: "var(--rose-btn)",
           }}
         />
       </header>

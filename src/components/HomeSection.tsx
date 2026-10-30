@@ -75,7 +75,7 @@ const HomeSection = () => {
             <span className="mr-3" style={{ color: "var(--live)" }}>
               $
             </span>
-            <span style={{ color: "var(--rose)" }}>{displayed}</span>
+            <span style={{ color: "var(--rose-btn)" }}>{displayed}</span>
             <span className="blink-cursor" aria-hidden="true" />
           </p>
 
