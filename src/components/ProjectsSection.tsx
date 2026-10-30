@@ -245,7 +245,7 @@ const ProjectsSection = () => {
 
   const links = [
     isReal(project.demoUrl) && {
-      label: "Preview",
+      label: "Live preview",
       href: project.demoUrl!,
       kind: "primary",
     },
@@ -312,7 +312,7 @@ const ProjectsSection = () => {
             {/* Screenshots: every frame the same size, whole screenshot shown */}
             <div className="relative min-w-0">
               <div
-                className="relative h-full overflow-hidden"
+                className="relative h-full overflow-hidden aspect-[4/3] lg:aspect-auto"
                 onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
                 onTouchEnd={(e) => {
                   if (touchX.current === null) return;
@@ -331,7 +331,7 @@ const ProjectsSection = () => {
                   {projects.map((p, i) => (
                     <div
                       key={p.title}
-                      className="flex-[0_0_100%] pr-2.5 pb-2.5 aspect-[4/3] lg:aspect-auto"
+                      className="flex-[0_0_100%] min-w-0 h-full pr-2.5 pb-2.5"
                       aria-hidden={i !== index}
                     >
                       <div
