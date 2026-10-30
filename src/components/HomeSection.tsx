@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 const roles = [
   "software engineer",
   "data analyst",
-  "cs at hunter college",
+  "full-stack developer",
+  "tech enthusiast",
   "women in tech",
 ];
 
@@ -66,6 +67,7 @@ const HomeSection = () => {
             >
               Sanila Chowdhury
             </span>
+
           </h1>
 
           {/* Rotating Roles, terminal style */}
@@ -96,7 +98,7 @@ const HomeSection = () => {
             <Button
               className="text-white px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
               style={{
-                backgroundColor: "var(--rose)",
+                backgroundColor: "var(--rose-btn)",
               }}
               asChild
             >
@@ -127,7 +129,7 @@ const HomeSection = () => {
             }}
           >
             <p
-              className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-medium"
+              className="flex items-center gap-2 text-[12.5px] uppercase tracking-[0.18em] font-medium"
               style={{ color: "var(--muted)" }}
             >
               <span
@@ -136,17 +138,11 @@ const HomeSection = () => {
               />
               Right now
             </p>
-            <p
-              className="text-sm sm:text-base"
-              style={{ color: "var(--wine)" }}
-            >
+            <p className="text-sm sm:text-base" style={{ color: "var(--wine)" }}>
               <b className="font-semibold">Software Engineer Intern</b> at{" "}
               <span style={{ color: "var(--rose)" }}>Trance4mation Games</span>
             </p>
-            <p
-              className="text-sm sm:text-base"
-              style={{ color: "var(--wine)" }}
-            >
+            <p className="text-sm sm:text-base" style={{ color: "var(--wine)" }}>
               <b className="font-semibold">Data Analyst Intern</b> at{" "}
               <span style={{ color: "var(--rose)" }}>the MTA</span>
             </p>

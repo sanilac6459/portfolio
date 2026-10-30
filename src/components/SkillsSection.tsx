@@ -96,7 +96,6 @@ const skillCategories: SkillCategoryProps[] = [
   },
 ];
 
-
 const SkillIcon = ({ name, icon }: { name: string; icon: string }) => {
   const [failed, setFailed] = React.useState(false);
 
@@ -163,7 +162,7 @@ const SkillsSection = () => {
           {skillCategories.map((category, index) => (
             <div key={index} data-reveal="both">
               {/* Category heading */}
-              <div className="flex items-center justify-center gap-2 mb-8">
+              <div className="flex items-center gap-2 mb-8">
                 <span
                   style={{
                     color: "var(--wine)",
@@ -183,7 +182,7 @@ const SkillsSection = () => {
               </div>
 
               {/* Big icons */}
-              <div className="flex flex-wrap justify-center gap-x-3 gap-y-8 sm:gap-x-10 sm:gap-y-10">
+              <div className="flex flex-wrap gap-x-3 gap-y-8 sm:gap-x-10 sm:gap-y-10">
                 {category.skills.map((skill) => (
                   <SkillIcon
                     key={skill.name}

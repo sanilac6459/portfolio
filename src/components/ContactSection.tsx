@@ -84,7 +84,10 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-24 relative overflow-hidden"
+    >
       {/* Success / Error Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
@@ -177,7 +180,7 @@ const ContactSection = () => {
                   onClick={() => setShowModal(false)}
                   className="mt-6 text-white rounded-full px-8"
                   style={{
-                    backgroundColor: "var(--rose)",
+                    backgroundColor: "var(--rose-btn)",
                   }}
                 >
                   Close
@@ -255,7 +258,7 @@ const ContactSection = () => {
 
                 <div className="min-w-0">
                   <p
-                    className="font-mono-ui text-[11px] uppercase tracking-[0.2em] mb-1.5"
+                    className="font-mono-ui text-[12.5px] uppercase tracking-[0.18em] mb-1.5"
                     style={{ color: "var(--muted)" }}
                   >
                     {label}
@@ -276,7 +279,8 @@ const ContactSection = () => {
             <Card
               className="p-8 rounded-2xl shadow-lg"
               style={{
-                background: "var(--card-bg)",
+                background:
+                  "var(--card-bg)",
                 border: "1px solid var(--line)",
               }}
             >
@@ -384,7 +388,7 @@ const ContactSection = () => {
                   type="submit"
                   className="w-full text-white rounded-full py-6 shadow-lg"
                   style={{
-                    backgroundColor: "var(--rose)",
+                    backgroundColor: "var(--rose-btn)",
                   }}
                 >
                   Send Message

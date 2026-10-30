@@ -76,6 +76,7 @@
     --nav-bg: rgba(255, 248, 247, 0.82);
     --footer: #a4133c;
     --live: #1d8a5f;
+    --rose-btn: #a4133c;
     --term-bg: #1e1118;
     --term-bar: #2a1720;
   }
@@ -115,6 +116,7 @@
     --nav-bg: rgba(18, 10, 14, 0.82);
     --footer: #1a0d14;
     --live: #8fdcb9;
+    --rose-btn: #c2185b;
     --term-bg: #1a0f15;
     --term-bar: #24131c;
     color-scheme: dark;
