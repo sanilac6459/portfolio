@@ -5,14 +5,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Experience from "./pages/Experience";
-import Skills from "./pages/Skills";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+// One scrolling page. The old routes stay so existing links still work:
+// they all render Home, which scrolls to the matching section.
+const sectionPaths = ["/", "/about", "/experience", "/skills", "/projects", "/contact"];
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -22,12 +21,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<Contact />} />
+            {sectionPaths.map((path) => (
+              <Route key={path} path={path} element={<Home />} />
+            ))}
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

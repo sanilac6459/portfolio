@@ -19,16 +19,10 @@ const Footer = () => {
     <footer
       className="relative py-12 text-white overflow-hidden"
       style={{
-        backgroundColor: "#A4133C",
+        backgroundColor: "var(--footer)",
+        borderTop: "1px solid var(--line)",
       }}
     >
-      {/* Decorative background element */}
-      <div
-        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] rounded-full blur-3xl"
-        style={{
-          backgroundColor: "rgba(164, 19, 60, 0.10)",
-        }}
-      ></div>
 
       <div className="container relative">
         <div className="flex flex-col items-center text-center gap-6">

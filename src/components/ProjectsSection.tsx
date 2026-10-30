@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from "lucide-react";
 
 interface ProjectProps {
   title: string;
@@ -11,77 +10,6 @@ interface ProjectProps {
   repoUrl?: string;
   presentationUrl?: string;
 }
-
-const techIcons: Record<string, string> = {
-  HTML: "/images/html5.png",
-  CSS: "/images/css3.png",
-  JavaScript: "/images/js.png",
-  TypeScript: "/images/typescript.png",
-  Python: "/images/python.png",
-  Java: "/images/java.png",
-  SQL: "/images/sql.png",
-  "C++": "/images/c++.png",
-  Swift: "/images/swift.png",
-  "C#": "/images/csharp.png",
-  Git: "/images/git.png",
-  GitHub: "/images/github.png",
-  npm: "/images/npm.png",
-  Docker: "/images/docker.png",
-  "VS Code": "/images/vscode.png",
-  Postman: "/images/postman.png",
-  Figma: "/images/figma.png",
-  Jupyter: "/images/jupyter.png",
-  "Google Colab": "/images/colab.png",
-  Xcode: "/images/xcode.png",
-  Vercel: "/images/vercel.svg",
-  Flask: "/images/flask.png",
-  React: "/images/react.png",
-  "Node.js": "/images/nodejs.png",
-  "Express.js": "/images/express.png",
-  Angular: "/images/angular.png",
-  "Tailwind CSS": "/images/tailwind-css.png",
-  "OpenAI API": "/images/openai.png",
-  "Gemini API": "/images/gemini.png",
-  LangChain: "/images/langchain.png",
-  OpenRouter: "/images/openrouter.webp",
-  MySQL: "/images/mysql.png",
-  Firebase: "/images/firebase.png",
-  Supabase: "/images/supabase.png",
-  ChromaDB: "/images/chromadb.png",
-  "REST APIs": "/images/restAPI.png",
-  "Discord.py": "/images/discord-py.png",
-  Unity: "/images/unity.png",
-  "p5.js": "/images/p5js.png",
-  "OpenWeather API": "/images/openweather.png",
-  Prisma: "/images/prisma.svg",
-};
-
-const TechTag = ({ tech }: { tech: string }) => {
-  const [imgFailed, setImgFailed] = React.useState(false);
-  const iconSrc = techIcons[tech];
-
-  return (
-    <span
-      className="flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-full"
-      style={{
-        backgroundColor: "rgba(164, 19, 60, 0.06)",
-        color: "#590D22",
-        border: "1px solid rgba(128, 15, 47, 0.16)",
-      }}
-    >
-      {iconSrc && !imgFailed && (
-        <img
-          src={iconSrc}
-          alt={tech}
-          className="w-3.5 h-3.5 object-contain flex-shrink-0"
-          onError={() => setImgFailed(true)}
-        />
-      )}
-
-      {tech}
-    </span>
-  );
-};
 
 const projects: ProjectProps[] = [
   // {
@@ -205,166 +133,151 @@ const projects: ProjectProps[] = [
   },
 ];
 
-const ProjectCard = ({
-  title,
-  description,
-  technologies,
-  image,
-  demoUrl,
-  repoUrl,
-  presentationUrl,
-  index,
-}: ProjectProps & { index: number }) => (
-  <div
-    className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-    style={{
-      background:
-        "linear-gradient(135deg, #FFFAF9 0%, #FAF2F2 55%, #F5E9EB 100%)",
-      border: "1px solid rgba(128, 15, 47, 0.10)",
-    }}
-  >
-    {/* Project Image */}
-    <div className="relative h-48 overflow-hidden">
-      {image ? (
-        <img src={image} alt={title} className="w-full h-full object-cover" />
-      ) : (
-        <div
-          className="w-full h-full flex items-center justify-center"
-          style={{
-            background:
-              "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 50%, #F2E5E8 100%)",
-          }}
-        >
-          <span
-            className="font-serif-display italic text-7xl"
-            style={{
-              color: "#A4133C",
-            }}
-          >
-            {String(index + 1).padStart(2, "0")}
-          </span>
-        </div>
-      )}
-    </div>
+const techIcons: Record<string, string> = {
+  HTML: "/images/html5.png",
+  CSS: "/images/css3.png",
+  JavaScript: "/images/js.png",
+  TypeScript: "/images/typescript.png",
+  Python: "/images/python.png",
+  Java: "/images/java.png",
+  SQL: "/images/sql.png",
+  "C++": "/images/c++.png",
+  Swift: "/images/swift.png",
+  "C#": "/images/csharp.png",
+  Git: "/images/git.png",
+  GitHub: "/images/github.png",
+  npm: "/images/npm.png",
+  Docker: "/images/docker.png",
+  "VS Code": "/images/vscode.png",
+  Postman: "/images/postman.png",
+  Figma: "/images/figma.png",
+  Jupyter: "/images/jupyter.png",
+  "Google Colab": "/images/colab.png",
+  Xcode: "/images/xcode.png",
+  Vercel: "/images/vercel.svg",
+  Flask: "/images/flask.png",
+  React: "/images/react.png",
+  "Node.js": "/images/nodejs.png",
+  "Express.js": "/images/express.png",
+  Angular: "/images/angular.png",
+  "Tailwind CSS": "/images/tailwind-css.png",
+  "OpenAI API": "/images/openai.png",
+  "Gemini API": "/images/gemini.png",
+  LangChain: "/images/langchain.png",
+  OpenRouter: "/images/openrouter.webp",
+  MySQL: "/images/mysql.png",
+  Firebase: "/images/firebase.png",
+  Supabase: "/images/supabase.png",
+  ChromaDB: "/images/chromadb.png",
+  "REST APIs": "/images/restAPI.png",
+  "Discord.py": "/images/discord-py.png",
+  Unity: "/images/unity.png",
+  "p5.js": "/images/p5js.png",
+  "OpenWeather API": "/images/openweather.png",
+  Prisma: "/images/prisma.svg",
+};
 
-    {/* Project Content */}
-    <div className="p-6">
-      <h3
-        className="font-serif-display text-2xl mb-2"
-        style={{
-          color: "#A4133C",
-        }}
-      >
-        {title}
-      </h3>
+const SLIDE_MS = 7000; // how long each project shows before auto-advancing
 
-      <p
-        className="mb-4 text-sm leading-relaxed font-light"
-        style={{
-          color: "#590D22",
-        }}
-      >
-        {description}
-      </p>
+// The terminal stays dark, like a real one
+const term = {
+  fg: "#f4e6ec",
+  dim: "#a88d99",
+  path: "#f5a3b8",
+  arrow: "#ff6b95",
+  head: "#ff8fab",
+};
 
-      {/* Technologies */}
-      <div className="flex flex-wrap gap-2 mb-5">
-        {technologies.map((tech, i) => (
-          <TechTag key={i} tech={tech} />
-        ))}
-      </div>
+// "Phil — Job Applier Agent" -> "phil", "HunterConnect" -> "hunterconnect"
+const fileName = (title: string) =>
+  title
+    .split(" — ")[0]
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
-      {/* Project Links */}
-      <div
-        className="flex gap-3 pt-4 flex-wrap"
-        style={{
-          borderTop: "1px solid rgba(128, 15, 47, 0.10)",
-        }}
-      >
-        {demoUrl && (
-          <Button
-            variant="ghost"
-            size="sm"
-            asChild
-            className="relative transition-colors hover:bg-transparent"
-            style={{
-              color: "#A4133C",
-            }}
-          >
-            <a href={demoUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={14} className="mr-1.5" />
-              Preview
-            </a>
-          </Button>
-        )}
+const pad = (n: number) => String(n).padStart(2, "0");
 
-        {presentationUrl && (
-          <Button
-            variant="ghost"
-            size="sm"
-            asChild
-            className="relative transition-colors hover:bg-transparent"
-            style={{
-              color: "#A4133C",
-            }}
-          >
-            <a href={presentationUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={14} className="mr-1.5" />
-              Live Presentation
-            </a>
-          </Button>
-        )}
-
-        {repoUrl && (
-          <Button
-            variant="ghost"
-            size="sm"
-            asChild
-            className="relative transition-colors hover:bg-transparent"
-            style={{
-              color: "#A4133C",
-            }}
-          >
-            <a href={repoUrl} target="_blank" rel="noopener noreferrer">
-              <Github size={14} className="mr-1.5" />
-              Code
-            </a>
-          </Button>
-        )}
-      </div>
-    </div>
-  </div>
+const Prompt = () => (
+  <>
+    <span style={{ color: term.path }}>~/projects</span>{" "}
+    <span style={{ color: term.dim }}>main</span>
+    <span style={{ color: term.arrow }}>*</span>{" "}
+    <span className="font-bold" style={{ color: term.arrow }}>
+      ❯
+    </span>
+  </>
 );
 
 const ProjectsSection = () => {
-  const [showAll, setShowAll] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  // Once someone uses the arrows, tabs or swipes, stop moving on its own
+  const [userPicked, setUserPicked] = useState(false);
+  const touchX = useRef<number | null>(null);
+  const total = projects.length;
+  const project = projects[index];
 
-  const visibleProjects = showAll ? projects : projects.slice(0, 3);
+  const go = useCallback(
+    (next: number) => setIndex((next + total) % total),
+    [total],
+  );
+
+  const pick = (next: number) => {
+    setUserPicked(true);
+    go(next);
+  };
+
+  const stopped = paused || userPicked;
+
+  // Auto-advance (paused on hover, off for reduced motion)
+  useEffect(() => {
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (stopped || reduce) return;
+    const timer = setTimeout(() => go(index + 1), SLIDE_MS);
+    return () => clearTimeout(timer);
+  }, [index, stopped, go]);
+
+  // Placeholder links (like example.com) are hidden until a real one is added
+  const isReal = (url?: string) => !!url && !url.includes("example.com");
+
+  const links = [
+    isReal(project.demoUrl) && {
+      label: "Preview",
+      href: project.demoUrl!,
+      kind: "primary",
+    },
+    isReal(project.presentationUrl) && {
+      label: "Presentation",
+      href: project.presentationUrl!,
+      kind: "outline",
+    },
+    isReal(project.repoUrl) && {
+      label: "GitHub",
+      href: project.repoUrl!,
+      kind: "outline",
+    },
+  ].filter(Boolean) as { label: string; href: string; kind: string }[];
 
   return (
-    <section
-      id="projects"
-      className="py-24 relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
-      }}
-    >
-      {/* Decorative background element */}
-      <div
-        className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
-        style={{
-          backgroundColor: "rgba(128, 15, 47, 0.06)",
-        }}
-      ></div>
+    <section id="projects" className="py-24 relative overflow-hidden">
+      <style>{`
+        @keyframes projectTimer { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+        @keyframes projectInfoIn { from { opacity: 0; transform: translateY(8px); } }
+      `}</style>
 
       <div className="container relative">
         {/* Section Heading */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div
+          className="flex flex-col items-center text-center mb-16"
+          data-reveal
+        >
           <p
             className="section-eyebrow"
             style={{
-              color: "#A4133C",
+              color: "var(--rose)",
             }}
           >
             — What I've Built —
@@ -373,53 +286,329 @@ const ProjectsSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "#800F2F",
+              color: "var(--wine)",
             }}
           >
             Projects
           </h2>
+
+          <p
+            className="font-serif-display italic text-lg mt-3"
+            style={{
+              color: "var(--ink)",
+            }}
+          >
+            Flip through them.
+          </p>
         </div>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {visibleProjects.map((project, index) => (
-            <ProjectCard key={index} index={index} {...project} />
-          ))}
-        </div>
+        <div
+          className="max-w-6xl mx-auto"
+          data-reveal
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:auto-rows-[480px] gap-6">
+            {/* Screenshots: every frame the same size, whole screenshot shown */}
+            <div className="relative min-w-0">
+              <div
+                className="relative h-full overflow-hidden"
+                onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+                onTouchEnd={(e) => {
+                  if (touchX.current === null) return;
+                  const dx = e.changedTouches[0].clientX - touchX.current;
+                  if (Math.abs(dx) > 40) pick(dx < 0 ? index + 1 : index - 1);
+                  touchX.current = null;
+                }}
+              >
+                <div
+                  className="flex h-full"
+                  style={{
+                    transform: `translateX(-${index * 100}%)`,
+                    transition: "transform 0.7s cubic-bezier(0.65, 0, 0.35, 1)",
+                  }}
+                >
+                  {projects.map((p, i) => (
+                    <div
+                      key={p.title}
+                      className="flex-[0_0_100%] pr-2.5 pb-2.5 aspect-[4/3] lg:aspect-auto"
+                      aria-hidden={i !== index}
+                    >
+                      <div
+                        className="relative w-full h-full rounded-[14px] overflow-hidden grid place-items-center"
+                        style={{
+                          border: "1.5px solid var(--frame)",
+                          boxShadow:
+                            "8px 8px 0 var(--frame), 0 24px 50px -24px rgba(0, 0, 0, 0.7)",
+                        }}
+                      >
+                        {/* Blurred copy fills the leftover space */}
+                        <div
+                          className="absolute -inset-8"
+                          style={{
+                            backgroundImage: p.image
+                              ? `url(${p.image})`
+                              : undefined,
+                            backgroundColor: "var(--card-bar)",
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            filter: "blur(22px) brightness(0.55) saturate(1.1)",
+                          }}
+                        />
 
-        {/* View More */}
-        <div className="mt-12 text-center flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            variant="outline"
-            className="px-8 py-6 rounded-full transition-all"
-            style={{
-              borderColor: "#800F2F",
-              color: "#800F2F",
-              backgroundColor: "rgba(255, 255, 255, 0.25)",
-            }}
-            onClick={() => setShowAll(!showAll)}
-          >
-            {showAll ? "Show Less" : "View More"}
-          </Button>
+                        {p.image ? (
+                          <img
+                            src={p.image}
+                            alt={`Screenshot of ${p.title}`}
+                            className="relative block max-w-full max-h-full w-auto h-auto"
+                            style={{
+                              boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.6)",
+                            }}
+                            loading="lazy"
+                          />
+                        ) : (
+                          <span
+                            className="relative font-serif-display italic text-7xl"
+                            style={{ color: "var(--rose)" }}
+                          >
+                            {pad(i + 1)}
+                          </span>
+                        )}
 
-          {/**
-          <Button
-            className="text-white px-8 py-6 rounded-full shadow-lg"
-            style={{
-              backgroundColor: "#A4133C",
-            }}
-            asChild
-          >
+                        {/* Auto-advance bar */}
+                        {i === index && !userPicked && (
+                          <div
+                            key={`${index}-${paused}`}
+                            className="absolute bottom-0 left-0 h-1 w-full origin-left"
+                            style={{
+                              backgroundColor: "var(--rose)",
+                              animation: paused
+                                ? "none"
+                                : `projectTimer ${SLIDE_MS}ms linear forwards`,
+                              transform: paused ? "scaleX(0)" : undefined,
+                            }}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Arrows */}
+              {[
+                {
+                  dir: -1,
+                  label: "Previous project",
+                  Icon: ArrowLeft,
+                  side: "left-3",
+                },
+                {
+                  dir: 1,
+                  label: "Next project",
+                  Icon: ArrowRight,
+                  side: "right-5",
+                },
+              ].map(({ dir, label, Icon, side }) => (
+                <button
+                  key={label}
+                  onClick={() => pick(index + dir)}
+                  aria-label={label}
+                  className={`absolute top-1/2 -translate-y-1/2 ${side} z-10 w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-full flex items-center justify-center transition-transform hover:scale-110`}
+                  style={{
+                    backgroundColor: "rgba(89, 13, 34, 0.92)",
+                    color: "#FFF8F7",
+                    border: "1.5px solid #FFF8F7",
+                    boxShadow: "3px 3px 0 var(--frame)",
+                  }}
+                >
+                  <Icon size={22} />
+                </button>
+              ))}
+            </div>
+
+            {/* Project details as a terminal window */}
+            <div
+              className="min-w-0 min-h-0 flex flex-col rounded-[14px] overflow-hidden font-mono-ui text-[13.5px] leading-relaxed"
+              style={{
+                background: "var(--term-bg)",
+                color: term.fg,
+                border: "1px solid var(--line-strong)",
+                boxShadow: "0 30px 70px -30px var(--rose-glow)",
+              }}
+              aria-live="polite"
+              aria-label="Project details"
+            >
+              {/* Title bar */}
+              <div
+                className="flex items-center gap-2 px-3.5 py-3"
+                style={{
+                  background: "var(--term-bar)",
+                  borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
+                }}
+              >
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span
+                  className="flex-1 text-center text-xs truncate"
+                  style={{ color: term.dim }}
+                >
+                  ~/sanilachowdhury/projects
+                </span>
+                <span
+                  className="text-xs tabular-nums"
+                  style={{ color: term.dim }}
+                >
+                  {pad(index + 1)} / {pad(total)}
+                </span>
+              </div>
+
+              {/* Commands and output */}
+              <div
+                key={index}
+                className="flex-1 overflow-y-auto flex flex-col gap-3.5 px-4 sm:px-5 pt-[18px] pb-5"
+              >
+                <p
+                  className="break-words"
+                  style={{ animation: "projectInfoIn 0.45s ease both" }}
+                >
+                  <Prompt /> cat {fileName(project.title)}.md
+                </p>
+
+                <div
+                  style={{ animation: "projectInfoIn 0.45s 0.05s ease both" }}
+                >
+                  <p className="font-bold" style={{ color: term.head }}>
+                    # project {pad(index + 1)}
+                  </p>
+                  <h3
+                    className="font-serif-display font-semibold text-2xl sm:text-[26px] leading-tight mt-0.5 mb-1.5"
+                    style={{ color: "var(--wine)" }}
+                  >
+                    {project.title}
+                  </h3>
+                  <p style={{ opacity: 0.92 }}>{project.description}</p>
+                </div>
+
+                <div
+                  style={{ animation: "projectInfoIn 0.45s 0.1s ease both" }}
+                >
+                  <p>
+                    <Prompt /> ls stack/
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="inline-flex items-center gap-[7px] py-1 pl-2 pr-2.5 rounded-lg"
+                        style={{
+                          background: "rgba(255, 255, 255, 0.05)",
+                          border: "1px solid var(--line)",
+                        }}
+                      >
+                        {techIcons[tech] && (
+                          <img
+                            src={techIcons[tech]}
+                            alt=""
+                            className="w-[18px] h-[18px] object-contain rounded p-0.5"
+                            style={{ background: "rgba(255, 255, 255, 0.92)" }}
+                          />
+                        )}
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div
+                  className="mt-auto pt-3.5 grid gap-2.5"
+                  style={{
+                    borderTop: "1px dashed var(--line-strong)",
+                    animation: "projectInfoIn 0.45s 0.15s ease both",
+                  }}
+                >
+                  <div className="flex flex-wrap gap-2.5">
+                    {links.map((l) => (
+                      <a
+                        key={l.label}
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full px-[18px] py-2.5 font-sans font-semibold text-sm transition-transform hover:-translate-y-0.5"
+                        style={
+                          l.kind === "primary"
+                            ? {
+                                background: "var(--rose-btn)",
+                                color: "#fff",
+                                boxShadow: "0 10px 24px -10px var(--rose-glow)",
+                                fontFamily:
+                                  "Space Grotesk, system-ui, sans-serif",
+                              }
+                            : {
+                                color: "var(--wine)",
+                                border: "1.5px solid var(--line-strong)",
+                                background: "rgba(255, 255, 255, 0.04)",
+                                fontFamily:
+                                  "Space Grotesk, system-ui, sans-serif",
+                              }
+                        }
+                      >
+                        {l.label === "GitHub" && <Github size={16} />}
+                        {l.label}
+                        {l.label !== "GitHub" && <ArrowUpRight size={16} />}
+                      </a>
+                    ))}
+                  </div>
+                  <p>
+                    <Prompt />{" "}
+                    <span className="blink-cursor" aria-hidden="true" />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Project tabs */}
+          <div className="flex flex-wrap justify-center gap-2.5 mt-8">
+            {projects.map((p, i) => (
+              <button
+                key={p.title}
+                onClick={() => pick(i)}
+                aria-pressed={i === index}
+                className="px-4 py-2 rounded-full text-sm font-medium transition-all"
+                style={
+                  i === index
+                    ? {
+                        backgroundColor: "var(--rose-btn)",
+                        color: "#fff",
+                        border: "1.5px solid var(--frame)",
+                        boxShadow: "3px 3px 0 var(--frame)",
+                      }
+                    : {
+                        backgroundColor: "var(--glass)",
+                        color: "var(--wine)",
+                        border: "1.5px solid var(--line-strong)",
+                      }
+                }
+              >
+                {p.title}
+              </button>
+            ))}
+
             <a
               href="https://github.com/sanilac6459"
               target="_blank"
               rel="noopener noreferrer"
+              className="px-4 py-2 rounded-full text-sm font-medium transition-all hover:bg-white/5"
+              style={{
+                color: "var(--wine)",
+                border: "1.5px dashed var(--line-strong)",
+              }}
             >
-              <Github size={18} className="mr-2" />
-              Visit My GitHub
+              More on GitHub ↗
             </a>
-          </Button>
-          */}
+          </div>
         </div>
       </div>
     </section>

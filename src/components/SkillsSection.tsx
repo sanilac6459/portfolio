@@ -96,38 +96,53 @@ const skillCategories: SkillCategoryProps[] = [
   },
 ];
 
+const SkillIcon = ({ name, icon }: { name: string; icon: string }) => {
+  const [failed, setFailed] = React.useState(false);
+
+  return (
+    <div className="group flex flex-col items-center gap-2 sm:gap-3 w-20 sm:w-28">
+      <div className="skill-tile w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+        {failed ? (
+          <span
+            className="font-serif-display text-3xl"
+            style={{ color: "var(--rose)" }}
+          >
+            {name[0]}
+          </span>
+        ) : (
+          <img
+            src={icon}
+            alt=""
+            className="w-full h-full object-contain"
+            style={{ filter: "drop-shadow(0 6px 10px rgba(89, 13, 34, 0.18))" }}
+            onError={() => setFailed(true)}
+          />
+        )}
+      </div>
+
+      <span
+        className="text-sm sm:text-[15px] font-semibold text-center leading-tight"
+        style={{ color: "var(--wine)" }}
+      >
+        {name}
+      </span>
+    </div>
+  );
+};
+
 const SkillsSection = () => {
   return (
-    <section
-      id="skills"
-      className="py-24 relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
-      }}
-    >
-      {/* Decorative background elements */}
-      <div
-        className="absolute top-1/2 left-0 w-96 h-96 rounded-full blur-3xl -translate-y-1/2"
-        style={{
-          backgroundColor: "rgba(128, 15, 47, 0.05)",
-        }}
-      ></div>
-
-      <div
-        className="absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl"
-        style={{
-          backgroundColor: "rgba(164, 19, 60, 0.06)",
-        }}
-      ></div>
-
+    <section id="skills" className="py-24 relative overflow-hidden">
       <div className="container relative">
         {/* Section Heading */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div
+          className="flex flex-col items-center text-center mb-16"
+          data-reveal="both"
+        >
           <p
             className="section-eyebrow"
             style={{
-              color: "#A4133C",
+              color: "var(--rose)",
             }}
           >
             — What I Work With —
@@ -136,21 +151,21 @@ const SkillsSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "#800F2F",
+              color: "var(--wine)",
             }}
           >
             Skills
           </h2>
         </div>
 
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-16 max-w-6xl mx-auto">
           {skillCategories.map((category, index) => (
-            <div key={index}>
+            <div key={index} data-reveal="both">
               {/* Category heading */}
-              <div className="flex items-center gap-2 mb-5">
+              <div className="flex items-center gap-2 mb-8">
                 <span
                   style={{
-                    color: "#800F2F",
+                    color: "var(--wine)",
                   }}
                 >
                   {category.icon}
@@ -159,37 +174,21 @@ const SkillsSection = () => {
                 <h3
                   className="font-serif-display text-2xl"
                   style={{
-                    color: "#800F2F",
+                    color: "var(--wine)",
                   }}
                 >
                   {category.title}
                 </h3>
               </div>
 
-              {/* Skill pills */}
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
-                      border: "1px solid rgba(128, 15, 47, 0.16)",
-                      color: "#A4133C",
-                    }}
-                  >
-                    <img
-                      src={skill.icon}
-                      alt={skill.name}
-                      className="w-5 h-5 object-contain"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = "none";
-                      }}
-                    />
-
-                    <span className="font-medium text-sm">{skill.name}</span>
-                  </div>
+              {/* Big icons */}
+              <div className="flex flex-wrap gap-x-3 gap-y-8 sm:gap-x-10 sm:gap-y-10">
+                {category.skills.map((skill) => (
+                  <SkillIcon
+                    key={skill.name}
+                    name={skill.name}
+                    icon={skill.icon}
+                  />
                 ))}
               </div>
             </div>

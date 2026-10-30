@@ -122,109 +122,77 @@ const experiences: ExperienceProps[] = [
   },
 ];
 
-// Interpolates a color along the section's diagonal gradient stops,
-// so each rose's backdrop can match its local background shade.
-const GRADIENT_STOPS: { stop: number; color: [number, number, number] }[] = [
-  { stop: 0, color: [255, 248, 247] }, // #FFF8F7
-  { stop: 0.35, color: [248, 240, 241] }, // #F8F0F1
-  { stop: 0.65, color: [235, 216, 221] }, // #EBD8DD
-  { stop: 1, color: [217, 184, 192] }, // #D9B8C0
-];
-
-function getGradientColorAt(t: number): string {
-  const clamped = Math.min(1, Math.max(0, t));
-  let start = GRADIENT_STOPS[0];
-  let end = GRADIENT_STOPS[GRADIENT_STOPS.length - 1];
-
-  for (let i = 0; i < GRADIENT_STOPS.length - 1; i++) {
-    if (
-      clamped >= GRADIENT_STOPS[i].stop &&
-      clamped <= GRADIENT_STOPS[i + 1].stop
-    ) {
-      start = GRADIENT_STOPS[i];
-      end = GRADIENT_STOPS[i + 1];
-      break;
-    }
-  }
-
-  const range = end.stop - start.stop || 1;
-  const localT = (clamped - start.stop) / range;
-
-  const r = Math.round(
-    start.color[0] + (end.color[0] - start.color[0]) * localT,
-  );
-  const g = Math.round(
-    start.color[1] + (end.color[1] - start.color[1]) * localT,
-  );
-  const b = Math.round(
-    start.color[2] + (end.color[2] - start.color[2]) * localT,
-  );
-
-  return `rgb(${r}, ${g}, ${b})`;
-}
-
-function toRgba(rgb: string, alpha: number): string {
-  return rgb.replace("rgb", "rgba").replace(")", `, ${alpha})`);
-}
-
 const ExperienceSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
   const roseRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [roseColors, setRoseColors] = useState<string[]>(() =>
-    experiences.map((_, i) => getGradientColorAt(i / (experiences.length - 1))),
+  const [progress, setProgress] = useState(0);
+  const [passed, setPassed] = useState<boolean[]>(() =>
+    experiences.map(() => false),
+  );
+  const [shown, setShown] = useState<boolean[]>(() =>
+    experiences.map(() => false),
   );
 
+  // As you scroll, the line fills down to a point 60% of the way down the screen.
+  // Each card appears dimmed once it enters the screen, then lights up (and its
+  // rose blooms) when the line reaches it. Scrolling back up reverses both.
   useEffect(() => {
-    function updateColors() {
-      const section = sectionRef.current;
-      if (!section) return;
+    let frame = 0;
 
-      const sectionRect = section.getBoundingClientRect();
-      const sectionHeight = section.offsetHeight || 1;
+    function update() {
+      frame = 0;
+      const timeline = timelineRef.current;
+      if (!timeline) return;
 
-      const newColors = roseRefs.current.map((el) => {
-        if (!el) return getGradientColorAt(0);
-        const elRect = el.getBoundingClientRect();
-        // Position of the rose's own center, relative to the section's box,
-        // matches the same coordinate space the section's gradient is painted in.
-        const relativeTop = elRect.top - sectionRect.top + elRect.height / 2;
-        const t = relativeTop / sectionHeight;
-        return getGradientColorAt(t);
+      const mark = window.innerHeight * 0.6;
+      const rect = timeline.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, (mark - rect.top) / rect.height));
+      setProgress(p);
+
+      const next = roseRefs.current.map((el) => {
+        if (!el) return false;
+        const r = el.getBoundingClientRect();
+        return r.top + r.height / 2 <= mark;
       });
+      setPassed((prev) =>
+        prev.every((v, i) => v === next[i]) ? prev : next,
+      );
 
-      setRoseColors(newColors);
+      const inView = roseRefs.current.map((el) => {
+        if (!el) return false;
+        return el.getBoundingClientRect().top <= window.innerHeight * 0.92;
+      });
+      setShown((prev) =>
+        prev.every((v, i) => v === inView[i]) ? prev : inView,
+      );
     }
 
-    updateColors();
-    window.addEventListener("resize", updateColors);
-    return () => window.removeEventListener("resize", updateColors);
+    function onScroll() {
+      if (!frame) frame = requestAnimationFrame(update);
+    }
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
-    <section
-      id="experience"
-      ref={sectionRef}
-      className="py-24 relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 35%, #EBD8DD 65%, #D9B8C0 100%)",
-      }}
-    >
-      {/* Decorative background element */}
-      <div
-        className="absolute -top-20 -left-20 w-80 h-80 rounded-full blur-3xl"
-        style={{
-          backgroundColor: "rgba(128, 15, 47, 0.06)",
-        }}
-      />
-
+    <section id="experience" className="py-24 relative overflow-hidden">
       <div className="container relative">
         {/* Section Heading */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div
+          className="flex flex-col items-center text-center mb-16"
+          data-reveal
+        >
           <p
             className="section-eyebrow"
             style={{
-              color: "#A4133C",
+              color: "var(--rose)",
             }}
           >
             — My Journey —
@@ -233,7 +201,7 @@ const ExperienceSection = () => {
           <h2
             className="section-title"
             style={{
-              color: "#800F2F",
+              color: "var(--wine)",
             }}
           >
             Experience
@@ -241,18 +209,30 @@ const ExperienceSection = () => {
         </div>
 
         {/* Timeline */}
-        <div className="max-w-5xl mx-auto relative">
+        <div ref={timelineRef} className="max-w-5xl mx-auto relative">
           {/* Vertical Timeline Line */}
           <div
             className="absolute left-5 top-0 bottom-0 w-px block"
             style={{
-              backgroundColor: "rgba(128, 15, 47, 0.25)",
+              backgroundColor: "var(--line-strong)",
+            }}
+          />
+
+          {/* Line that fills as you scroll */}
+          <div
+            className="absolute top-0 bottom-0 w-[3px] rounded-full origin-top"
+            style={{
+              left: "calc(1.25rem - 1px)",
+              backgroundColor: "var(--rose)",
+              boxShadow: "0 0 10px var(--rose-glow)",
+              transform: `scaleY(${progress})`,
             }}
           />
 
           <div className="space-y-8">
             {experiences.map((exp, index) => {
-              const localColor = roseColors[index] ?? getGradientColorAt(0);
+              const isPassed = passed[index];
+              const isShown = shown[index];
               return (
                 <div key={index} className="relative pl-14 sm:pl-16">
                   {/* Rose */}
@@ -265,23 +245,37 @@ const ExperienceSection = () => {
                     <div
                       className="absolute inset-0"
                       style={{
-                        background: `radial-gradient(ellipse 45% 55% at center, ${toRgba(localColor, 0.55)} 0%, ${toRgba(localColor, 0.25)} 55%, ${toRgba(localColor, 0)} 80%)`,
+                        background:
+                          "var(--halo)",
                       }}
                     />
                     <img
                       src="/images/rose3.png"
                       alt=""
                       className="relative w-full h-full object-contain"
+                      style={{
+                        transition:
+                          "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s, filter 0.4s",
+                        transform: isPassed ? "scale(1.1)" : "scale(0.85)",
+                        opacity: isPassed ? 1 : 0.55,
+                        filter: isPassed ? "none" : "grayscale(0.6)",
+                      }}
                     />
                   </div>
 
                   {/* Experience Card */}
                   <div
-                    className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                    className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-2"
                     style={{
                       background:
-                        "linear-gradient(135deg, #FFF8F7 0%, #F8F0F1 65%, #F1E2E5 100%)",
-                      border: "1px solid rgba(128, 15, 47, 0.15)",
+                        "var(--card-bg)",
+                      border: isPassed
+                        ? "1px solid var(--rose-glow)"
+                        : "1px solid var(--line)",
+                      // hidden → dimmed (in view) → lit (line reached it)
+                      opacity: !isShown ? 0 : isPassed ? 1 : 0.45,
+                      translate: isShown ? "0 0" : "0 50px",
+                      filter: isPassed ? "none" : "grayscale(0.7)",
                     }}
                   >
                     {exp.roles ? (
@@ -298,7 +292,7 @@ const ExperienceSection = () => {
                             <h3
                               className="text-xl font-bold"
                               style={{
-                                color: "#800F2F",
+                                color: "var(--wine)",
                               }}
                             >
                               {exp.company}
@@ -307,7 +301,7 @@ const ExperienceSection = () => {
                             <p
                               className="text-sm mt-1"
                               style={{
-                                color: "#A4133C",
+                                color: "var(--rose)",
                               }}
                             >
                               {exp.location}
@@ -319,7 +313,7 @@ const ExperienceSection = () => {
                         <div
                           className="space-y-6 pl-4 ml-6"
                           style={{
-                            borderLeft: "2px solid rgba(164, 19, 60, 0.25)",
+                            borderLeft: "2px solid var(--line-strong)",
                           }}
                         >
                           {exp.roles.map((role, idx) => (
@@ -328,7 +322,7 @@ const ExperienceSection = () => {
                                 <h4
                                   className="font-bold text-lg"
                                   style={{
-                                    color: "#800F2F",
+                                    color: "var(--wine)",
                                   }}
                                 >
                                   {role.title}
@@ -337,9 +331,9 @@ const ExperienceSection = () => {
                                 <span
                                   className="flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
                                   style={{
-                                    backgroundColor: "rgba(164, 19, 60, 0.04)",
-                                    border: "1px solid rgba(164, 19, 60, 0.18)",
-                                    color: "#A4133C",
+                                    backgroundColor: "var(--rose-soft)",
+                                    border: "1px solid var(--line)",
+                                    color: "var(--rose)",
                                   }}
                                 >
                                   {role.duration}
@@ -352,13 +346,13 @@ const ExperienceSection = () => {
                                     key={bIdx}
                                     className="flex items-start gap-2 text-sm leading-relaxed"
                                     style={{
-                                      color: "#590D22",
+                                      color: "var(--ink)",
                                     }}
                                   >
                                     <span
                                       className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
                                       style={{
-                                        backgroundColor: "#A4133C",
+                                        backgroundColor: "var(--rose)",
                                       }}
                                     />
                                     {bullet}
@@ -384,7 +378,7 @@ const ExperienceSection = () => {
                               <h3
                                 className="text-xl font-bold"
                                 style={{
-                                  color: "#800F2F",
+                                  color: "var(--wine)",
                                 }}
                               >
                                 {exp.title}
@@ -393,13 +387,13 @@ const ExperienceSection = () => {
                               <p
                                 className="text-sm mt-1"
                                 style={{
-                                  color: "#A4133C",
+                                  color: "var(--rose)",
                                 }}
                               >
                                 <span
                                   className="font-semibold"
                                   style={{
-                                    color: "#A4133C",
+                                    color: "var(--rose)",
                                   }}
                                 >
                                   {exp.company}
@@ -415,9 +409,9 @@ const ExperienceSection = () => {
                           <span
                             className="self-start flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
                             style={{
-                              backgroundColor: "rgba(164, 19, 60, 0.04)",
-                              border: "1px solid rgba(164, 19, 60, 0.18)",
-                              color: "#A4133C",
+                              backgroundColor: "var(--rose-soft)",
+                              border: "1px solid var(--line)",
+                              color: "var(--rose)",
                             }}
                           >
                             {exp.duration}
@@ -430,13 +424,13 @@ const ExperienceSection = () => {
                               key={idx}
                               className="flex items-start gap-2 text-sm leading-relaxed"
                               style={{
-                                color: "#590D22",
+                                color: "var(--ink)",
                               }}
                             >
                               <span
                                 className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
                                 style={{
-                                  backgroundColor: "#A4133C",
+                                  backgroundColor: "var(--rose)",
                                 }}
                               />
                               {bullet}
