@@ -89,7 +89,7 @@ const Navbar = () => {
               color: "var(--wine)",
             }}
           >
-            <span style={{ color: "var(--rose-btn)" }}>~/</span>sanilachowdhury
+            <span style={{ color: "var(--rose-btn)" }}>~/</span>sanila
           </a>
 
           <div className="flex items-center gap-5 md:gap-8">

@@ -67,7 +67,6 @@ const HomeSection = () => {
             >
               Sanila Chowdhury
             </span>
-
           </h1>
 
           {/* Rotating Roles, terminal style */}
@@ -138,11 +137,17 @@ const HomeSection = () => {
               />
               Right now
             </p>
-            <p className="text-sm sm:text-base" style={{ color: "var(--wine)" }}>
+            <p
+              className="text-sm sm:text-base"
+              style={{ color: "var(--wine)" }}
+            >
               <b className="font-semibold">Software Engineer Intern</b> at{" "}
               <span style={{ color: "var(--rose)" }}>Trance4mation Games</span>
             </p>
-            <p className="text-sm sm:text-base" style={{ color: "var(--wine)" }}>
+            <p
+              className="text-sm sm:text-base"
+              style={{ color: "var(--wine)" }}
+            >
               <b className="font-semibold">Data Analyst Intern</b> at{" "}
               <span style={{ color: "var(--rose)" }}>the MTA</span>
             </p>

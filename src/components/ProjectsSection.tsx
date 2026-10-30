@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from "lucide-react";
 
 interface ProjectProps {
   title: string;
+  tagline?: string;
   description: string;
   technologies: string[];
   image?: string;
@@ -23,8 +24,9 @@ const projects: ProjectProps[] = [
 
   {
     title: "HunterConnect",
+    tagline: "Every Hunter club, in one place.",
     description:
-      "An app for Hunter College students to discover and join campus clubs, share announcements, and stay connected with their college community.",
+      "Students discover and join campus clubs, and club leaders post announcements and manage their members, all from one platform. Built from scratch, from the database to deployment.",
     technologies: ["React", "Node.js", "Express.js", "Prisma", "Supabase"],
     image: "/images/hunter-connect.png",
     demoUrl: "https://hunter-connect-psi.vercel.app/",
@@ -33,8 +35,9 @@ const projects: ProjectProps[] = [
 
   {
     title: "Phil — Job Applier Agent",
+    tagline: "Job applications on autopilot, with you still in control.",
     description:
-      "An AI agent that streamlines the job application process with human oversight.",
+      "An AI agent that applies to jobs for you. It reads your resume, fills out application forms in the browser, and writes short answers. It checks its own work and retries any field that doesn't pass. Nothing gets submitted without your approval.",
     technologies: ["LangChain", "Gemini API", "ChromaDB", "Jupyter"],
     image: "/images/phil-agent.webp",
     demoUrl:
@@ -58,8 +61,9 @@ const projects: ProjectProps[] = [
 
   {
     title: "StyleMe",
+    tagline: "Your closet, with a stylist built in.",
     description:
-      "A virtual wardrobe where users can store, organize, and generate personalized outfit combinations from their clothing inventory.",
+      'A virtual wardrobe for those "I have nothing to wear" mornings. Store and organize your clothes, then generate personalized outfits from what you already own.',
     technologies: ["Angular", "Node.js", "Express.js", "REST APIs", "Firebase"],
     image: "/images/styleme.png",
     demoUrl:
@@ -69,8 +73,9 @@ const projects: ProjectProps[] = [
 
   {
     title: "Python Code Evaluator",
+    tagline: "Write Python the Python way.",
     description:
-      "An evaluator that takes in user's Python code to determine whether it's Pythonic or not and generates Pythonic examples and output comparisons. This enhances code quality and optimizes Python codebases.",
+      "Paste in your code and it tells you whether it's Pythonic. If it isn't, it rewrites it the Pythonic way and compares the output of both, so you can see your code still works, just cleaner.",
     technologies: ["Python", "OpenAI API"],
     image: "/images/python-computer.png",
     repoUrl: "https://github.com/sanilac6459/pythonic-code-evaluator",
@@ -78,10 +83,11 @@ const projects: ProjectProps[] = [
 
   {
     title: "Winter Wordleland",
+    tagline: "Wordle, snowed in.",
     description:
-      "A winter-themed of The NY Times' Wordle Game designed to help users get into the holiday spirit!",
+      "A winter-themed Wordle you play right in the terminal. Only real words count as guesses. A cozy way to get into the holiday spirit!",
     technologies: ["C++", "Ncurses Library", "Hunspell Dictionary", "Docker"],
-    image: "/images/wordle.png",
+    image: "/images/wordle.webp",
     demoUrl:
       "https://drive.google.com/file/d/1nA2Tjaf9ZgVG9kCAeBXm-5qcnNyu-R-J/view?usp=sharing",
     repoUrl: "https://github.com/TheSimmer101/wordle",
@@ -89,8 +95,9 @@ const projects: ProjectProps[] = [
 
   {
     title: "GIMMIE CANDY!!!",
+    tagline: "Trick-or-treating, but someone's stealing your stash.",
     description:
-      "A unique trick-or-treating game where enemies steal trick or treater's candies. A great way to get into the Halloween spirit!",
+      "A Halloween game where you race the clock to collect candy while enemies try to steal it. A great way to get into the Halloween spirit!",
     technologies: ["C#", "Unity"],
     image: "/images/gimme-candy.png",
     demoUrl: "https://caipan.itch.io/gimme-candy",
@@ -109,23 +116,24 @@ const projects: ProjectProps[] = [
   },
   */
 
-  {
-    title: "Discord Music Bot",
-    description:
-      "A Discord music bot that lets users play and control music in voice channels, while also sending automated messages based on user activity within the server.",
-    technologies: ["Python", "Discord.py"],
-    image: "/images/discord.png",
-    demoUrl:
-      "https://drive.google.com/file/d/17X4uWqc8Sk0jsoS9bcPMiy_kUGpsuZfY/view?usp=sharing",
-    presentationUrl:
-      "https://photos.google.com/share/AF1QipM98JBT3MIDm-JN2YyQVtM2agU3yMzoaU3lzIvR0l8Ls-mK65OYZDh51NeiH8sjJw/photo/AF1QipOEoqB5UZ7_-FzkikLJk4MvfqfPsYh6LGTN9ijG?key=aWtId3V5Z1JIZUdVMnloMzFXREhnWmZBVmJLeFNn",
-    repoUrl: "https://github.com/vickyc5/ditto-discord-bot",
-  },
+  // {
+  //   title: "Discord Music Bot",
+  //   description:
+  //     "A Discord music bot that lets users play and control music in voice channels, while also sending automated messages based on user activity within the server.",
+  //   technologies: ["Python", "Discord.py"],
+  //   image: "/images/discord.png",
+  //   demoUrl:
+  //     "https://drive.google.com/file/d/17X4uWqc8Sk0jsoS9bcPMiy_kUGpsuZfY/view?usp=sharing",
+  //   presentationUrl:
+  //     "https://photos.google.com/share/AF1QipM98JBT3MIDm-JN2YyQVtM2agU3yMzoaU3lzIvR0l8Ls-mK65OYZDh51NeiH8sjJw/photo/AF1QipOEoqB5UZ7_-FzkikLJk4MvfqfPsYh6LGTN9ijG?key=aWtId3V5Z1JIZUdVMnloMzFXREhnWmZBVmJLeFNn",
+  //   repoUrl: "https://github.com/vickyc5/ditto-discord-bot",
+  // },
 
   {
     title: "Keysanity Typing Game",
+    tagline: "1st place at the SEP Expo (Class of 2023).",
     description:
-      "A game for users to enhance their typing skills by generating random words and tracking their score, word per minute (WPM), typed input, and a timer. Offers a fun way to engage in friendly competition to beat the world record in WPM!",
+      "A typing game that turns practice into friendly competition. Type random words against the clock while it tracks your score, WPM, and typed input, and race to beat the world record. Built with my team over a full year.",
     technologies: ["JavaScript", "p5.js"],
     image: "/images/sep11-fp.png",
     demoUrl: "https://sanilac6459.github.io/sep11-freedom-project/intro/",
@@ -303,12 +311,12 @@ const ProjectsSection = () => {
         </div>
 
         <div
-          className="max-w-6xl mx-auto"
+          className="max-w-7xl mx-auto"
           data-reveal
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:auto-rows-[480px] gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_420px] lg:auto-rows-[600px] gap-6">
             {/* Screenshots: every frame the same size, whole screenshot shown */}
             <div className="relative min-w-0">
               <div
@@ -488,6 +496,14 @@ const ProjectsSection = () => {
                   >
                     {project.title}
                   </h3>
+                  {project.tagline && (
+                    <p
+                      className="font-serif-display italic text-lg sm:text-xl leading-snug mb-2"
+                      style={{ color: term.path }}
+                    >
+                      {project.tagline}
+                    </p>
+                  )}
                   <p style={{ opacity: 0.92 }}>{project.description}</p>
                 </div>
 
