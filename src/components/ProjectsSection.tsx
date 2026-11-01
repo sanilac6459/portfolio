@@ -15,11 +15,11 @@ interface ProjectProps {
 const projects: ProjectProps[] = [
   // {
   //   title: "CUNY Marketplace",
+  //   tagline: "Facebook Marketplace, but just for CUNY students.",
   //   description:
-  //     "An app for Hunter College students to discover and join campus clubs, share announcements, and stay connected with their college community.",
+  //     "CUNY students buy and sell textbooks, electronics, furniture and more. Only verified CUNY emails can sign up, and buyers can message, rate, and report sellers. Built with a team of 5, where I'm co-PM and on the backend.",
   //   technologies: ["React", "Node.js", "Express.js", "Prisma", "Supabase"],
-  //   image: "/images/",
-  //   demoUrl: "https://github.com/farmiha/cuny-marketplace",
+  //   repoUrl: "https://github.com/farmiha/cuny-marketplace",
   // },
 
   {
@@ -71,15 +71,15 @@ const projects: ProjectProps[] = [
     repoUrl: "https://github.com/weijiej2964/Fashion-Project",
   },
 
-  {
-    title: "Python Code Evaluator",
-    tagline: "Write Python the Python way.",
-    description:
-      "Paste in your code and it tells you whether it's Pythonic. If it isn't, it rewrites it the Pythonic way and compares the output of both, so you can see your code still works, just cleaner.",
-    technologies: ["Python", "OpenAI API"],
-    image: "/images/python-computer.png",
-    repoUrl: "https://github.com/sanilac6459/pythonic-code-evaluator",
-  },
+  // {
+  //   title: "Python Code Evaluator",
+  //   tagline: "Write Python the Python way.",
+  //   description:
+  //     "Paste in your code and it tells you whether it's Pythonic. If it isn't, it rewrites it the Pythonic way and compares the output of both, so you can see your code still works, just cleaner.",
+  //   technologies: ["Python", "OpenAI API"],
+  //   image: "/images/python-computer.png",
+  //   repoUrl: "https://github.com/sanilac6459/pythonic-code-evaluator",
+  // },
 
   {
     title: "Winter Wordleland",

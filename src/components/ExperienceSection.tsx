@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useRef, useState } from "react";
 
 interface Role {
@@ -16,12 +14,14 @@ interface ExperienceProps {
   bullets?: string[];
   logo: string;
   roles?: Role[];
+  tech?: string[];
 }
 
 const experiences: ExperienceProps[] = [
   {
     title: "Software Engineer Intern",
     company: "Trance4mation Games",
+    tech: ["React", "Socket.io"],
     location: "New York, NY",
     duration: "August 2026 — Present",
     logo: "/images/trance4mation.jpeg",
@@ -35,6 +35,7 @@ const experiences: ExperienceProps[] = [
   {
     title: "Data Analyst Intern",
     company: "Metropolitan Transportation Authority (MTA)",
+    tech: ["Python", "Pandas", "NumPy", "Power BI", "DAX", "Power Query"],
     location: "New York, NY",
     duration: "January 2026 — Present",
     logo: "/images/mta.jpeg",
@@ -48,6 +49,15 @@ const experiences: ExperienceProps[] = [
   {
     title: "Software Engineer Fellow",
     company: "CUNY Tech Prep",
+    tech: [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Node.js",
+      "PostgreSQL",
+      "Prisma",
+      "Supabase",
+    ],
     location: "New York, NY",
     duration: "July 2025 — May 2026",
     logo: "/images/ctp.jpeg",
@@ -60,6 +70,7 @@ const experiences: ExperienceProps[] = [
 
   {
     company: "Computer Science Club at Hunter College",
+    tech: ["Figma"],
     location: "New York, NY",
     logo: "/images/cs-club.jpeg",
     roles: [
@@ -85,6 +96,7 @@ const experiences: ExperienceProps[] = [
   {
     title: "Software Engineer Intern",
     company: "Permanence AI",
+    tech: ["Python", "OpenAI API"],
     location: "New York, NY",
     duration: "January 2025",
     logo: "/images/permanence.jpeg",
@@ -97,6 +109,7 @@ const experiences: ExperienceProps[] = [
   {
     title: "IT Service Management Intern",
     company: "New York City Housing Authority (NYCHA)",
+    tech: ["ServiceNow", "R Markdown"],
     location: "New York, NY",
     duration: "July 2024 — August 2024",
     logo: "/images/nycha.png",
@@ -111,6 +124,7 @@ const experiences: ExperienceProps[] = [
   {
     title: "Cybersecurity Intern",
     company: "The City of New York Office of Labor Relations",
+    tech: ["Linux"],
     location: "New York, NY",
     duration: "July 2022 — August 2022",
     logo: "/images/nyc-olr.jpeg",
@@ -121,6 +135,49 @@ const experiences: ExperienceProps[] = [
     ],
   },
 ];
+
+// "August 2026 — Present" -> "Aug 2026 — Present"
+const shortDate = (d = "") =>
+  d.replace(
+    /\b(January|February|March|April|May|June|July|August|September|October|November|December)\b/g,
+    (m) => m.slice(0, 3),
+  );
+
+// The whole span for a club with several roles: first role's start to last role's end
+const fullDuration = (exp: ExperienceProps) => {
+  if (exp.duration) return shortDate(exp.duration);
+  if (!exp.roles?.length) return "";
+  const start = exp.roles[exp.roles.length - 1].duration.split(" — ")[0];
+  const end = exp.roles[0].duration.split(" — ").pop();
+  return shortDate(`${start} — ${end}`);
+};
+
+const Bullets = ({ items }: { items: string[] }) => (
+  <ul className="mt-3.5 grid gap-2.5">
+    {items.map((b, i) => (
+      <li
+        key={i}
+        className="relative pl-5 text-[15px] sm:text-[15.5px] leading-relaxed"
+        style={{ color: "var(--ink)" }}
+      >
+        <span
+          className="absolute left-0.5 top-[0.7em] w-1.5 h-1.5 rounded-full"
+          style={{ backgroundColor: "var(--rose)" }}
+        />
+        {b}
+      </li>
+    ))}
+  </ul>
+);
+
+const Sep = ({ className = "" }: { className?: string }) => (
+  <span
+    className={`px-2 ${className}`}
+    style={{ color: "var(--rose)", opacity: 0.5 }}
+  >
+    ·
+  </span>
+);
 
 const ExperienceSection = () => {
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -134,7 +191,7 @@ const ExperienceSection = () => {
   );
 
   // As you scroll, the line fills down to a point 60% of the way down the screen.
-  // Each card appears dimmed once it enters the screen, then lights up (and its
+  // Each job appears dimmed once it enters the screen, then lights up (and its
   // rose blooms) when the line reaches it. Scrolling back up reverses both.
   useEffect(() => {
     let frame = 0;
@@ -154,9 +211,7 @@ const ExperienceSection = () => {
         const r = el.getBoundingClientRect();
         return r.top + r.height / 2 <= mark;
       });
-      setPassed((prev) =>
-        prev.every((v, i) => v === next[i]) ? prev : next,
-      );
+      setPassed((prev) => (prev.every((v, i) => v === next[i]) ? prev : next));
 
       const inView = roseRefs.current.map((el) => {
         if (!el) return false;
@@ -210,237 +265,162 @@ const ExperienceSection = () => {
 
         {/* Timeline */}
         <div ref={timelineRef} className="max-w-5xl mx-auto relative">
-          {/* Vertical Timeline Line */}
+          {/* Faint line */}
           <div
-            className="absolute left-5 top-0 bottom-0 w-px block"
-            style={{
-              backgroundColor: "var(--line-strong)",
-            }}
+            className="absolute top-2 bottom-0 w-0.5 left-[20px] sm:left-[26px]"
+            style={{ backgroundColor: "var(--line)" }}
           />
 
-          {/* Line that fills as you scroll */}
+          {/* Rose line that fills as you scroll */}
           <div
-            className="absolute top-0 bottom-0 w-[3px] rounded-full origin-top"
+            className="absolute top-2 bottom-0 w-0.5 left-[20px] sm:left-[26px] origin-top"
             style={{
-              left: "calc(1.25rem - 1px)",
               backgroundColor: "var(--rose-btn)",
               boxShadow: "0 0 10px var(--rose-glow)",
               transform: `scaleY(${progress})`,
             }}
           />
 
-          <div className="space-y-8">
+          <div className="grid gap-12 sm:gap-14">
             {experiences.map((exp, index) => {
               const isPassed = passed[index];
               const isShown = shown[index];
+              const isNow = (
+                exp.duration ??
+                exp.roles?.[0]?.duration ??
+                ""
+              ).includes("Present");
+
               return (
-                <div key={index} className="relative pl-14 sm:pl-16">
-                  {/* Rose */}
+                <article
+                  key={exp.company + index}
+                  className="grid grid-cols-[42px_1fr] sm:grid-cols-[54px_1fr] gap-2.5 sm:gap-[18px]"
+                  style={{
+                    // hidden -> dimmed (in view) -> lit (line reached it)
+                    opacity: !isShown ? 0 : isPassed ? 1 : 0.45,
+                    translate: isShown ? "0 0" : "0 40px",
+                    transition: "opacity 0.6s, translate 0.6s",
+                  }}
+                >
+                  {/* Rose on the line */}
                   <div
                     ref={(el) => {
                       roseRefs.current[index] = el;
                     }}
-                    className="absolute -left-2 -top-2 flex items-start justify-center w-14 h-28 z-10"
+                    className="relative z-10 flex justify-center pt-1"
                   >
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          "var(--halo)",
-                      }}
-                    />
                     <img
                       src="/images/rose3.png"
                       alt=""
-                      className="relative w-full h-full object-contain"
+                      className="w-14 h-14 object-contain max-w-none"
                       style={{
                         transition:
-                          "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s, filter 0.4s",
-                        transform: isPassed ? "scale(1.1)" : "scale(0.85)",
-                        opacity: isPassed ? 1 : 0.55,
-                        filter: isPassed ? "none" : "grayscale(0.6)",
+                          "transform 0.6s cubic-bezier(0.3, 1.6, 0.5, 1), opacity 0.5s, filter 0.5s",
+                        transform: isPassed ? "scale(1)" : "scale(0.5)",
+                        opacity: isPassed ? 1 : 0.7,
+                        filter: isPassed
+                          ? "none"
+                          : "grayscale(1) brightness(0.6)",
                       }}
                     />
                   </div>
 
-                  {/* Experience Card */}
-                  <div
-                    className="rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-2"
-                    style={{
-                      background:
-                        "var(--card-bg)",
-                      border: isPassed
-                        ? "1px solid var(--rose-glow)"
-                        : "1px solid var(--line)",
-                      // hidden → dimmed (in view) → lit (line reached it)
-                      opacity: !isShown ? 0 : isPassed ? 1 : 0.45,
-                      translate: isShown ? "0 0" : "0 50px",
-                      filter: isPassed ? "none" : "grayscale(0.7)",
-                    }}
-                  >
-                    {exp.roles ? (
-                      <>
-                        {/* Company Header */}
-                        <div className="flex items-start gap-4 mb-4">
-                          <img
-                            src={exp.logo}
-                            alt={exp.company}
-                            className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
-                          />
-
-                          <div className="flex-1">
-                            <h3
-                              className="text-xl font-bold"
-                              style={{
-                                color: "var(--wine)",
-                              }}
-                            >
-                              {exp.company}
-                            </h3>
-
-                            <p
-                              className="text-sm mt-1"
+                  <div className="min-w-0">
+                    {/* Logo + title */}
+                    <div className="flex items-start sm:items-center gap-3 sm:gap-3.5">
+                      <img
+                        src={exp.logo}
+                        alt={exp.company}
+                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-[10px] sm:rounded-xl object-cover bg-white flex-shrink-0"
+                      />
+                      <div className="min-w-0">
+                        <h3
+                          className="font-serif-display font-semibold text-[21px] sm:text-[26px] leading-tight"
+                          style={{ color: "var(--wine)" }}
+                        >
+                          {exp.title ?? exp.company}
+                          {isNow && (
+                            <span
+                              className="ml-2.5 align-middle inline-block font-mono-ui text-[11px] uppercase tracking-[0.14em] rounded-full px-2.5 py-0.5"
                               style={{
                                 color: "var(--rose)",
+                                border: "1px solid var(--line-strong)",
                               }}
                             >
-                              {exp.location}
-                            </p>
-                          </div>
-                        </div>
+                              now
+                            </span>
+                          )}
+                        </h3>
 
-                        {/* Multiple Roles */}
-                        <div
-                          className="space-y-6 pl-4 ml-6"
-                          style={{
-                            borderLeft: "2px solid var(--line-strong)",
-                          }}
+                        <p
+                          className="font-mono-ui text-[13px] sm:text-[13.5px] mt-1"
+                          style={{ color: "var(--muted)" }}
                         >
-                          {exp.roles.map((role, idx) => (
-                            <div key={idx} className="pl-4">
-                              <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
-                                <h4
-                                  className="font-bold text-lg"
-                                  style={{
-                                    color: "var(--wine)",
-                                  }}
-                                >
-                                  {role.title}
-                                </h4>
-
-                                <span
-                                  className="flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
-                                  style={{
-                                    backgroundColor: "var(--rose-soft)",
-                                    border: "1px solid var(--line)",
-                                    color: "var(--rose)",
-                                  }}
-                                >
-                                  {role.duration}
-                                </span>
-                              </div>
-
-                              <ul className="space-y-2">
-                                {role.bullets.map((bullet, bIdx) => (
-                                  <li
-                                    key={bIdx}
-                                    className="flex items-start gap-2 text-sm leading-relaxed"
-                                    style={{
-                                      color: "var(--ink)",
-                                    }}
-                                  >
-                                    <span
-                                      className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
-                                      style={{
-                                        backgroundColor: "var(--rose)",
-                                      }}
-                                    />
-                                    {bullet}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        {/* Single Role */}
-                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
-                          <div className="flex items-start gap-4">
-                            <img
-                              src={exp.logo}
-                              alt={exp.company}
-                              className="w-12 h-12 object-contain rounded-lg border border-white/40 shadow-sm flex-shrink-0"
-                            />
-
-                            <div className="flex-1 min-w-0">
-                              <h3
-                                className="text-xl font-bold"
-                                style={{
-                                  color: "var(--wine)",
-                                }}
-                              >
-                                {exp.title}
-                              </h3>
-
-                              <p
-                                className="text-sm mt-1"
-                                style={{
-                                  color: "var(--rose)",
-                                }}
-                              >
-                                <span
-                                  className="font-semibold"
-                                  style={{
-                                    color: "var(--rose)",
-                                  }}
-                                >
-                                  {exp.company}
-                                </span>
-
-                                <span className="mx-1.5 opacity-70">·</span>
-
-                                {exp.location}
-                              </p>
-                            </div>
-                          </div>
-
+                          {exp.title
+                            ? exp.company
+                            : exp.roles?.map((r) => r.title).join(" · ")}
+                          <Sep />
+                          {exp.location}
+                          <Sep className="hidden sm:inline" />
                           <span
-                            className="self-start flex-shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-semibold"
+                            className="block sm:inline mt-0.5 sm:mt-0 transition-colors duration-500"
                             style={{
-                              backgroundColor: "var(--rose-soft)",
-                              border: "1px solid var(--line)",
-                              color: "var(--rose)",
+                              color: isPassed ? "var(--rose)" : "var(--muted)",
                             }}
                           >
-                            {exp.duration}
+                            {fullDuration(exp)}
                           </span>
-                        </div>
+                        </p>
+                      </div>
+                    </div>
 
-                        <ul className="space-y-2">
-                          {exp.bullets!.map((bullet, idx) => (
-                            <li
-                              key={idx}
-                              className="flex items-start gap-2 text-sm leading-relaxed"
-                              style={{
-                                color: "var(--ink)",
-                              }}
-                            >
-                              <span
-                                className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
-                                style={{
-                                  backgroundColor: "var(--rose)",
-                                }}
-                              />
-                              {bullet}
-                            </li>
-                          ))}
-                        </ul>
-                      </>
+                    {/* Bullets (or each role's bullets) */}
+                    {exp.roles ? (
+                      exp.roles.map((role) => (
+                        <div
+                          key={role.title}
+                          className="mt-[18px] pt-4"
+                          style={{ borderTop: "1px dashed var(--line)" }}
+                        >
+                          <h4
+                            className="font-serif-display font-semibold text-[17px]"
+                            style={{ color: "var(--wine)" }}
+                          >
+                            {role.title}
+                          </h4>
+                          <p
+                            className="font-mono-ui text-[13px] mt-1"
+                            style={{ color: "var(--muted)" }}
+                          >
+                            {shortDate(role.duration)}
+                          </p>
+                          <Bullets items={role.bullets} />
+                        </div>
+                      ))
+                    ) : (
+                      <Bullets items={exp.bullets ?? []} />
+                    )}
+
+                    {/* Stack */}
+                    {exp.tech && exp.tech.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-3.5">
+                        {exp.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="font-mono-ui text-[12.5px] px-2.5 py-1 rounded-[7px]"
+                            style={{
+                              color: "var(--ink)",
+                              border: "1px solid var(--line-strong)",
+                              background: "rgba(255, 255, 255, 0.03)",
+                            }}
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
                     )}
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>

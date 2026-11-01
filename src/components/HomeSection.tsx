@@ -149,7 +149,7 @@ const HomeSection = () => {
               style={{ color: "var(--wine)" }}
             >
               <b className="font-semibold">Data Analyst Intern</b> at{" "}
-              <span style={{ color: "var(--rose)" }}>the MTA</span>
+              <span style={{ color: "var(--rose)" }}> MTA</span>
             </p>
           </div>
         </div>
