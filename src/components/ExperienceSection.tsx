@@ -26,9 +26,9 @@ const experiences: ExperienceProps[] = [
     duration: "August 2026 — Present",
     logo: "/images/trance4mation.jpeg",
     bullets: [
-      "Lead a team of 5 developing TRILL, a real-time multiplayer dialogue game for addiction prevention and recovery, by coordinating tasks and driving weekly deliverables.",
+      "Lead a team of 4 developing TRILL, a real-time multiplayer dialogue game for addiction prevention and recovery, by coordinating tasks and driving weekly deliverables.",
       "Engineer the frontend architecture in React by developing the Home, Lobby, and Spirit Animal Selection screens and implementing application routing to create a cohesive player flow.",
-      "Facilitate frontend-backend integration with backend developers on room creation, player lobbies, and game-state syncing using Socket.io, enabling real-time multiplayer interactions.",
+      "Facilitate frontend-backend integration with backend developers on room creation, player lobbies, and game-state syncing using Socket.io, enabling live player interactions.",
     ],
   },
 
@@ -41,7 +41,7 @@ const experiences: ExperienceProps[] = [
     logo: "/images/mta.jpeg",
     bullets: [
       "Analyzed the MTA Power Cable Enterprise Asset Management database with 11,000+ manhole inspection records, using Python, Pandas, and NumPy to detect duplicate entries and drive a ∼15% increase in maintenance activity.",
-      "Developed a Power BI compliance dashboard using DAX measures and Power Query M to track 18,000+ ELM training records against safety requirements, flagging compliance gaps for the Office of the Vice President, Chief Operations.",
+      "Created a Power BI compliance dashboard using DAX measures and Power Query M to track 18,000+ ELM training records against safety requirements, flagging compliance gaps for the Office of the Vice President, Chief Operations.",
       "Built a personnel dashboard consolidating 4 SharePoint lists across 1,200+ employees, using optimized DAX measures to track accident trends and support staffing decisions.",
     ],
   },
@@ -63,8 +63,8 @@ const experiences: ExperienceProps[] = [
     logo: "/images/ctp.jpeg",
     bullets: [
       "Developed the frontend for CUNY Hunter Marketplace, a student-to-student platform, using React, Next.js, and Tailwind CSS to build a responsive, component-based interface within a collaborative, agile team.",
-      "Built API endpoints with Next.js and Node.js, integrating an Azure-hosted PostgreSQL database via Prisma ORM, following Git branching workflows and peer code reviews through pull requests.",
-      "Implemented JWT-based user authentication and an item listing dashboard with CRUD functionality using Supabase and Prisma to enable student-to-student transactions.",
+      "Integrated an Azure-hosted PostgreSQL database via Prisma ORM into API endpoints built with Next.js and Node.js, following Git branching workflows and peer code reviews through pull requests.",
+      "Delivered an item listing dashboard with CRUD functionality using Supabase to enable buying and selling.",
     ],
   },
 
@@ -102,7 +102,7 @@ const experiences: ExperienceProps[] = [
     logo: "/images/permanence.jpeg",
     bullets: [
       "Tested OpenAI models across temperature and token configurations and optimized prompt design with OpenAI API, reducing token usage by ∼15% while improving output quality with fewer queries.",
-      "Engineered a Pythonic Code Evaluator using Python and the OpenAI API to assess code style, identify non-Pythonic patterns, and generate more Pythonic alternatives with output comparisons.",
+      "Programmed a Pythonic Code Evaluator using Python and the OpenAI API to assess code style, identify non-Pythonic patterns, and generate more Pythonic alternatives with output comparisons.",
     ],
   },
 
