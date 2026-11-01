@@ -1,51 +1,53 @@
 import React from "react";
+import { User, Target, Heart } from "lucide-react";
 
-// The terminal stays dark in both light and dark mode, like a real one
-const term = {
-  bg: "var(--term-bg)",
-  bar: "var(--term-bar)",
-  fg: "#f4e6ec",
-  dim: "#a88d99",
-  path: "#f5a3b8",
-  arrow: "#ff6b95",
-  head: "#ff8fab",
-};
-
-const sections = [
-  {
-    file: "who-i-am.md",
-    title: "Who I Am",
-    paragraphs: [
-      "I'm a Computer Science undergraduate at CUNY Hunter College and an aspiring software engineer with a passion for full-stack development. My journey in tech began in high school with a four-year software engineering course where I discovered my passion for programming and turning my ideas into products that can shape people's lives.",
-      "I'm someone who embraces new challenges and isn't afraid to take risks. Although I'm committed to pursuing a career in software engineering, my experiences across cybersecurity, IT, and data analytics have taught me that every field offers a different lens in shaping the future of tech, and I'm open to any path that lets me keep building and growing.",
-    ],
-  },
-  {
-    file: "goals.md",
-    title: "Goals",
-    paragraphs: [
-      "What drives me is impact and purpose. I want to build technology that is more accessible, connected, and equitable for all of us — technology that removes barriers instead of creating new ones.",
-      "I also want to create an environment that supports people from underrepresented groups who are passionate about tech in finding their voice and realizing their potential. I know firsthand how it feels to be invisible in a field you're passionate about, and it's what pushes me to uplift those around me and make tech more inclusive.",
-    ],
-  },
-  {
-    file: "interests/README.md",
-    title: "Interests",
-    paragraphs: [
-      "When I'm not coding, you'll usually find me in different cafes or food spots in the city. I also love to travel, roller skate, play badminton, and pick up new hobbies like hiking or rock climbing.",
-    ],
-  },
+const whoIAm = [
+  "I'm a Computer Science undergraduate at CUNY Hunter College and an aspiring software engineer with a passion for full-stack development. My journey in tech began in high school with a four-year software engineering course where I discovered my passion for programming and turning my ideas into products that can shape people's lives.",
+  "I'm someone who embraces new challenges and isn't afraid to take risks. Although I'm committed to pursuing a career in software engineering, my experiences across cybersecurity, IT, and data analytics have taught me that every field offers a different lens in shaping the future of tech, and I'm open to any path that lets me keep building and growing.",
 ];
 
-const Prompt = () => (
-  <>
-    <span style={{ color: term.path }}>~/sanilachowdhury/about</span>{" "}
-    <span style={{ color: term.dim }}>main</span>
-    <span style={{ color: term.arrow }}>*</span>{" "}
-    <span className="font-bold" style={{ color: term.arrow }}>
-      ❯
-    </span>
-  </>
+const goals = [
+  "What drives me is impact and purpose. I want to build technology that is more accessible, connected, and equitable for all of us — technology that removes barriers instead of creating new ones.",
+  "I also want to create an environment that supports people from underrepresented groups who are passionate about tech in finding their voice and realizing their potential. I know firsthand how it feels to be invisible in a field you're passionate about, and it's what pushes me to uplift those around me and make tech more inclusive.",
+];
+
+const interests =
+  "When I'm not coding, you'll usually find me in different cafes or food spots in the city. I also love to travel, roller skate, play badminton, and pick up new hobbies like hiking or rock climbing.";
+
+const cardClass =
+  "rounded-[18px] p-6 sm:p-[26px] transition-all duration-300 hover:-translate-y-[3px] hover:border-[color:var(--line-strong)]";
+
+const cardStyle: React.CSSProperties = {
+  background: "rgba(27, 15, 22, 0.82)",
+  border: "1px solid var(--line)",
+  boxShadow: "0 30px 60px -36px rgba(0, 0, 0, 0.9)",
+};
+
+const Label = ({
+  icon,
+  children,
+}: {
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}) => (
+  <p
+    className="flex items-center gap-2.5 mb-3.5 font-mono-ui text-[12.5px] uppercase tracking-[0.2em]"
+    style={{ color: "var(--rose)" }}
+  >
+    <span style={{ color: "var(--wine)" }}>{icon}</span>
+    {children}
+  </p>
+);
+
+const Paragraphs = ({ items }: { items: string[] }) => (
+  <div
+    className="grid gap-3.5 text-[15px] sm:text-[15.5px] leading-[1.75]"
+    style={{ color: "var(--ink)" }}
+  >
+    {items.map((p, i) => (
+      <p key={i}>{p}</p>
+    ))}
+  </div>
 );
 
 const AboutSection = () => {
@@ -54,7 +56,7 @@ const AboutSection = () => {
       <div className="container relative">
         {/* Section Heading */}
         <div
-          className="flex flex-col items-center text-center mb-12"
+          className="flex flex-col items-center text-center mb-10"
           data-reveal="both"
         >
           <p
@@ -74,70 +76,41 @@ const AboutSection = () => {
           >
             About Me
           </h2>
-        </div>
 
-        {/* Terminal window */}
-        <div
-          className="max-w-6xl mx-auto rounded-2xl overflow-hidden font-mono-ui text-[13.5px] sm:text-sm leading-relaxed"
-          data-reveal="both"
-          style={{
-            background: term.bg,
-            color: term.fg,
-            border: "1px solid var(--line-strong)",
-            boxShadow: "0 30px 70px -30px var(--rose-glow)",
-          }}
-          aria-label="About Sanila, shown as a terminal"
-        >
-          {/* Title bar */}
-          <div
-            className="flex items-center gap-2 px-4 py-3"
+          <p
+            className="font-serif-display italic text-lg mt-3 max-w-xl"
             style={{
-              background: term.bar,
-              borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
+              color: "var(--ink)",
             }}
           >
-            <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-            <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
-            <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-            <span
-              className="hidden sm:inline ml-2.5 text-xs"
-              style={{ color: term.dim }}
-            >
-              ⌥⌘1
-            </span>
-            <span
-              className="flex-1 text-center text-xs sm:text-[13px] truncate mr-11 sm:mr-[76px]"
-              style={{ color: term.dim }}
-            >
-              ~/sanilachowdhury/about
-            </span>
-          </div>
+            The best part of every project isn't the finished product. It's who
+            I become in the process. ♡
+          </p>
+        </div>
 
-          {/* Commands and output */}
-          <div className="px-4 sm:px-7 py-5 sm:py-6 grid gap-[18px]">
-            {sections.map((s) => (
-              <div key={s.file} className="min-w-0">
-                <p className="break-words">
-                  <Prompt /> <span>cat {s.file}</span>
-                </p>
-                <p className="font-bold mt-1" style={{ color: term.head }}>
-                  # {s.title}
-                </p>
-                <div className="grid gap-2.5 mt-0.5">
-                  {s.paragraphs.map((p, i) => (
-                    <p key={i} style={{ opacity: 0.92 }}>
-                      {p}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            ))}
+        <div className="max-w-[1120px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-5">
+            {/* Who I Am */}
+            <div className={cardClass} style={cardStyle} data-reveal="both">
+              <Label icon={<User size={18} />}>Who I Am</Label>
+              <Paragraphs items={whoIAm} />
+            </div>
 
-            {/* Empty prompt with blinking cursor */}
-            <p>
-              <Prompt />{" "}
-              <span className="blink-cursor" aria-hidden="true" />
-            </p>
+            {/* Goals */}
+            <div className={cardClass} style={cardStyle} data-reveal="both">
+              <Label icon={<Target size={18} />}>Goals</Label>
+              <Paragraphs items={goals} />
+            </div>
+
+            {/* Interests */}
+            <div
+              className={`${cardClass} lg:col-span-2`}
+              style={cardStyle}
+              data-reveal="both"
+            >
+              <Label icon={<Heart size={18} />}>Interests</Label>
+              <Paragraphs items={[interests]} />
+            </div>
           </div>
         </div>
       </div>

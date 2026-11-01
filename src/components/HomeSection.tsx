@@ -78,19 +78,65 @@ const HomeSection = () => {
             <span className="blink-cursor" aria-hidden="true" />
           </p>
 
-          {/* Description */}
-          <div className="mb-8">
+          {/* Intro */}
+          <p
+            className="text-base md:text-lg max-w-2xl font-light leading-relaxed mb-8"
+            style={{ color: "var(--ink)" }}
+          >
+            <span style={{ color: "var(--rose)" }}>Building with purpose</span>{" "}
+            through full-stack apps and data that drives real decisions.
+          </p>
+
+          {/* Right now */}
+          <div
+            className="mb-8 w-full max-w-xl rounded-2xl px-5 py-4 text-left grid gap-2 backdrop-blur-sm"
+            style={{
+              background: "var(--card-bg)",
+              border: "1px solid var(--line)",
+            }}
+          >
             <p
-              className="text-base md:text-lg max-w-xl font-light"
-              style={{
-                color: "var(--ink)",
-              }}
+              className="flex items-center gap-2 text-[12.5px] uppercase tracking-[0.18em] font-medium"
+              style={{ color: "var(--muted)" }}
             >
-              The best part of every project isn't the finished product. It's
-              who I become in the process. ♡
+              <span
+                className="live-dot w-2 h-2 rounded-full"
+                style={{ background: "var(--live)" }}
+              />
+              Right now
+            </p>
+            <p
+              className="text-sm sm:text-base"
+              style={{ color: "var(--wine)" }}
+            >
+              <b className="font-semibold">CS Student</b> at{" "}
+              <span style={{ color: "var(--rose)" }}>Hunter College</span>
+              <span
+                className="whitespace-nowrap"
+                style={{ color: "var(--muted)" }}
+              >
+                {" "}
+                · Expected May 2027
+              </span>
+            </p>
+
+            <p
+              className="text-sm sm:text-base"
+              style={{ color: "var(--wine)" }}
+            >
+              <b className="font-semibold">Software Engineer Intern</b> at{" "}
+              <span style={{ color: "var(--rose)" }}>Trance4mation Games</span>
+            </p>
+            <p
+              className="text-sm sm:text-base"
+              style={{ color: "var(--wine)" }}
+            >
+              <b className="font-semibold">Data Analyst Intern</b> at{" "}
+              <span style={{ color: "var(--rose)" }}>
+                Metropolitan Transportation Authority (MTA)
+              </span>
             </p>
           </div>
-
           {/* Buttons */}
           <div className="flex flex-wrap justify-center gap-4">
             {/* View My Work */}
@@ -117,40 +163,6 @@ const HomeSection = () => {
             >
               <a href="#about">About Me</a>
             </Button>
-          </div>
-
-          {/* Right now */}
-          <div
-            className="mt-10 w-full max-w-md rounded-2xl px-5 py-4 text-left grid gap-2 backdrop-blur-sm"
-            style={{
-              background: "var(--card-bg)",
-              border: "1px solid var(--line)",
-            }}
-          >
-            <p
-              className="flex items-center gap-2 text-[12.5px] uppercase tracking-[0.18em] font-medium"
-              style={{ color: "var(--muted)" }}
-            >
-              <span
-                className="live-dot w-2 h-2 rounded-full"
-                style={{ background: "var(--live)" }}
-              />
-              Right now
-            </p>
-            <p
-              className="text-sm sm:text-base"
-              style={{ color: "var(--wine)" }}
-            >
-              <b className="font-semibold">Software Engineer Intern</b> at{" "}
-              <span style={{ color: "var(--rose)" }}>Trance4mation Games</span>
-            </p>
-            <p
-              className="text-sm sm:text-base"
-              style={{ color: "var(--wine)" }}
-            >
-              <b className="font-semibold">Data Analyst Intern</b> at{" "}
-              <span style={{ color: "var(--rose)" }}> MTA</span>
-            </p>
           </div>
         </div>
       </div>
