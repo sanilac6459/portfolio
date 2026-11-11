@@ -84,12 +84,12 @@ const Navbar = () => {
           <a
             href="#home"
             aria-label="Sanila Chowdhury, back to top"
-            className="font-mono-ui text-base sm:text-lg md:text-xl transition-colors whitespace-nowrap"
+            className="font-serif-display font-semibold text-lg sm:text-xl md:text-2xl transition-colors whitespace-nowrap"
             style={{
               color: "var(--wine)",
             }}
           >
-            <span style={{ color: "var(--rose-btn)" }}>~/</span>sanila
+            Sanila Chowdhury
           </a>
 
           <div className="flex items-center gap-5 md:gap-8">

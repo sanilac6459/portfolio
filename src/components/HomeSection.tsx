@@ -65,7 +65,7 @@ const HomeSection = () => {
                 color: "var(--wine)",
               }}
             >
-              Sanila Chowdhury
+              Hi, I'm Sanila!
             </span>
           </h1>
 

@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import PageLoader from "./PageLoader";
+import CommandBar from "./CommandBar";
 
 const Layout = () => {
   return (
@@ -22,6 +23,9 @@ const Layout = () => {
         <div className="relative z-10">
           <Footer />
         </div>
+
+        {/* Hidden terminal: click ❯_ or press "/" */}
+        <CommandBar />
       </div>
     </PageLoader>
   );
