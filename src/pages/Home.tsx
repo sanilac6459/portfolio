@@ -10,22 +10,24 @@ import ContactSection from "@/components/ContactSection";
 const Home = () => {
   const location = useLocation();
 
-  // Fade-up reveal: anything with data-reveal slides in when it enters the screen.
-  // data-reveal="both" also fades back out when you scroll up past it.
+  // Fade-up reveal: anything with data-reveal slides in once when it enters the screen.
+  // Items that come on screen together appear one after another (like Ishra's site).
   useEffect(() => {
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        const entering = entries
+          .filter((e) => e.isIntersecting)
+          .sort(
+            (a, b) =>
+              a.boundingClientRect.top - b.boundingClientRect.top ||
+              a.boundingClientRect.left - b.boundingClientRect.left,
+          );
+        entering.forEach((entry, i) => {
           const el = entry.target as HTMLElement;
-          const twoWay = el.dataset.reveal === "both";
-
-          if (entry.isIntersecting) {
-            el.classList.add("revealed");
-            if (!twoWay) io.unobserve(el);
-          } else if (twoWay && entry.boundingClientRect.top > 0) {
-            // Below the screen again = you scrolled back up
-            el.classList.remove("revealed");
-          }
+          if (!el.style.getPropertyValue("--reveal-delay"))
+            el.style.setProperty("--reveal-delay", `${Math.min(i, 5) * 90}ms`);
+          el.classList.add("revealed");
+          io.unobserve(el);
         });
       },
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
@@ -36,15 +38,13 @@ const Home = () => {
         .querySelectorAll("[data-reveal]:not(.revealed)")
         .forEach((el) => io.observe(el));
 
+    // Scan once now, and once more after images and fonts settle.
     watch();
-
-    // Catch new elements too.
-    const mo = new MutationObserver(watch);
-    mo.observe(document.body, { childList: true, subtree: true });
+    const later = window.setTimeout(watch, 1200);
 
     return () => {
+      window.clearTimeout(later);
       io.disconnect();
-      mo.disconnect();
     };
   }, []);
 

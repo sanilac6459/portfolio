@@ -56,9 +56,9 @@
     --shadow-glow: 0 0 40px hsl(11 30% 80% / 0.4);
 
     /* Site palette — light (pink) */
-    --rose: #a4133c;          /* accent: eyebrows, buttons, highlights */
-    --wine: #800f2f;          /* headings */
-    --ink: #590d22;           /* body text */
+    --rose: #a4133c; /* accent: eyebrows, buttons, highlights */
+    --wine: #800f2f; /* headings */
+    --ink: #590d22; /* body text */
     --muted: rgba(89, 13, 34, 0.6);
     --line: rgba(128, 15, 47, 0.15);
     --line-strong: rgba(128, 15, 47, 0.28);
@@ -68,8 +68,19 @@
     --card-bg: linear-gradient(135deg, #fff8f7 0%, #f8f0f1 65%, #f1e2e5 100%);
     --card-bar: #f8f0f1;
     --glass: rgba(255, 255, 255, 0.4);
-    --halo: radial-gradient(ellipse 45% 55% at center, rgba(255, 248, 247, 0.9) 0%, rgba(255, 248, 247, 0.5) 55%, rgba(255, 248, 247, 0) 80%);
-    --page-bg: linear-gradient(135deg, #fff8f7 0%, #f8f0f1 35%, #ebd8dd 65%, #d9b8c0 100%);
+    --halo: radial-gradient(
+      ellipse 45% 55% at center,
+      rgba(255, 248, 247, 0.9) 0%,
+      rgba(255, 248, 247, 0.5) 55%,
+      rgba(255, 248, 247, 0) 80%
+    );
+    --page-bg: linear-gradient(
+      135deg,
+      #fff8f7 0%,
+      #f8f0f1 35%,
+      #ebd8dd 65%,
+      #d9b8c0 100%
+    );
     --blob-1: rgba(164, 19, 60, 0.1);
     --blob-2: rgba(128, 15, 47, 0.1);
     --blob-3: rgba(255, 255, 255, 0.5);
@@ -108,7 +119,12 @@
     --card-bg: linear-gradient(135deg, #1d1118 0%, #190e15 65%, #170c12 100%);
     --card-bar: #24141c;
     --glass: rgba(255, 255, 255, 0.04);
-    --halo: radial-gradient(ellipse 45% 55% at center, rgba(18, 10, 14, 0.95) 0%, rgba(18, 10, 14, 0.6) 55%, rgba(18, 10, 14, 0) 80%);
+    --halo: radial-gradient(
+      ellipse 45% 55% at center,
+      rgba(18, 10, 14, 0.95) 0%,
+      rgba(18, 10, 14, 0.6) 55%,
+      rgba(18, 10, 14, 0) 80%
+    );
     --page-bg: linear-gradient(135deg, #120a0e 0%, #150b11 45%, #1c0d15 100%);
     --blob-1: rgba(236, 90, 134, 0.1);
     --blob-2: rgba(128, 15, 47, 0.28);
@@ -217,8 +233,9 @@
   pointer-events: none;
   overflow: hidden;
   background: var(--page-bg);
+  contain: strict;
+  transform: translateZ(0);
 }
-
 
 /* Grain texture */
 .backdrop::after {
@@ -235,6 +252,8 @@
   border-radius: 9999px;
   filter: blur(70px);
   animation: blobDrift 18s ease-in-out infinite alternate;
+  /* blur is drawn once; the GPU just slides it around */
+  will-change: transform;
 }
 .backdrop-blob-1 {
   width: 28rem;
@@ -291,7 +310,6 @@
     transform 0.5s ease,
     box-shadow 0.5s ease;
 }
-
 
 /* Contact links: stacked boxes with dividers */
 .contact-cell {
