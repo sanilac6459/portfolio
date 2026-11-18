@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
@@ -16,14 +16,15 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState("home");
-  const [progress, setProgress] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(max > 0 ? window.scrollY / max : 0);
+      if (barRef.current)
+        barRef.current.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
 
       // Highlight the last section whose top has passed the navbar
       let current = "home";
@@ -42,10 +43,23 @@ const Navbar = () => {
       setActiveId(current);
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    // At most one update per frame, no matter how fast you scroll
+    let frame = 0;
+    const onScroll = () => {
+      if (!frame)
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          handleScroll();
+        });
+    };
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const linkClass = (id: string, extra = "") =>
@@ -122,9 +136,10 @@ const Navbar = () => {
         </div>
         {/* Scroll progress line */}
         <div
-          className="absolute left-0 bottom-0 h-[2px] pointer-events-none"
+          ref={barRef}
+          className="absolute left-0 bottom-0 h-[2px] w-full pointer-events-none origin-left"
           style={{
-            width: `${progress * 100}%`,
+            transform: "scaleX(0)",
             background: "var(--rose-btn)",
           }}
         />

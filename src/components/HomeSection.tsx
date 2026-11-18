@@ -65,7 +65,7 @@ const HomeSection = () => {
                 color: "var(--wine)",
               }}
             >
-              Hi, I'm Sanila!
+              Sanila Chowdhury
             </span>
           </h1>
 
@@ -135,6 +135,18 @@ const HomeSection = () => {
               <span style={{ color: "var(--rose)" }}>
                 Metropolitan Transportation Authority (MTA)
               </span>
+            </p>
+            <p
+              className="text-sm sm:text-base pt-2 mt-1"
+              style={{
+                color: "var(--muted)",
+                borderTop: "1px solid var(--line)",
+              }}
+            >
+              Open to{" "}
+              <b className="font-semibold" style={{ color: "var(--wine)" }}>
+                new grad SWE and data analyst roles
+              </b>
             </p>
           </div>
           {/* Buttons */}
