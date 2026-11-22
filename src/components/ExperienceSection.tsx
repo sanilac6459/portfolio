@@ -285,6 +285,16 @@ const ExperienceSection = () => {
 
   return (
     <section id="experience" className="py-24 relative overflow-hidden">
+      {/* Current roles: the rose glows softly once the line reaches it */}
+      <style>{`
+        @keyframes roseGlow {
+          0%, 100% { filter: drop-shadow(0 0 6px rgba(236, 90, 134, 0.55)); }
+          50% { filter: drop-shadow(0 0 16px rgba(236, 90, 134, 0.85)) drop-shadow(0 0 5px rgba(255, 143, 171, 0.7)); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .rose-now { animation: none !important; filter: drop-shadow(0 0 10px rgba(236, 90, 134, 0.7)) !important; }
+        }
+      `}</style>
       <div className="container relative">
         {/* Section Heading */}
         <div
@@ -359,7 +369,7 @@ const ExperienceSection = () => {
                     <img
                       src="/images/rose3.png"
                       alt=""
-                      className="w-14 h-14 object-contain max-w-none"
+                      className={`w-14 h-14 object-contain max-w-none ${isNow && isPassed ? "rose-now" : ""}`}
                       style={{
                         transition:
                           "transform 0.6s cubic-bezier(0.3, 1.6, 0.5, 1), opacity 0.5s, filter 0.5s",
@@ -368,6 +378,10 @@ const ExperienceSection = () => {
                         filter: isPassed
                           ? "none"
                           : "grayscale(1) brightness(0.6)",
+                        animation:
+                          isNow && isPassed
+                            ? "roseGlow 2.8s ease-in-out infinite"
+                            : "none",
                       }}
                     />
                   </div>
