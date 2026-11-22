@@ -318,6 +318,31 @@ const ExperienceSection = () => {
           >
             Experience
           </h2>
+
+          {/* The same journey as a subway game */}
+          <a
+            href="/ride-the-s-line/index.html"
+            className="group mt-4 inline-flex items-center gap-2 font-mono-ui text-[13px] sm:text-sm transition-colors"
+            style={{ color: "var(--muted)" }}
+          >
+            Prefer the scenic route?
+            <span
+              className="inline-grid place-items-center w-5 h-5 rounded-full text-[11px] font-bold text-white"
+              style={{
+                backgroundColor: "var(--rose-btn)",
+                fontFamily: "Arial, sans-serif",
+              }}
+              aria-hidden="true"
+            >
+              S
+            </span>
+            <span
+              className="underline-offset-4 group-hover:underline"
+              style={{ color: "var(--rose)" }}
+            >
+              Take the S train →
+            </span>
+          </a>
         </div>
 
         {/* Timeline */}
