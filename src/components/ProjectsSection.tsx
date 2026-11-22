@@ -13,14 +13,23 @@ interface ProjectProps {
 }
 
 const projects: ProjectProps[] = [
-  // {
-  //   title: "CUNY Marketplace",
-  //   tagline: "Facebook Marketplace, but just for CUNY students.",
-  //   description:
-  //     "CUNY students buy and sell textbooks, electronics, furniture and more. Only verified CUNY emails can sign up, and buyers can message, rate, and report sellers. Built with a team of 5, where I'm co-PM and on the backend.",
-  //   technologies: ["React", "Node.js", "Express.js", "Prisma", "Supabase"],
-  //   repoUrl: "https://github.com/farmiha/cuny-marketplace",
-  // },
+  {
+    title: "CUNY Marketplace",
+    tagline: "Facebook Marketplace, but just for CUNY students.",
+    description:
+      "CUNY students buy and sell textbooks, electronics, furniture and more. Only verified CUNY emails can sign up, and buyers can message, rate, and report sellers. Built with a team of 5, where I'm co-PM and on the backend.",
+    technologies: [
+      "React",
+      "Supabase",
+      "Prisma",
+      "Node.js",
+      "Express.js",
+      "Socket.io",
+      "Stripe",
+    ],
+    image: "/images/cuny-marketplace.png",
+    repoUrl: "https://github.com/farmiha/cuny-marketplace",
+  },
 
   {
     title: "HunterConnect",
@@ -81,6 +90,7 @@ const projects: ProjectProps[] = [
   //   repoUrl: "https://github.com/sanilac6459/pythonic-code-evaluator",
   // },
 
+  /**
   {
     title: "Winter Wordleland",
     tagline: "Wordle, snowed in.",
@@ -92,7 +102,9 @@ const projects: ProjectProps[] = [
       "https://drive.google.com/file/d/1nA2Tjaf9ZgVG9kCAeBXm-5qcnNyu-R-J/view?usp=sharing",
     repoUrl: "https://github.com/TheSimmer101/wordle",
   },
+*/
 
+  /**
   {
     title: "GIMMIE CANDY!!!",
     tagline: "Trick-or-treating, but someone's stealing your stash.",
@@ -103,6 +115,7 @@ const projects: ProjectProps[] = [
     demoUrl: "https://caipan.itch.io/gimme-candy",
     repoUrl: "https://github.com/weijiej2964/GIMMECANDY_Halloween",
   },
+*/
 
   /**
   {
@@ -183,6 +196,8 @@ const techIcons: Record<string, string> = {
   "p5.js": "/images/p5js.png",
   "OpenWeather API": "/images/openweather.png",
   Prisma: "/images/prisma.svg",
+  "Socket.io": "/images/Socket.io.png",
+  Stripe: "/images/stripe.jpeg",
 };
 
 const SLIDE_MS = 7000; // how long each project shows before auto-advancing
@@ -316,7 +331,7 @@ const ProjectsSection = () => {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_420px] lg:auto-rows-[600px] gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:auto-rows-[600px] gap-6">
             {/* Screenshots: every frame the same size, whole screenshot shown */}
             <div className="relative min-w-0">
               <div
