@@ -6,6 +6,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
+import Sparkles from "@/components/Sparkles";
 
 const Home = () => {
   const location = useLocation();
@@ -56,6 +57,8 @@ const Home = () => {
 
   return (
     <>
+      {/* Faint rose sparkles drifting behind every section */}
+      <Sparkles />
       <HomeSection />
       <AboutSection />
       <ExperienceSection />

@@ -10,20 +10,51 @@ const LINKS = {
   linkedin: "https://www.linkedin.com/in/sanilachowdhury/",
 };
 
-// "open <name>" opens these
-const PROJECT_LINKS: Record<string, string> = {
-  "cuny-marketplace": "https://github.com/farmiha/cuny-marketplace",
-  hunterconnect: "https://hunter-connect-psi.vercel.app/",
-  phil: "https://github.com/sanilac6459/job-agent",
-  styleme: "https://github.com/weijiej2964/Fashion-Project",
-  "python-code-evaluator": "https://github.com/sanilac6459/pythonic-code-evaluator",
-  "winter-wordleland": "https://github.com/TheSimmer101/wordle",
-  "gimmie-candy": "https://caipan.itch.io/gimme-candy",
-  keysanity: "https://sanilac6459.github.io/sep11-freedom-project/intro/",
+// "open <name>" asks preview or GitHub, then opens it in a new tab
+type ProjectLinks = { preview?: string; github?: string };
+const PROJECT_LINKS: Record<string, ProjectLinks> = {
+  "cuny-marketplace": { github: "https://github.com/farmiha/cuny-marketplace" },
+  hunterconnect: {
+    preview: "https://hunter-connect-psi.vercel.app/",
+    github: "https://github.com/sanilac6459/hunter-connect",
+  },
+  phil: {
+    preview:
+      "https://drive.google.com/file/d/1NNQAlaI6GqRZ3moRA5YVlMKBbLKKBzz-/view?usp=sharing",
+    github: "https://github.com/sanilac6459/job-agent",
+  },
+  styleme: {
+    preview:
+      "https://drive.google.com/file/d/1Hox0GU5vjn6Zmxep-Tz5oX5rOxcfNtbc/view?usp=sharing",
+    github: "https://github.com/weijiej2964/Fashion-Project",
+  },
+  "python-code-evaluator": {
+    github: "https://github.com/sanilac6459/pythonic-code-evaluator",
+  },
+  "winter-wordleland": {
+    preview:
+      "https://drive.google.com/file/d/1nA2Tjaf9ZgVG9kCAeBXm-5qcnNyu-R-J/view?usp=sharing",
+    github: "https://github.com/TheSimmer101/wordle",
+  },
+  "gimmie-candy": {
+    preview: "https://caipan.itch.io/gimme-candy",
+    github: "https://github.com/weijiej2964/GIMMECANDY_Halloween",
+  },
+  keysanity: {
+    preview: "https://sanilac6459.github.io/sep11-freedom-project/intro/",
+    github: "https://github.com/sanilac6459/sep11-freedom-project",
+  },
 };
 
-const SECTIONS = ["home", "about", "experience", "skills", "projects", "contact"];
-const CHIPS = ["help", "projects", "experience", "contact"];
+const SECTIONS = [
+  "home",
+  "about",
+  "experience",
+  "skills",
+  "projects",
+  "contact",
+];
+const CHIPS = ["help", "projects", "experience", "contact", "ride"];
 
 const term = {
   bg: "#170d13",
@@ -42,7 +73,13 @@ const Hl = ({ children }: { children: React.ReactNode }) => (
   <span style={{ color: "var(--rose)" }}>{children}</span>
 );
 
-const ExtLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+const ExtLink = ({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) => (
   <a
     href={href}
     target={href.startsWith("mailto:") ? undefined : "_blank"}
@@ -63,6 +100,8 @@ const CommandBar = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const idRef = useRef(0);
+  // the project waiting for a P / G answer
+  const pendingRef = useRef<string | null>(null);
 
   const say = (node: React.ReactNode) =>
     setLines((prev) => [...prev, { id: idRef.current++, node }]);
@@ -70,6 +109,46 @@ const CommandBar = () => {
   const goTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Open a project's preview or GitHub in a new tab
+  const openProject = (key: string, kind: "preview" | "github") => {
+    const url = PROJECT_LINKS[key][kind];
+    pendingRef.current = null;
+    if (!url) return;
+    say(
+      <span style={{ color: term.green }}>
+        → opening {key} {kind === "preview" ? "preview" : "on GitHub"}
+      </span>,
+    );
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const Choice = ({
+    k,
+    kind,
+    label,
+  }: {
+    k: string;
+    kind: "preview" | "github";
+    label: string;
+  }) => (
+    <button
+      onClick={() => {
+        say(
+          <>
+            <span style={{ color: term.arrow }}>❯</span>{" "}
+            {label[0].toLowerCase()}
+          </>,
+        );
+        openProject(k, kind);
+        inputRef.current?.focus();
+      }}
+      className="px-1.5 rounded hover:opacity-80"
+      style={{ color: term.path, border: "1px solid var(--line)" }}
+    >
+      {label}
+    </button>
+  );
 
   const run = (raw: string) => {
     const text = raw.trim();
@@ -85,6 +164,15 @@ const CommandBar = () => {
       </>,
     );
 
+    // Answering "P or G?" for a project
+    const waiting = pendingRef.current;
+    if (waiting) {
+      const a = text.toLowerCase();
+      if (a === "p" || a === "preview") return openProject(waiting, "preview");
+      if (a === "g" || a === "github") return openProject(waiting, "github");
+      pendingRef.current = null; // anything else: treat it as a new command
+    }
+
     // Accept "cd about", "cat about.md", "./contact.sh" and plain "about"
     const cmd = text
       .toLowerCase()
@@ -96,7 +184,7 @@ const CommandBar = () => {
         <>
           try: <Hl>about</Hl> · <Hl>experience</Hl> · <Hl>skills</Hl> ·{" "}
           <Hl>projects</Hl> · <Hl>contact</Hl> · <Hl>open hunterconnect</Hl> ·{" "}
-          <Hl>clear</Hl>
+          <Hl>ride</Hl> · <Hl>clear</Hl>
         </>,
       );
       return;
@@ -136,21 +224,55 @@ const CommandBar = () => {
 
     if (cmd.startsWith("open ")) {
       const q = cmd.slice(5).trim().replace(/\s+/g, "-");
-      const key = Object.keys(PROJECT_LINKS).find((k) => k.includes(q) || q.includes(k));
+      const key = Object.keys(PROJECT_LINKS).find(
+        (k) => k.includes(q) || q.includes(k),
+      );
       if (key) {
-        say(
-          <>
-            opening <ExtLink href={PROJECT_LINKS[key]}>{key}</ExtLink>
-          </>,
-        );
+        const links = PROJECT_LINKS[key];
+        if (links.preview && links.github) {
+          pendingRef.current = key;
+          say(
+            <>
+              {key}: <Choice k={key} kind="preview" label="P preview" /> or{" "}
+              <Choice k={key} kind="github" label="G github" />
+            </>,
+          );
+        } else {
+          // only one link, so just open it
+          openProject(key, links.preview ? "preview" : "github");
+        }
       } else {
-        say(<span style={{ color: term.yellow }}>no project matching "{q}" · try "projects"</span>);
+        say(
+          <span style={{ color: term.yellow }}>
+            no project matching "{q}" · try "projects"
+          </span>,
+        );
       }
       return;
     }
 
+    // The subway game: "ride", "train" or "subway"
+    if (
+      ["ride", "train", "subway", "s train", "ride the s line"].includes(cmd)
+    ) {
+      say(
+        <span style={{ color: term.green }}>
+          → boarding the S train… stand clear of the closing doors ♡
+        </span>,
+      );
+      setTimeout(
+        () => (window.location.href = "/ride-the-s-line/index.html"),
+        900,
+      );
+      return;
+    }
+
     if (cmd === "sudo hire sanila") {
-      say(<span style={{ color: term.green }}>✓ permission granted. opening contact…</span>);
+      say(
+        <span style={{ color: term.green }}>
+          ✓ permission granted. opening contact…
+        </span>,
+      );
       setTimeout(() => goTo("contact"), 400);
       return;
     }
@@ -224,7 +346,8 @@ const CommandBar = () => {
           style={{
             background: term.bg,
             border: "1px solid var(--line-strong)",
-            boxShadow: "0 30px 70px -20px rgba(0, 0, 0, 0.8), 0 0 40px -20px var(--rose-glow)",
+            boxShadow:
+              "0 30px 70px -20px rgba(0, 0, 0, 0.8), 0 0 40px -20px var(--rose-glow)",
             animation: "cmdIn 0.2s ease",
           }}
         >
@@ -233,12 +356,18 @@ const CommandBar = () => {
           {/* Title bar */}
           <div
             className="flex items-center gap-2 px-3.5 py-2.5"
-            style={{ background: term.bar, borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+            style={{
+              background: term.bar,
+              borderBottom: "1px solid rgba(255,255,255,0.05)",
+            }}
           >
             <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
             <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
             <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-            <span className="flex-1 text-center text-xs" style={{ color: term.dim }}>
+            <span
+              className="flex-1 text-center text-xs"
+              style={{ color: term.dim }}
+            >
               ~/sanila
             </span>
             <button

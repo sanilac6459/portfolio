@@ -152,6 +152,53 @@ const fullDuration = (exp: ExperienceProps) => {
   return shortDate(`${start} — ${end}`);
 };
 
+// How long a job lasted, counted like LinkedIn (both end months included).
+// "Present" counts up to this month, so current jobs update on their own.
+const MONTHS = [
+  "jan",
+  "feb",
+  "mar",
+  "apr",
+  "may",
+  "jun",
+  "jul",
+  "aug",
+  "sep",
+  "oct",
+  "nov",
+  "dec",
+];
+const toMonth = (s: string) => {
+  if (/present/i.test(s)) {
+    const now = new Date();
+    return now.getFullYear() * 12 + now.getMonth();
+  }
+  const m = s.trim().match(/^([A-Za-z]+)\s+(\d{4})$/);
+  const i = m ? MONTHS.indexOf(m[1].slice(0, 3).toLowerCase()) : -1;
+  return m && i >= 0 ? Number(m[2]) * 12 + i : null;
+};
+const tenure = (d = "") => {
+  const [from, to = from] = d.split(" — ");
+  const start = toMonth(from),
+    end = toMonth(to);
+  if (start === null || end === null || end < start) return "";
+  const n = end - start + 1,
+    yrs = Math.floor(n / 12),
+    mos = n % 12;
+  return [
+    yrs && `${yrs} yr${yrs > 1 ? "s" : ""}`,
+    mos && `${mos} mo${mos > 1 ? "s" : ""}`,
+  ]
+    .filter(Boolean)
+    .join(" ");
+};
+
+// " · 11 mos" after a date, in the quieter gray
+const Tenure = ({ d }: { d: string }) => {
+  const t = tenure(d);
+  return t ? <span style={{ color: "var(--muted)" }}> · {t}</span> : null;
+};
+
 const Bullets = ({ items }: { items: string[] }) => (
   <ul className="mt-3.5 grid gap-2.5">
     {items.map((b, i) => (
@@ -238,6 +285,16 @@ const ExperienceSection = () => {
 
   return (
     <section id="experience" className="py-24 relative overflow-hidden">
+      {/* Current roles: the rose glows softly once the line reaches it */}
+      <style>{`
+        @keyframes roseGlow {
+          0%, 100% { filter: drop-shadow(0 0 6px rgba(236, 90, 134, 0.55)); }
+          50% { filter: drop-shadow(0 0 16px rgba(236, 90, 134, 0.85)) drop-shadow(0 0 5px rgba(255, 143, 171, 0.7)); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .rose-now { animation: none !important; filter: drop-shadow(0 0 10px rgba(236, 90, 134, 0.7)) !important; }
+        }
+      `}</style>
       <div className="container relative">
         {/* Section Heading */}
         <div
@@ -250,7 +307,7 @@ const ExperienceSection = () => {
               color: "var(--rose)",
             }}
           >
-            — My Journey —
+            — Where I've Worked —
           </p>
 
           <h2
@@ -261,6 +318,31 @@ const ExperienceSection = () => {
           >
             Experience
           </h2>
+
+          {/* The same journey as a subway game */}
+          <a
+            href="/ride-the-s-line/index.html"
+            className="group mt-4 inline-flex items-center gap-2 font-mono-ui text-[13px] sm:text-sm transition-colors"
+            style={{ color: "var(--muted)" }}
+          >
+            Prefer the scenic route?
+            <span
+              className="inline-grid place-items-center w-5 h-5 rounded-full text-[11px] font-bold text-white"
+              style={{
+                backgroundColor: "var(--rose-btn)",
+                fontFamily: "Arial, sans-serif",
+              }}
+              aria-hidden="true"
+            >
+              S
+            </span>
+            <span
+              className="underline-offset-4 group-hover:underline"
+              style={{ color: "var(--rose)" }}
+            >
+              Take the S train →
+            </span>
+          </a>
         </div>
 
         {/* Timeline */}
@@ -312,7 +394,7 @@ const ExperienceSection = () => {
                     <img
                       src="/images/rose3.png"
                       alt=""
-                      className="w-14 h-14 object-contain max-w-none"
+                      className={`w-14 h-14 object-contain max-w-none ${isNow && isPassed ? "rose-now" : ""}`}
                       style={{
                         transition:
                           "transform 0.6s cubic-bezier(0.3, 1.6, 0.5, 1), opacity 0.5s, filter 0.5s",
@@ -321,6 +403,10 @@ const ExperienceSection = () => {
                         filter: isPassed
                           ? "none"
                           : "grayscale(1) brightness(0.6)",
+                        animation:
+                          isNow && isPassed
+                            ? "roseGlow 2.8s ease-in-out infinite"
+                            : "none",
                       }}
                     />
                   </div>
@@ -356,19 +442,23 @@ const ExperienceSection = () => {
                           className="font-mono-ui text-[13px] sm:text-[13.5px] mt-1"
                           style={{ color: "var(--muted)" }}
                         >
-                          {exp.title
-                            ? exp.company
-                            : exp.roles?.map((r) => r.title).join(" · ")}
-                          <Sep />
+                          {/* Clubs with several roles list them below, so only jobs show the company here */}
+                          {exp.title && (
+                            <>
+                              {exp.company}
+                              <Sep />
+                            </>
+                          )}
                           {exp.location}
-                          <Sep className="hidden sm:inline" />
+                          {/* Dates and length on their own line */}
                           <span
-                            className="block sm:inline mt-0.5 sm:mt-0 transition-colors duration-500"
+                            className="block mt-0.5 transition-colors duration-500"
                             style={{
                               color: isPassed ? "var(--rose)" : "var(--muted)",
                             }}
                           >
                             {fullDuration(exp)}
+                            <Tenure d={fullDuration(exp)} />
                           </span>
                         </p>
                       </div>
@@ -393,6 +483,7 @@ const ExperienceSection = () => {
                             style={{ color: "var(--muted)" }}
                           >
                             {shortDate(role.duration)}
+                            <Tenure d={role.duration} />
                           </p>
                           <Bullets items={role.bullets} />
                         </div>

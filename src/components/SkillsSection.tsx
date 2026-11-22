@@ -53,6 +53,8 @@ const skillCategories: SkillCategoryProps[] = [
       { name: "Tailwind CSS", icon: "/images/tailwind-css.png" },
       { name: "Node.js", icon: "/images/nodejs.png" },
       { name: "Express.js", icon: "/images/express.png" },
+      { name: "Next.js", icon: "/images/Next.js.png" },
+      { name: "Socket.io", icon: "/images/Socket.io.png" },
       { name: "Flask", icon: "/images/flask.png" },
       { name: "Prisma", icon: "/images/prisma.svg" },
       { name: "OpenAI API", icon: "/images/openai.png" },
@@ -65,6 +67,7 @@ const skillCategories: SkillCategoryProps[] = [
     title: "Databases & Backend",
     icon: <Database size={20} />,
     skills: [
+      { name: "PostgreSQL", icon: "/images/PostgresSQL.png" },
       { name: "Supabase", icon: "/images/supabase.png" },
       { name: "MySQL", icon: "/images/mysql.png" },
       { name: "Firebase", icon: "/images/firebase.png" },
